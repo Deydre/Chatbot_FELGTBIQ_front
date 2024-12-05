@@ -1,0 +1,35 @@
+#navBar {
+    padding: 24px 50px;
+    width: 100%;
+}
+
+#navBar img {
+    height: 32px;
+    padding-top: 2px;
+}
+
+#navBar ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.nav-link, #navBar a {
+    color: $secondary-color-soft;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    letter-spacing: 2px;
+    font-weight: 400;
+    color: $secondary-color-soft-2;
+}
+
+#navBar li:hover, #navBar a:hover {
+    color: white;
+    cursor: pointer;
+}
+
+#navBar div {
+    display: flex;
+    gap: 20px;
+}
