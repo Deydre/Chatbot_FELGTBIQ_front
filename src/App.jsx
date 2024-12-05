@@ -11,7 +11,7 @@ function App() {
     const getPrueba = async () => {
       
       try {
-        const resp = await axios.get(`https://chatbot-felgtbiq-back.onrender.com`);
+        await axios.get(`https://chatbot-felgtbiq-back.onrender.com`);
       } catch (err) {
         console.log(err)
       }
