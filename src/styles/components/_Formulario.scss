@@ -1,3 +1,5 @@
+
+
 #initialForm {
     display: flex;
     flex-direction: column;
@@ -101,6 +103,36 @@ input[type="checkbox"]+label:hover::before,
 input[type="radio"]+label:hover::before {
     border-color: $primary-color-soft;
 }
+
+
+.XLButton {
+    font-weight: 700;
+    width: 300px;
+    height: 120px;
+    border: 0px solid;
+    border-radius: 8px;
+    color: $primary-color;
+    background: $white;
+    @include shadow($primary-color-soft);
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+.XLButton:hover {
+    color: $white;
+    background: $gradient2;
+    @include shadow($primary-color-2);
+    font-size: 17px;
+}
+
+#sectionXLButtons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 80vh;
+}
+
 
 // Media Query para pantallas grandes (desktop)
 @media (min-width: 768px) {

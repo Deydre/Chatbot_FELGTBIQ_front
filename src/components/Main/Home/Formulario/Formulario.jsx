@@ -3,6 +3,8 @@ import React, { useState } from "react";
 const Formulario = () => {
 
 
+
+  // MANEJO DEL FORMULARIO
   // Estado del formulario
   const [values, setValues] = useState({
     edad: 0,
@@ -47,11 +49,11 @@ const Formulario = () => {
 
 
   return <>
-    <section>
-      {/* <button>SOCIOSANITARIO</button>
-      <button>NO SOCIOSANITARIO</button> */}
+    <section id="sectionXLButtons">
+      <button className="XLButton">SOY SOCIOSANITARIO</button>
+      <button className="XLButton">NO SOY SOCIOSANITARIO </button>
     </section>
-    <section>
+    {/* <section>
       <h1 htmlFor="name">Rellena tus datos (este título cambia)</h1>
       <form onSubmit={handleSubmit} id="initialForm">
         <article>
@@ -158,7 +160,7 @@ const Formulario = () => {
 
         <button className="buttonDisabled">ENVIAR</button>
       )}
-    </section>
+    </section> */}
 
   </>;
 };
