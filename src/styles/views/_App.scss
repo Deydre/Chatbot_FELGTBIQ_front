@@ -74,3 +74,7 @@ select:focus {
     border: 2px solid $primary-color;
     outline: none;
 }
+
+.buttonDisabled {
+    background: $primary-color-soft;
+}

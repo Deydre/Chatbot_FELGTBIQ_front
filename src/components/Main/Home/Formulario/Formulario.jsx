@@ -145,12 +145,19 @@ const Formulario = () => {
           </div>
 
         </article>
+
       </form>
-      {values.title && values.description && values.price > 0 && values.img_url ? (
-          <button type="submit">ENVIAR</button>
-        ) : (
-          <p>Rellena todos los campos para enviar</p>
-        )}
+      {values.edad > 0 &&
+        values.pronombres &&
+        values.genero &&
+        values.orientacion &&
+        values.vive_espana &&
+        values.permiso_residencia ? (
+        <button type="submit">ENVIAR</button>
+      ) : (
+
+        <button className="buttonDisabled">ENVIAR</button>
+      )}
     </section>
 
   </>;
