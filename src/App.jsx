@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import { context } from './context/context'
+import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
@@ -10,9 +12,9 @@ function App() {
 
 
   useEffect(() => {
-    
+
     const getPrueba = async () => {
-      
+
       try {
         const resp = await axios.get(`https://chatbot-felgtbiq-back.onrender.com`);
         console.log(resp);
@@ -26,9 +28,13 @@ function App() {
 
   return (
     <>
-      <Header></Header>
-      <Main></Main>
-      <Footer></Footer>
+      <BrowserRouter >
+        <context.Provider value={{}}>
+        <Header></Header>
+        <Main></Main>
+        <Footer></Footer>
+      </context.Provider >
+    </BrowserRouter >
     </>
   )
 }
