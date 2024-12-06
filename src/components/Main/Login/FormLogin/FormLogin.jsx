@@ -91,7 +91,6 @@ const FormLogin = () => {
           <div>
             <input type="text" placeholder="email" onChange={handleEmail} />
             <input type="password" placeholder="contraseña" onChange={handlePassword} />
-            <input type="password" placeholder="repite la contraseña" onChange={handlePassword} />
             <button onClick={handleLogin}>LOGIN</button>
             {emailMessage && <h6>{emailMessage}</h6>}
             {passwordMessage && <h6>{passwordMessage}</h6>}
