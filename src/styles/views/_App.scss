@@ -1,6 +1,11 @@
 @import '../utils/variables.scss';
 @import '../utils/mixins.scss';
 
+#root, html {
+    width: 100%;
+    padding: 0px !important;
+}
+
 * {
     padding: 0px;
     margin: 0px;
@@ -8,8 +13,9 @@
 }
 
 body {
+    width: 100%;
     color: $secondary-color;
-    background: $white
+    background: $white;
 }
 
 a {

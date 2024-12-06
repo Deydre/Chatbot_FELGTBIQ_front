@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 260px; 
+    max-width: 260px;
     margin: 0 auto;
-    width: 100%; 
+    width: 100%;
     box-sizing: border-box;
 }
 
-#initialForm div, 
+#initialForm div,
 #initialForm article {
     width: 100%;
     display: flex;
@@ -18,11 +18,12 @@
     box-sizing: border-box;
 }
 
-input, select {
-    width: 100%; 
-    padding: 12px 10px; 
+input,
+select {
+    width: 100%;
+    padding: 12px 10px;
     border-radius: 8px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     font-size: 16px;
 }
 
@@ -33,7 +34,7 @@ input, select {
 }
 
 
-#lastQuestions div > div {
+#lastQuestions div>div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -49,8 +50,8 @@ input[type="radio"] {
     cursor: pointer;
 }
 
-input[type="checkbox"] + label,
-input[type="radio"] + label {
+input[type="checkbox"]+label,
+input[type="radio"]+label {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -58,7 +59,7 @@ input[type="radio"] + label {
     font-size: 16px;
 }
 
-input[type="checkbox"] + label::before {
+input[type="checkbox"]+label::before {
     content: "";
     display: inline-block;
     width: 20px;
@@ -70,7 +71,7 @@ input[type="checkbox"] + label::before {
     transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-input[type="radio"] + label::before {
+input[type="radio"]+label::before {
     content: "";
     display: inline-block;
     width: 20px;
@@ -82,7 +83,7 @@ input[type="radio"] + label::before {
     transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-input[type="checkbox"]:checked + label::before {
+input[type="checkbox"]:checked+label::before {
     background: $primary-color;
     border-color: $primary-color;
     content: "✓";
@@ -91,12 +92,37 @@ input[type="checkbox"]:checked + label::before {
     line-height: 20px;
 }
 
-input[type="radio"]:checked + label::before {
+input[type="radio"]:checked+label::before {
     background: $primary-color;
     border-color: $primary-color;
 }
 
-input[type="checkbox"] + label:hover::before,
-input[type="radio"] + label:hover::before {
+input[type="checkbox"]+label:hover::before,
+input[type="radio"]+label:hover::before {
     border-color: $primary-color-soft;
+}
+
+// Media Query para pantallas grandes (desktop)
+@media (min-width: 768px) {
+    #initialForm {
+        max-width: inherit;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    #initialForm article:first-child {
+        width: 200px;
+    }
+
+    #initialForm article:nth-child(2) {
+        width: 370px;
+    }
+
+    // Ajustes para los checkboxes y radios
+    input[type="checkbox"],
+    input[type="radio"] {
+        width: 20px;
+    }
+
 }

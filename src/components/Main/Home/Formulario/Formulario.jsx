@@ -5,17 +5,38 @@ const Formulario = () => {
 
   // Estado del formulario
   const [values, setValues] = useState({
-    title: '',
-    description: '',
-    price: 0,
-    img_url: ''
+    edad: 0,
+    pronombres: '',
+    genero: '',
+    orientacion: '',
+    vive_espana: '',
+    permiso_residencia: '',
+    colectivos: []
   });
 
   const handleChange = (e) => {
-    setValues({
-      ...values, // Conserva las claves anteriores
-      [e.target.name]: e.target.value // Si cambia el título, guardarlo
-    })
+    const { name, value, type, checked } = e.target;
+    // Manejo de información del checkbox
+    if (type === "checkbox") {
+      setValues(prevValues => {
+        let newColectivos = [...prevValues.colectivos];
+        if (checked) {
+          newColectivos.push(value);
+        } else {
+          newColectivos = newColectivos.filter(colectivo => colectivo !== value);
+        }
+        return {
+          ...prevValues,
+          colectivos: newColectivos // Actualizamos el array
+        };
+      });
+    } else {
+      // Si no es un checkbox, actualizamos el estado normalmente
+      setValues({
+        ...values,
+        [name]: value
+      });
+    }
   }
 
   const handleSubmit = (e) => {
@@ -124,13 +145,12 @@ const Formulario = () => {
           </div>
 
         </article>
-
-        {values.title && values.description && values.price > 0 && values.img_url ? (
+      </form>
+      {values.title && values.description && values.price > 0 && values.img_url ? (
           <button type="submit">ENVIAR</button>
         ) : (
           <p>Rellena todos los campos para enviar</p>
         )}
-      </form>
     </section>
 
   </>;

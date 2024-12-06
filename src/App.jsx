@@ -32,7 +32,7 @@ function App() {
         <context.Provider value={{}}>
         <Header></Header>
         <Main></Main>
-        <Footer></Footer>
+        <Footer>a</Footer>
       </context.Provider >
     </BrowserRouter >
     </>
