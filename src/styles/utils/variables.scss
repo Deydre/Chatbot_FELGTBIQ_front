@@ -1,17 +1,19 @@
 $primary-color: #E2007E;
+$primary-color-2: #f4319c;
+$primary-color-soft: #ffa9da;
 $secondary-color: #1D1D1B;
 $white: #fff;
+$gray: #d0d0d0;
 $complementary-1: #44BAC1;
 $complementary-2: #9C4AA0;
 $complementary-3: #FFB024;
 $complementary-4: #F45540;
 $complementary-5: #A5165B;
 $gradient1: linear-gradient(130deg, #44BAC1, #9C4AA0, #FFB024, #F45540, #A5165B );
+$gradient2: linear-gradient(130deg, #ff53b2, #E2007E, #F45540);
+
 $shadow-color:rgba(0,0,255,.15);
 // $black: #222223;
-$transparent: rgba(255, 255, 255, 0.082);
-$transparent-soft: rgba(255, 255, 255, 0.179);
-$secondary-color-soft: rgba(255, 255, 255, 0.519);
-$secondary-color-soft-2: rgba(255, 255, 255, 0.315);
+$input-background: #ededed;
 
 $ipad-breakpoint: 768px;
