@@ -8,6 +8,7 @@
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 40px;
 }
 
 #initialForm div,
@@ -133,6 +134,23 @@ input[type="radio"]+label:hover::before {
     padding: 60px;
 }
 
+#back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0px;
+    cursor: pointer;
+}
+
+#back button {
+    display: flex;
+    padding: 10px 16px 10px 10px;
+}
+
+.iconBack {
+    font-size: 20px;
+}
+
 
 // Media Query para pantallas grandes (desktop)
 @media (min-width: 768px) {
@@ -159,6 +177,11 @@ input[type="radio"]+label:hover::before {
 
     #sectionXLButtons {
         justify-content: center;
+    }
+
+    #back {
+        justify-content:flex-start;
+        margin-left: 100px;
     }
 
 }

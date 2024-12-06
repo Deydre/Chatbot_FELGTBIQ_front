@@ -1,9 +1,14 @@
 @import '../utils/variables.scss';
 @import '../utils/mixins.scss';
 
-#root, html {
+#root,
+html {
     width: 100%;
+    height: 100%;
     padding: 0px !important;
+    display: flex;
+    flex-direction: column;
+    max-width: none !important;
 }
 
 * {
@@ -14,6 +19,7 @@
 
 body {
     width: 100%;
+    height: 100%;
     color: $secondary-color;
     background: $white;
 }
@@ -23,9 +29,8 @@ a {
     color: $secondary-color;
 }
 
-h6 {
-    letter-spacing: 2px;
-    font-weight: 400;
+h4 {
+    font-weight: 600;
 }
 
 ul {
@@ -77,4 +82,15 @@ select:focus {
 
 .buttonDisabled {
     background: $primary-color-soft;
+}
+
+header {
+    height: 10vh;
+    background: $primary-color;
+    flex-shrink: 0;
+}
+
+footer {
+    height: 20px;
+    background: $primary-color;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IoIosArrowBack } from "react-icons/io";
 
 const Formulario = () => {
 
@@ -54,6 +55,11 @@ const Formulario = () => {
     setMedicalStaff(event.target.id);
   };
 
+  // ATRAS BUTTON
+  const handleAtras = (e) => {
+    setMedicalStaff("");
+  }
+
 
   return <>
     {isMedicalStaff === ""
@@ -64,6 +70,10 @@ const Formulario = () => {
       </section>
       :
       <section>
+        <article id="back" onClick={handleAtras}>
+          <button><IoIosArrowBack className="iconBack"/>Atrás</button>
+        </article>
+
         {isMedicalStaff === "true"
           ? <h1>Rellena los datos del paciente</h1>
           : <h1>Rellena tus datos</h1>
