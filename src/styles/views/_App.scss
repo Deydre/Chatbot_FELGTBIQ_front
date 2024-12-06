@@ -20,7 +20,6 @@ a {
 h6 {
     letter-spacing: 2px;
     font-weight: 400;
-    color: $secondary-color-soft-2;
 }
 
 ul {
@@ -28,18 +27,19 @@ ul {
 }
 
 button {
+    font-weight: 600;
     padding: 10px 18px;
     border: 0px solid;
     border-radius: 8px;
-    color: $secondary-color;
-    background-color:$primary-color;
+    color: $white;
+    background: $primary-color;
     transition: 0.3s;
     font-size: 16px;
 }
 
 button:hover {
-    background-color: $secondary-color;
-    padding: 12px 20px;
+    background: $primary-color-2;
+    font-size: 17px;
 }
 
 
@@ -52,17 +52,19 @@ form {
     gap: 20px;
 }
 
-input {
-    padding: 14px 20px;
-    border-radius: 80px;
-    border: 0px solid;
-    color: $secondary-color-soft;
-    background: $transparent;
+input,
+select {
+    padding: 14px 10px;
+    border-radius: 8px;
+    border: 2px solid $primary-color-soft;
+    color: $primary-color;
     transition: background 0.4s ease;
 }
 
-input:hover, input:focus {
-    color: $primary-color;
-    background: $secondary-color;
+input:hover,
+input:focus,
+select:hover,
+select:focus {
+    border: 2px solid $primary-color;
     outline: none;
 }

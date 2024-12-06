@@ -1,0 +1,102 @@
+#initialForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 260px; 
+    margin: 0 auto;
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+#initialForm div, 
+#initialForm article {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+input, select {
+    width: 100%; 
+    padding: 12px 10px; 
+    border-radius: 8px;
+    box-sizing: border-box; 
+    font-size: 16px;
+}
+
+.labelTitulo {
+    font-weight: 500;
+    margin-top: 20px;
+    text-align: start;
+}
+
+
+#lastQuestions div > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+
+// Cambio de color en inputs de checkbox y radio
+input[type="checkbox"],
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="checkbox"] + label::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid $primary-color;
+    border-radius: 4px;
+    background: white;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+input[type="radio"] + label::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid $primary-color;
+    background: white;
+    border-radius: 50%;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+input[type="checkbox"]:checked + label::before {
+    background: $primary-color;
+    border-color: $primary-color;
+    content: "✓";
+    color: white;
+    text-align: center;
+    line-height: 20px;
+}
+
+input[type="radio"]:checked + label::before {
+    background: $primary-color;
+    border-color: $primary-color;
+}
+
+input[type="checkbox"] + label:hover::before,
+input[type="radio"] + label:hover::before {
+    border-color: $primary-color-soft;
+}
