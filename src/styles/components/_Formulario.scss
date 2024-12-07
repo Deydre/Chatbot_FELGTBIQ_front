@@ -3,6 +3,7 @@
 #initialForm {
     display: flex;
     flex-direction: column;
+    align-items: start;
     gap: 20px;
     max-width: 260px;
     margin: 0 auto;
@@ -160,7 +161,7 @@ input[type="radio"]+label:hover::before {
     }
 
     #initialForm article:first-child {
-        width: 200px;
+        width: 300px;
     }
 
     #initialForm article:nth-child(2) {
