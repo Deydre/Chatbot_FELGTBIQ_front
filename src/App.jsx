@@ -8,8 +8,13 @@ import Main from './components/Main/Main';
 import Footer from './components/Footer/Footer';
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [profile, setProfile] = useState(null);
 
+   // Para login y logout
+   const updateProfile = (data) => {
+    setProfile(data)
+  };
 
   useEffect(() => {
 
@@ -29,7 +34,7 @@ function App() {
   return (
     <>
       <BrowserRouter >
-        <context.Provider value={{}}>
+      <context.Provider value={{profile, updateProfile}}>
         <Header></Header>
         <Main></Main>
         <Footer>a</Footer>

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import HashLoader from "react-spinners/HashLoader";
 import { context } from "../../../../context/context";
 
-const FormLogin = () => { 
+const FormLogin = () => {
 
   const navigate = useNavigate();
   const { updateProfile } = useContext(context);
@@ -37,7 +37,7 @@ const FormLogin = () => {
   }, [password])
 
   const loginRedirect = () => {
-    navigate(`admin/dashboard`)
+    navigate(`/admin/dashboard`)
   }
 
   const handleEmail = (e) => setEmail(e.target.value);
@@ -51,9 +51,12 @@ const FormLogin = () => {
         method: 'post',
         url: 'http://localhost:3000/api/admin/login',
         data: { email, password },
+        headers: {
+          'Content-Type': 'application/json'
+        },
         withCredentials: true
       });
-
+      console.log({ response })
       // En las futuras solicitudes por axios se enviará encabezado el token
       const authHeader = response.headers.authorization;
       axios.defaults.headers.common['Authorization'] = authHeader;
@@ -62,14 +65,15 @@ const FormLogin = () => {
         const response = await axios(`http://localhost:3000/api/admin/me`, {
           withCredentials: true
         });
-        updateProfile(response.data[0])
+        updateProfile(response.data[0].email)
       } catch {
-        
+
       }
 
       loginRedirect();
 
     } catch (error) {
+      setMessage("Credenciales no válidas")
       console.log(error.message);
     }
     setLoading(false);
@@ -81,7 +85,7 @@ const FormLogin = () => {
 
   return <div className="login">
     {loading ? (
-      <HashLoader color="#fff" />
+      <HashLoader color="#E2007E" />
     ) : (
       <>
         <article id="divLogin">
