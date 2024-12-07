@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import HashLoader from "react-spinners/HashLoader";
 import { context } from "../../../../context/context";
+import { fetchHandleLogin, getAdminData } from "../../../../services/formLoginAdmin"
 
 const FormLogin = () => {
 
@@ -46,28 +47,23 @@ const FormLogin = () => {
   const handleLogin = async () => {
     setLoading(true);
     try {
-      // Llamada a la api con los datos del form para hacer login
-      const response = await axios({
-        method: 'post',
-        url: 'http://localhost:3000/api/admin/login',
-        data: { email, password },
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        withCredentials: true
-      });
-      console.log({ response })
+      // Llamada al servicio de login
+      const response = await fetchHandleLogin(email, password);
+      console.log({ response });
+
       // En las futuras solicitudes por axios se enviará encabezado el token
       const authHeader = response.headers.authorization;
       axios.defaults.headers.common['Authorization'] = authHeader;
 
       try {
-        const response = await axios(`http://localhost:3000/api/admin/me`, {
-          withCredentials: true
-        });
-        updateProfile(response.data[0].email)
-      } catch {
+        const adminData = await getAdminData();
+        console.log(adminData);
 
+        updateProfile(adminData.data[0].email);
+        
+
+      } catch (error) {
+        console.log("Error al obtener datos de admin:", error.message);
       }
 
       loginRedirect();
@@ -80,8 +76,6 @@ const FormLogin = () => {
   };
 
 
-
-  //email, password
 
   return <div className="login">
     {loading ? (
