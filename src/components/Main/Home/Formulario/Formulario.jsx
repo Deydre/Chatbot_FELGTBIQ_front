@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 
+
 const Formulario = () => {
 
   // MANEJO DE BOTONES INICIALES

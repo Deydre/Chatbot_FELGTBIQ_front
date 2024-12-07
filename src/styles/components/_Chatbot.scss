@@ -1,0 +1,100 @@
+@import "../utils/variables"; // Importamos las variables globales
+
+.chatbot-container {
+  max-width: 400px;
+  margin: 20px auto;
+  border-radius: 10px;
+  background: $white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Arial, Helvetica, sans-serif";
+
+  .rsc-header {
+    background-color: $primary-color;
+    color: $white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.8px, 50px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+  }
+
+  .rsc-bot-bubble {
+    background-color: $primary-color;
+    color: $white !important; // Texto blanco
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 1px;
+    margin: 10px 10px 10px 50px; // Espaciado para acomodar el avatar
+    position: relative;
+  }
+
+  .rsc-user-bubble {
+    background-color: $primary-color-soft;
+    color: $secondary-color !important; // Texto oscuro
+    border-radius: 15px;
+    font-size: 0.5rem;
+    padding: 10px;
+    margin: 10px 50px 10px 10px; // Espaciado para acomodar el avatar
+    position: relative;
+  }
+
+  .rsc-avatar {
+    background: $primary-color;
+    color: $white;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 10px;
+  }
+
+  .rsc-bot-bubble .rsc-avatar {
+    left: -50px; // Coloca el avatar del bot a la izquierda
+  }
+
+  .rsc-user-bubble .rsc-avatar {
+    right: -50px; // Coloca el avatar del usuario a la derecha
+  }
+
+  .rsc-footer {
+    display: flex;
+    align-items: center;
+    background: $input-background;
+    border-top: 1px solid $gray;
+    padding: 10px, 10px;
+
+    input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      background: $white;
+      font-size: 1rem;
+      margin-right: 10px;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0px 0px 5px $primary-color;
+    }
+
+    button {
+      border: none;
+      background: $primary-color;
+      color: $white;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: $primary-color-2;
+    }
+  }
+}
