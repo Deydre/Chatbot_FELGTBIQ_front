@@ -1,0 +1,42 @@
+header {
+    height: 10vh;
+    background: $primary-color;
+}
+
+nav {
+    height: 100%;
+    padding: 0px 20px;
+
+    #ulLogged {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    ul, #liLogo, img {
+        height: 100%;
+    }
+
+}
+
+.logout {
+    color: $white;
+    font-size: 32px;
+}
+
+// Media Query para pantallas grandes (desktop)
+@media (min-width: 768px) {
+
+    nav {
+        padding: 0px 120px;
+    }
+
+    #ulUnLogged {
+        justify-content: start;
+    }
+    
+    .logout {
+        font-size: 24px;
+    }
+}
