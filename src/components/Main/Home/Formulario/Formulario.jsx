@@ -298,12 +298,12 @@ return <>
                 <label className="labelTitulo">¿Perteneces a alguno de estos colectivos?:</label>
                 <div>
                   <input type="checkbox" id="racializada" name="colectivos" value="racializada" onChange={handleChangeNoSociosanitario} />
-                  <label htmlFor="racializada">Persona racializade</label>
+                  <label htmlFor="racializada">Persona racializada</label>
                 </div>
 
                 <div>
                   <input type="checkbox" id="discapacitada" name="colectivos" value="discapacitada" onChange={handleChangeNoSociosanitario} />
-                  <label htmlFor="discapacitada">Persona discapacitade</label>
+                  <label htmlFor="discapacitada">Persona discapacitada</label>
                 </div>
 
                 <div>
