@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
+import BurgerMenu from './BurgerMenu/BurgerMenu'
 import logo from "../../../assets/FELGTBI+_blancosinfondo.png";
 import { useLocation } from "react-router-dom";
 
@@ -48,13 +49,16 @@ const NavBar = () => {
             </li>
           </ul>
       ) : // Si estamos en Home
-      <ul>
-            <li className="nav-link active" id="liLogo">
-              <Link to="/">
-                <img src={logo} alt="Logotipo de FELGTBI+" />
-              </Link>
-            </li>
-          </ul>
+        <ul id="ulHome">
+          <li className="nav-link active" id="liLogo">
+            <a href="https://felgtbi.org/" target="_blank">
+              <img src={logo} alt="Logotipo de FELGTBI+" />
+            </a>
+          </li>
+          <li>
+            <BurgerMenu/>
+          </li>
+        </ul>
       }
     </nav >
   );
