@@ -5,7 +5,7 @@ export const fetchHandleLogin = async (email, password) => {
   try {
     const response = await axios({
       method: 'post',
-      url: 'http://localhost:3000/api/admin/login',
+      url: 'https://chatbot-felgtbiq-back.onrender.com/api/admin/login',
       data: { email, password },
       headers: {
         'Content-Type': 'application/json'
@@ -21,11 +21,8 @@ export const fetchHandleLogin = async (email, password) => {
 // Función para obtener los datos de admin cuando se autentica
 export const getAdminData = async () => {
   try {
-    const response = await axios('http://localhost:3000/api/admin/me', {
+    const response = await axios('https://chatbot-felgtbiq-back.onrender.com/api/admin/me', {
       withCredentials: true,
-      headers: {
-        'Authorization': `Bearer ${authHeader}`, 
-      }
     });
     return response;
   } catch (error) {
