@@ -151,6 +151,13 @@ input[type="radio"]+label:hover::before {
     font-size: 20px;
 }
 
+.error {
+    font-size: 14px;
+    font-weight: 600;
+    color: red;
+    text-align: start;
+}
+
 // Media Query para pantallas grandes (desktop)
 @media (min-width: 768px) {
     #initialForm {

@@ -38,6 +38,68 @@ const Formulario = () => {
     situacion_sentimental: "",
   });
 
+
+  const [errors, setErrors] = useState({
+    edad: "",
+    pronombres: "",
+    genero: "",
+    orientacion: "",
+    vive_espana: "",
+    permiso_residencia: "",
+    nivel_estudios: "",
+    situacion_sentimental: "",
+    provincia: "",
+    ambito_laboral: "",
+  });
+
+  const validateForm = () => {
+    let formErrors = {};
+
+    if (noSociosanitarioValues.edad < 14 || noSociosanitarioValues.edad > 90) {
+      formErrors.edad = "La edad debe ser entre 14 y 90 años";
+    }
+
+    if (noSociosanitarioValues.pronombres.length === 0) {
+      formErrors.pronombres = "Por favor, selecciona al menos un pronombre";
+    }
+
+    if (!noSociosanitarioValues.genero) {
+      formErrors.genero = "Por favor, selecciona tu identidad de género";
+    }
+
+    if (!noSociosanitarioValues.orientacion) {
+      formErrors.orientacion = "Por favor, selecciona tu orientación sexual";
+    }
+
+    if (!noSociosanitarioValues.vive_espana) {
+      formErrors.vive_espana = "Por favor, selecciona si vives en España";
+    }
+
+    if (!noSociosanitarioValues.permiso_residencia) {
+      formErrors.permiso_residencia = "Por favor, selecciona si tienes permiso de residencia";
+    }
+
+    if (!noSociosanitarioValues.nivel_estudios) {
+      formErrors.nivel_estudios = "Por favor, selecciona tu nivel de estudios";
+    }
+
+    if (!noSociosanitarioValues.situacion_sentimental) {
+      formErrors.situacion_sentimental = "Por favor, selecciona tu situación sentimental";
+    }
+
+    if (!sociosanitarioValues.provincia) {
+      formErrors.provincia = "Por favor, selecciona tu provincia";
+    }
+
+    if (!sociosanitarioValues.ambito_laboral) {
+      formErrors.ambito_laboral = "Por favor, selecciona tu ámbito laboral";
+    }
+
+    setErrors(formErrors);
+    return Object.keys(formErrors).length === 0;
+  };
+
+
   // Provincias
   const provincias = [
     "Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila",
@@ -77,10 +139,12 @@ const Formulario = () => {
   // Mandar a data resultados
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isMedicalStaff === "true") {
-      console.log("Datos sociosanitario:", sociosanitarioValues);
-    } else {
-      console.log("Datos no sociosanitario:", noSociosanitarioValues);
+    if (validateForm()) {
+      if (isMedicalStaff === "true") {
+        console.log("Datos sociosanitario:", sociosanitarioValues);
+      } else {
+        console.log("Datos no sociosanitario:", noSociosanitarioValues);
+      }
     }
   };
 
@@ -105,6 +169,7 @@ const Formulario = () => {
                 <div>
                   <label htmlFor="edad" className="labelTitulo">Edad</label>
                   <input type="number" name="edad" min="14" max="100" onChange={handleChangeNoSociosanitario} />
+                  {errors.edad && <span className="error">{errors.edad}</span>}
                 </div>
 
                 <div>
@@ -139,6 +204,7 @@ const Formulario = () => {
                     />
                     <label htmlFor="pronombre_elle">Elle</label>
                   </div>
+                  {errors.pronombres && <span className="error">{errors.pronombres}</span>}
                 </div>
 
                 <div>
@@ -152,6 +218,7 @@ const Formulario = () => {
                     <option value="no_binario">No Binario</option>
                     <option value="otro">Otro</option>
                   </select>
+                  {errors.genero && <span className="error">{errors.genero}</span>}
                 </div>
 
                 <div>
@@ -165,6 +232,7 @@ const Formulario = () => {
                     <option value="asexual">Asexual</option>
                     <option value="otro">Otro</option>
                   </select>
+                  {errors.orientacion && <span className="error">{errors.orientacion}</span>}
                 </div>
 
                 <div>
@@ -177,7 +245,7 @@ const Formulario = () => {
                     <input type="radio" id="vive_no" name="vive_espana" value="no" onChange={handleChangeNoSociosanitario} />
                     <label htmlFor="vive_no">No</label>
                   </div>
-
+                  {errors.vive_espana && <span className="error">{errors.vive_espana}</span>}
                 </div>
 
                 <div>
@@ -190,6 +258,7 @@ const Formulario = () => {
                     <input type="radio" id="permiso_no" name="permiso_residencia" value="no" onChange={handleChangeNoSociosanitario} />
                     <label htmlFor="permiso_no">No</label>
                   </div>
+                  {errors.permiso_residencia && <span className="error">{errors.permiso_residencia}</span>}
                 </div>
 
               </article>
@@ -218,91 +287,27 @@ const Formulario = () => {
                 </div>
 
                 <div>
-                  <label className="labelTitulo">Nivel de estudios:</label>
-                  <div>
-                    <input
-                      type="radio"
-                      id="universitarios"
-                      name="nivel_estudios"
-                      value="universitarios"
-                      onChange={handleChangeNoSociosanitario}
-                    />
-                    <label htmlFor="universitarios">Estudios universitarios</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="bachillerato"
-                      name="nivel_estudios"
-                      value="bachillerato"
-                      onChange={handleChangeNoSociosanitario}
-                    />
-                    <label htmlFor="bachillerato">Bachillerato, grado superior</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="educacion_basica"
-                      name="nivel_estudios"
-                      value="educacion_basica"
-                      onChange={handleChangeNoSociosanitario}
-                    />
-                    <label htmlFor="educacion_basica">Educación básica</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="sin_estudios"
-                      name="nivel_estudios"
-                      value="sin_estudios"
-                      onChange={handleChangeNoSociosanitario}
-                    />
-                    <label htmlFor="sin_estudios">Sin estudios</label>
-                  </div>
+                  <label htmlFor="nivel_estudios" className="labelTitulo">Nivel de estudios:</label>
+                  <select id="nivel_estudios" name="nivel_estudios" onChange={handleChangeNoSociosanitario}>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="universitarios">Estudios universitarios</option>
+                    <option value="bachillerato">Bachillerato, grado superior</option>
+                    <option value="educacion_basica">Educación básica</option>
+                    <option value="sin_estudios">Sin estudios</option>
+                  </select>
+                  {errors.nivel_estudios && <span className="error">{errors.nivel_estudios}</span>}
                 </div>
 
                 <div>
-                  <label className="labelTitulo">Situación afectiva/sentimental:</label>
-                  <div>
-                    <input
-                      type="radio"
-                      id="solteria"
-                      name="situacion_sentimental"
-                      value="solteria"
-                      onChange={handleChangeNoSociosanitario}
-                    />
-                    <label htmlFor="solteria">Soltería</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="pareja_estable"
-                      name="situacion_sentimental"
-                      value="pareja_estable"
-                      onChange={handleChangeNoSociosanitario}
-                    />
-                    <label htmlFor="pareja_estable">Pareja estable</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="matrimonio"
-                      name="situacion_sentimental"
-                      value="matrimonio"
-                      onChange={handleChangeNoSociosanitario}
-                    />
-                    <label htmlFor="matrimonio">Matrimonio</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="otras"
-                      name="situacion_sentimental"
-                      value="otras"
-                      onChange={handleChangeNoSociosanitario}
-                    />
-                    <label htmlFor="otras">Otras</label>
-                  </div>
+                  <label htmlFor="situacion_sentimental" className="labelTitulo">Situación afectiva/sentimental:</label>
+                  <select id="situacion_sentimental" name="situacion_sentimental" onChange={handleChangeNoSociosanitario}>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="solteria">Soltería</option>
+                    <option value="pareja_estable">Pareja estable</option>
+                    <option value="matrimonio">Matrimonio</option>
+                    <option value="otras">Otras</option>
+                  </select>
+                  {errors.situacion_sentimental && <span className="error">{errors.situacion_sentimental}</span>}
                 </div>
 
               </article>
@@ -335,7 +340,7 @@ const Formulario = () => {
                     {provincias.map((provincia, index) => {
                       return <option key={index} value={provincia}>{provincia}</option>
                     })}
-                    
+
                   </select>
                 </div>
 
