@@ -8,13 +8,13 @@ import Main from './components/Main/Main';
 import Footer from './components/Footer/Footer';
 
 function App() {
+  
+  const [profile, setProfile] = useState(null);
 
-  // const [profile, setProfile] = useState(null);
-
-  //  // Para login y logout
-  //  const updateProfile = (data) => {
-  //   setProfile(data)
-  // };
+   // Para login y logout
+   const updateProfile = (data) => {
+    setProfile(data)
+  };
 
   useEffect(() => {
 
@@ -34,8 +34,7 @@ function App() {
   return (
     <>
       <BrowserRouter >
-        <context.Provider value={{}}>
-        {/* <context.Provider value={{profile, updateProfile}}> */}
+      <context.Provider value={{profile, updateProfile}}>
         <Header></Header>
         <Main></Main>
         <Footer>a</Footer>

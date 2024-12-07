@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 
-const Formulario = () => {
+
+const Formulario = ({updateUserType, userType, updateIsSubmitted}) => {
 
   // MANEJO DE BOTONES INICIALES
-  const [isMedicalStaff, setMedicalStaff] = useState("");
+  // const [isMedicalStaff, setMedicalStaff] = useState("");
 
   const handleMedicalStaff = (event) => {
-    setMedicalStaff(event.target.id);
+    console.log(event.target.id)
+    updateUserType(event.target.id);
   };
 
   // ATRÁS BUTTON
   const handleAtras = (e) => {
-    setMedicalStaff("");
-  }
+    updateUserType("");
+  };
 
   // MANEJO DEL FORMULARIO
   // Sociosanitario
@@ -146,10 +148,11 @@ const handleChangeNoSociosanitario = (e) => {
 const handleSubmit = (e) => {
   e.preventDefault();
 
-  if (isMedicalStaff === "true") { // Si es sociosanitario
+  if (userType === "sociosanitario") { // Si es sociosanitario
     if (validateFormSociosanitario()) { // Y si se valida el formulario
       console.log("Datos sociosanitario:", sociosanitarioValues);
-    }
+    } 
+    updateIsSubmitted(true)
   } else { // Si no es sociosanitario
     if (validateFormNoSociosanitario()) { // Y si se valida el formulario
       const noSociosanitarioData = {
@@ -171,16 +174,17 @@ const handleSubmit = (e) => {
       };
 
       console.log("Datos no sociosanitario:", noSociosanitarioData);
+      updateIsSubmitted(true)
     }
   }
 }
 
 return <>
-  {isMedicalStaff === ""
+  {userType === ""
     ?
     <section id="sectionXLButtons">
-      <button className="XLButton" onClick={handleMedicalStaff} id="true">SOY SOCIOSANITARIO</button>
-      <button className="XLButton" onClick={handleMedicalStaff} id="false">NO SOY SOCIOSANITARIO </button>
+      <button className="XLButton" onClick={handleMedicalStaff} id="sociosanitario">SOY PERSONAL SOCIOSANITARIO</button>
+      <button className="XLButton" onClick={handleMedicalStaff} id="noSociosanitario">NO SOY PERSONAL SOCIOSANITARIO </button>
     </section>
     :
     <section>
@@ -188,7 +192,7 @@ return <>
         <button><IoIosArrowBack className="iconBack" />Atrás</button>
       </article>
 
-      {isMedicalStaff !== "true"
+      {userType === "noSociosanitario"
         ? <>
           <h1>Por favor, rellena los siguientes datos</h1>
           <form onSubmit={handleSubmit} id="initialForm">
