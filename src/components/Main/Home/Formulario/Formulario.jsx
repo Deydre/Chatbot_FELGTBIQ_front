@@ -179,8 +179,8 @@ return <>
   {isMedicalStaff === ""
     ?
     <section id="sectionXLButtons">
-      <button className="XLButton" onClick={handleMedicalStaff} id="true">SOY SOCIOSANITARIO</button>
-      <button className="XLButton" onClick={handleMedicalStaff} id="false">NO SOY SOCIOSANITARIO </button>
+      <button className="XLButton" onClick={handleMedicalStaff} id="true">SOY PERSONAL SOCIOSANITARIO</button>
+      <button className="XLButton" onClick={handleMedicalStaff} id="false">NO SOY PERSONAL SOCIOSANITARIO </button>
     </section>
     :
     <section>
