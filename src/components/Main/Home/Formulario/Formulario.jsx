@@ -32,11 +32,13 @@ const Formulario = ({updateUserType, userType, updateIsSubmitted}) => {
     genero: "",
     orientacion: "",
     vive_espana: "",
+    nacionalidad: "",
     permiso_residencia: "",
     colectivos: [],
     nivel_estudios: "",
     situacion_sentimental: "",
   });
+
 
 
   const [errors, setErrors] = useState({
@@ -120,6 +122,39 @@ const provincias = [
   "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza"
 ];
 
+// Nacionalidades
+const nacionalidades = [
+  "Afghana", "Albanesa", "Alemana", "Andorrana", "Angoleña", "Antigua y Barbudense",
+  "Argentina", "Armenia", "Australiana", "Austríaca", "Azerbaiyana", "Bahameña",
+  "Bangladesí", "Barbadense", "Bielorrusa", "Belga", "Beliceña", "Beninesa",
+  "Boliviana", "Bosnia y Herzegovina", "Botswana", "Brasileña", "Bruneana", "Búlgara",
+  "Burundesa", "Butanesa", "Bárbuda", "Caboverdiana", "Camboyana", "Camerunesa",
+  "Canadiense", "Chadiana", "Chilena", "China", "Chipriota", "Colombiana",
+  "Comorense", "Congoleña", "Costarricense", "Croata", "Cubana", "Danesa",
+  "Dominicana", "Ecuatoriana", "Egipcia", "Emiratí", "Ecuatoguineana", "Eslovaca",
+  "Eslovena", "Española", "Estadounidense", "Estonia", "Etiopía", "Fiyiana",
+  "Filipina", "Finlandesa", "Francesa", "Gabonesa", "Gambiana", "Georgiana",
+  "Ghanesa", "Granadina", "Guatemalteca", "Guineana", "Guineoecuatoriana", "Guyanes",
+  "Haitiana", "Hondureña", "Hongkonesa", "Hungara", "Icelandeza", "India",
+  "Indonesa", "Irakí", "Iraní", "Israelí", "Italiana", "Jamaicana",
+  "Japonera", "Jordana", "Keniana", "Kirguisa", "Kosovar", "Kuwaiti",
+  "Laosiana", "Latviana", "Lesotense", "Liberiana", "Libia", "Liechtensteiniana",
+  "Lituana", "Luxemburguesa", "Macedonia", "Madagascariana", "Malagueña", "Malawiana",
+  "Malasia", "Maldiva", "Maliense", "Marfileña", "Mauriciana", "Mauritana",
+  "Mexicana", "Mianmara", "Moldava", "Monegasca", "Mongola", "Mozambiqueña",
+  "Namibia", "Nauruana", "Nepalesa", "Nicaragüense", "Nigeriana", "Noruega",
+  "Nueva Zelanda", "Níger", "Palestina", "Panameña", "Papúa Nueva Guinea", "Paraguaya",
+  "Peruana", "Polaca", "Portuguesa", "Qatarí", "Reino Unido", "República Checa",
+  "República Dominicana", "Ruandesa", "Rumana", "Rusa", "Salvadoreña", "Samoana",
+  "San Cristóbal y Nieves", "San Marino", "Sao Tomeana", "Senegalesa", "Serbia", "Seychelense",
+  "Sierra Leona", "Singapurense", "Siria", "Somalí", "Sri Lanka", "Sudafricana",
+  "Sudanesa", "Surinamesa", "Sueca", "Suiza", "Súdano", "Svajilandesa", "Tailandesa",
+  "Tanzana", "Togo", "Tonga", "Trinitaria y Tobaguense", "Tunisina", "Turca",
+  "Turcomana", "Tuvalu", "Ucraniana", "Ugandesa", "Uruguaya", "Uzbeca",
+  "Vanuatu", "Venezolana", "Vietnamita", "Yemení", "Yugoslava", "Zambiana", "Zimbabuense"
+];
+
+
 const handleChangeSociosanitario = (e) => {
   const { name, value } = e.target;
   setSociosanitarioValues({ ...sociosanitarioValues, [name]: value });
@@ -162,6 +197,7 @@ const handleSubmit = (e) => {
         identidad_genero: noSociosanitarioValues.genero,
         orientacion_sexual: noSociosanitarioValues.orientacion,
         vives_en_espana: noSociosanitarioValues.vive_espana === 'si',
+        nacionalidad: noSociosanitarioValues.nacionalidad,
         permiso_residencia: noSociosanitarioValues.permiso_residencia === 'si',
         persona_racializada: noSociosanitarioValues.colectivos.includes('racializada'),
         persona_discapacitada: noSociosanitarioValues.colectivos.includes('discapacitada'),
@@ -276,6 +312,17 @@ return <>
                   <label htmlFor="vive_no">No</label>
                 </div>
                 {errors.vive_espana && <span className="error">{errors.vive_espana}</span>}
+              </div>
+
+              <div>
+                <label htmlFor="nacionalidad" className="labelTitulo">Nacionalidad:</label>
+                <select id="nacionalidad" name="nacionalidad" onChange={handleChangeNoSociosanitario}>
+                  <option value="" disabled selected>Selecciona una opción</option>
+                  {nacionalidades.map((nacionalidad, index) => {
+                    return <option key={index} value={nacionalidad}>{nacionalidad}</option>
+                  })}
+
+                </select>
               </div>
 
               <div>
