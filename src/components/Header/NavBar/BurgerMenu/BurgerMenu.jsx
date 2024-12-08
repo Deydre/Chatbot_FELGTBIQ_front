@@ -104,7 +104,7 @@ export default function CustomizedMenus() {
         <a href="https://felgtbi.org/wp-content/uploads/2023/05/folletovih_migrantes_es_felgtbi-2.pdf" target="_blank"><MenuItem disableRipple>
           Programa de diagnóstico precoz
         </MenuItem></a>
-        <a href="https://felgtbi.org/wp-content/uploads/2024/10/triptico_saludtrans2023.pdff" target="_blank"><MenuItem disableRipple>
+        <a href="https://felgtbi.org/wp-content/uploads/2024/10/triptico_saludtrans2023.pdf" target="_blank"><MenuItem disableRipple>
           Tríptico personas trans
         </MenuItem></a>
         <a href="https://felgtbi.org/safechemsex/" target="_blank"><MenuItem disableRipple>
