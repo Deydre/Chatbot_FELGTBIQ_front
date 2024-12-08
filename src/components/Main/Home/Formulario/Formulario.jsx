@@ -8,7 +8,6 @@ const Formulario = ({updateUserType, userType, updateIsSubmitted}) => {
   // const [isMedicalStaff, setMedicalStaff] = useState("");
 
   const handleMedicalStaff = (event) => {
-    console.log(event.target.id)
     updateUserType(event.target.id);
   };
 

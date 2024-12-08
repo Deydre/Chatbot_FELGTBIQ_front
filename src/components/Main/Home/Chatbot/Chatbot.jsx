@@ -13,13 +13,13 @@ const Chatbot = ({ userType, formData }) => {
   // Tema personalizado del chatbot
   const theme = {
     background: "#f5f8fb",
-    fontFamily: "Arial, Helvetica, sans-serif",
+    fontFamily: "Montserrat, Helvetica, sans-serif",
     headerBgColor: "#E2007E", // Color del header
     headerFontColor: "#fff",
     botBubbleColor: "#E2007E", // Burbuja del bot
     botFontColor: "#fff", // Texto del bot
-    userBubbleColor: "#ffa9da", // Burbuja del usuario
-    userFontColor: "#000", // Texto del usuario
+    userBubbleColor: "#ffd2eb", // Burbuja del usuario
+    userFontColor: "#E2007E", // Texto del usuario
   };
 
   useEffect(() => {
