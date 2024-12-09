@@ -164,9 +164,9 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
 
     if (userType === "sociosanitario") { // Si es sociosanitario
       if (validateFormSociosanitario()) { // Y si se valida el formulario
-        if (!userId) {
-          <HeartSpinner />
-        } else {
+        // if (!userId) {
+        //   <HeartSpinner />
+        // } else {
           const socioSanitarioData = {
             id_usuario: userId,
             provincia: sociosanitarioValues.provincia,
@@ -175,7 +175,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
           console.log("Datos sociosanitario:", socioSanitarioData);
           // const response = await sendSociosanitarioData(socioSanitarioData);
         }
-      }
+      // }
       updateIsSubmitted(true)
     } else { // Si no es sociosanitario
       if (validateFormNoSociosanitario()) { // Y si se valida el formulario
