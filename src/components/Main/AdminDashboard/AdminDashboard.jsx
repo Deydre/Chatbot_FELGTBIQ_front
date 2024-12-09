@@ -1,11 +1,11 @@
 import React from "react";
-import Card from './Card/Card'
+import Card from './AdminInfo/Card'
 import SideBar from "./SideBar/SideBar";
 
 const AdminDashboard = () => {
-  return <section>
+  return <section id="adminDashboard">
+    <SideBar/>
     <h2>Panel de administración</h2>
-    <SideBar></SideBar>
   </section>;
 };
 

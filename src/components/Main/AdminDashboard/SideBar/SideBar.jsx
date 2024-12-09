@@ -1,38 +1,42 @@
-import React from "react";
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import { FaCalendarAlt, FaChartBar, FaPen, FaCogs, FaTachometerAlt, FaEye, FaQuestionCircle, FaFileAlt } from 'react-icons/fa'; 
-import { Link } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+// import { context } from "../../../../context/context"
+// import { Link } from "react-router-dom";
+// import axios from "axios";
+// import { useNavigate } from 'react-router-dom';
+import { getEdadData } from "../../../../services/estadisticasData"
 
 const SideBar = () => {
-  return(
-      <div style={{ display: 'flex', height: '100%' }}>
-        <Sidebar>
-          <Menu
-            menuItemStyles={{
-              button: ({ level, active, disabled }) => {
-                // only apply styles on first level elements of the tree
-                if (level === 0)
-                  return {
-                    color: disabled ? '#E2007E' : '#E2007E',
-                    backgroundColor:'#d0d0d0',
-                  };
-              },
-            }}
-          >
-            <SubMenu defaultOpen label="Estadísticas" icon={<FaChartBar />}>
-              <MenuItem> Edad</MenuItem>
-              <MenuItem> Identidad </MenuItem>
-              <MenuItem> Origen</MenuItem>
-            </SubMenu>
-            <MenuItem active icon={<FaFileAlt />}>
-              Ver/editar panel sociosanitario (active)
-            </MenuItem>
-            <MenuItem icon={<FaFileAlt/>}> Ver/editar panel personas usuarias</MenuItem>
-          </Menu>
-        </Sidebar>
-      </div>
-    )
 
+  const handleClick = async () => {
+    try {
+      const response = await getEdadData();
+      console.log(response);
+    } catch (error) {
+      console.log("Error al obtener datos estadísticos", error.message);
+    }
+  };
 
+  return (
+    <aside id="SideBar">
+      <h2>Estadísticas</h2>
+      <ul>
+        <li>
+          <p onClick={handleClick}>Orientación sexual</p>
+        </li>
+        <li>
+        <p onClick={handleClick}>Edad</p>
+        </li>
+        <li>
+        <p onClick={handleClick}>Lugar de origen</p>
+
+        </li>
+        <li>
+        <p onClick={handleClick}>Ciudad</p>
+
+        </li>
+      </ul>
+    </aside>
+  );
 };
+
 export default SideBar;
