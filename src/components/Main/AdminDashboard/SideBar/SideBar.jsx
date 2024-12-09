@@ -7,7 +7,25 @@ import { getEdadData } from "../../../../services/estadisticasData"
 
 const SideBar = () => {
 
-  const handleClick = async () => {
+  const handleClickOrient = async () => {
+    try {
+      const response = await getEdadData();
+      console.log(response);
+    } catch (error) {
+      console.log("Error al obtener datos estadísticos", error.message);
+    }
+  };
+
+  const handleClickEdad = async () => {
+    try {
+      const response = await getEdadData();
+      console.log(response);
+    } catch (error) {
+      console.log("Error al obtener datos estadísticos", error.message);
+    }
+  };
+
+  const handleClickPais = async () => {
     try {
       const response = await getEdadData();
       console.log(response);
@@ -21,17 +39,17 @@ const SideBar = () => {
       <h2>Estadísticas</h2>
       <ul>
         <li>
-          <p onClick={handleClick}>Orientación sexual</p>
+          <p onClick={handleClickOrient}>Orientación sexual</p>
         </li>
         <li>
-        <p onClick={handleClick}>Edad</p>
+        <p onClick={handleClickEdad}>Edad</p>
         </li>
         <li>
-        <p onClick={handleClick}>Lugar de origen</p>
+        <p onClick={handleClickPais}>Lugar de origen</p>
 
         </li>
         <li>
-        <p onClick={handleClick}>Ciudad</p>
+        <p onClick={handleClickOrient}>Ciudad</p>
 
         </li>
       </ul>

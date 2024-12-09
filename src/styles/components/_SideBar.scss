@@ -3,15 +3,17 @@
 #SideBar {
     padding: 32px 46px 32px 0px;
     width: 220px;
-    height: 100%;
+    height: 100vh;
     background-color: $primary-color;
 }
 
 #SideBar h2 {
-    background: $gradient1;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: $white;
+    // background-color: $white;
+    // // background: $gradient1;
+    // -webkit-background-clip: text;
+    // background-clip: text;
+    // -webkit-text-fill-color: transparent;
 }
 
 #SideBar ul {
