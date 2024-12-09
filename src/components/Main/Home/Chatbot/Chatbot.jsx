@@ -68,7 +68,7 @@ const Chatbot = ({ userType, formData }) => {
           },
           { id: "5", message: "Gracias por compartir.", end: true },
         ];
-      }
+      } 
     };
 
     const fetchSteps = async () => {
