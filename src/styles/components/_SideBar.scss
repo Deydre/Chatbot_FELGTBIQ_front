@@ -32,6 +32,13 @@
     color: $secondary-color;
 }
 
+#modebar-2e602e > div:nth-child(1) > a {
+    display: none;
+}
+
+#modebar-004648 > div:nth-child(2) {
+    display: none;
+}
 @media screen and (max-width: 600px) {
    
     
