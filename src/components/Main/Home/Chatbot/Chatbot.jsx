@@ -22,6 +22,96 @@ const Chatbot = ({ apiEndpoint }) => {
     userFontColor: "#E2007E", // Texto del usuario
   };
 
+
+//   useEffect(() => {
+//     const simulateSteps = () => {
+//       if (userType === "sociosanitario") {
+//         return [
+//           { id: "1", message: "¿Cuál es tu especialidad médica?", trigger: "2" },
+//           {
+//             id: "2",
+//             options: [
+//               { value: "cardiología", label: "Cardiología", trigger: "3" },
+//               { value: "neurología", label: "Neurología", trigger: "3" },
+//               { value: "otra", label: "Otra", trigger: "3" },
+//             ],
+//           },
+//           { id: "3", message: "¿Cuántos años de experiencia tienes?", trigger: "4" },
+//           {
+//             id: "4",
+//             options: [
+//               { value: "1-5", label: "1-5 años", trigger: "5" },
+//               { value: "6-10", label: "6-10 años", trigger: "5" },
+//               { value: "11+", label: "Más de 10 años", trigger: "5" },
+//             ],
+//           },
+//           { id: "5", message: "Gracias por tu tiempo.", end: true },
+//         ];
+//       } else {
+//         return [
+//           { id: "1", message: "¿A qué te dedicas?", trigger: "2" },
+//           {
+//             id: "2",
+//             options: [
+//               { value: "estudiante", label: "Estudiante", trigger: "3" },
+//               { value: "trabajador", label: "Trabajador", trigger: "3" },
+//               { value: "desempleado", label: "Desempleado", trigger: "3" },
+//             ],
+//           },
+//           { id: "3", message: "¿Cuál es tu nivel de estudios?", trigger: "4" },
+//           {
+//             id: "4",
+//             options: [
+//               { value: "primaria", label: "Primaria", trigger: "5" },
+//               { value: "secundaria", label: "Secundaria", trigger: "5" },
+//               { value: "universidad", label: "Universidad", trigger: "5" },
+//             ],
+//           },
+//           { id: "5", message: "Gracias por compartir.", end: true },
+//         ];
+//       } 
+//     };
+
+//     const fetchSteps = async () => {
+//       try {
+//         const simulatedResponse = new Promise((resolve) =>
+//           setTimeout(() => resolve(simulateSteps()), 1000)
+//         );
+//         const stepsFromApi = await simulatedResponse;
+
+//         setSteps(stepsFromApi); // Actualiza las preguntas
+//         setLoading(false); // Detiene el estado de carga
+//       } catch (err) {
+//         console.error("Error al cargar las preguntas simuladas:", err);
+//         setError("No se pudieron cargar las preguntas del chatbot.");
+//         setLoading(false); // Detiene el estado de carga incluso si hay error
+//       }
+//     };
+
+//     fetchSteps();
+//   }, [userType, formData]);
+
+//   if (loading) return <HeartSpinner />; // Muestra el spinner mientras carga
+//   if (error) return <div>{error}</div>;
+
+//   return (
+//     <ThemeProvider theme={theme}>
+//       <div className="chatbot-container">
+//         <ChatBot
+//           steps={steps}
+//           botAvatar={avatar} // Avatar del bot
+//           userAvatar={avatar}// Avatar del usuario
+//           style={{
+//             width: "400px",
+//             borderRadius: "10px",
+//             boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+//             backgroundColor: "#f5f8fb",
+//           }}
+//         />
+//       </div>
+//     </ThemeProvider>
+//   );
+
   let data = [
     { id: "1", message: "Elige un tema:", trigger: "2" },
     {
@@ -151,6 +241,7 @@ return (
     </div>
   </ThemeProvider>
 );
+
 };
 
 export default Chatbot;
