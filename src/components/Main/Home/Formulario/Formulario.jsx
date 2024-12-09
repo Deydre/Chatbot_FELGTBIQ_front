@@ -164,7 +164,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
         ambito_laboral: formateoString(sociosanitarioValues.ambito_laboral)
       }
       console.log("Datos sociosanitario:", socioSanitarioData);
-      const response = await sendSociosanitarioData(socioSanitarioData);
+      // const response = await sendSociosanitarioData(socioSanitarioData);
     }
     updateIsSubmitted(true)
   } else { // Si no es sociosanitario
@@ -190,8 +190,8 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
 
       console.log("Datos no sociosanitario:", noSociosanitarioData);
 
-      const response = await sendNoSociosanitarioData(noSociosanitarioData);
-      updateIsSubmitted(true)
+      // const response = await sendNoSociosanitarioData(noSociosanitarioData);
+      // updateIsSubmitted(true)
     }
   }
 }
