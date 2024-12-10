@@ -9,6 +9,7 @@ const Chatbot = ({ apiEndpoint, userType }) => {
   const [steps, setSteps] = useState([]); // Preguntas del chatbot
   const [loading, setLoading] = useState(true); // Estado de carga
   const [error, setError] = useState(null); // Manejo de errores
+  const [userResponses, setUserResponses] = useState({}); 
 
   // Tema personalizado del chatbot
   const theme = {
@@ -372,13 +373,17 @@ const Chatbot = ({ apiEndpoint, userType }) => {
     fetchSteps();
   }, [apiEndpoint]);
 
+  const handleClickBot = (e) => {
+   console.log(e.target)
+  };
+
   if (loading) return <HeartSpinner />; // Muestra el spinner mientras carga
   if (error) return <div>{error}</div>;
 
   return (
     <ThemeProvider theme={theme}>
       <div className="chatbot-container">
-        <ChatBot
+        <ChatBot onclick={handleClickBot}
           steps={steps}
           botAvatar={avatar} // Avatar del bot
           userAvatar={avatar} // Avatar del usuario
