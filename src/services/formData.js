@@ -6,7 +6,7 @@ export const sendSociosanitarioData = async (data) => {
     const response = await axios({
       method: 'post',
       url: 'https://felgtbi-plus.onrender.com/submit-data-2/',
-      data: { data },
+      body:  JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
       },
@@ -14,7 +14,7 @@ export const sendSociosanitarioData = async (data) => {
     });
     return response; 
   } catch (error) {
-    throw new Error("Error en la autenticación: " + error.message);
+    throw new Error("Error: " + error.message);
   }
 };
 
@@ -24,7 +24,7 @@ export const sendNoSociosanitarioData = async (data) => {
     const response = await axios({
         method: 'post',
         url: 'https://felgtbi-plus.onrender.com/submit-data/',
-        data: { data },
+        body:  JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json'
         },
