@@ -18,20 +18,6 @@ const FormLogin = () => {
   const [passwordMessage, setPasswordMessage] = useState("");
   const [emailMessage, setEmailMessage] = useState("");
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await axios.get(`https://felgtbi-plus.onrender.com/preguntas_user/`);
-        // const response = await axios.get(http://localhost:3000/api/users);
-        console.log(response.data);
-        
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchUsers();
-  }, []);
 
   useEffect(() => {
     const emailValidation = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -103,10 +89,10 @@ const FormLogin = () => {
           <div>
             <input type="text" placeholder="email" onChange={handleEmail} />
             <input type="password" placeholder="contraseña" onChange={handlePassword} />
-            <button onClick={navigate('/admin/dashboard')}>LOGIN</button>
+            <button onClick={handleLogin}>LOGIN</button>
             {emailMessage && <h6>{emailMessage}</h6>}
             {passwordMessage && <h6>{passwordMessage}</h6>}
-            <h6>{message}</h6>  
+            <h6>{message}</h6>
           </div>
         </article>
 
