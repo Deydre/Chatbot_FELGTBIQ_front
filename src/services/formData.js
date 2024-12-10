@@ -1,37 +1,37 @@
 import axios from 'axios';
 
+const urlSociosanitario = 'https://felgtbi-plus.onrender.com/submit-data-2/'
+const urlNoSociosanitario = 'https://felgtbi-plus.onrender.com/submit-data/'
+
+
 // Envío de datos de Sociosanitario
 export const sendSociosanitarioData = async (data) => {
   try {
-    const response = await axios({
-      method: 'post',
-      url: 'https://felgtbi-plus.onrender.com/submit-data-2/',
-      data: { data },
+    const response = await axios.post(urlSociosanitario, data, {
       headers: {
         'Content-Type': 'application/json'
       },
-      withCredentials: true
     });
+
+    response ? console.log(response) : console.log("")
     return response; 
   } catch (error) {
-    throw new Error("Error en la autenticación: " + error.message);
+    throw new Error("Error: " + error.message);
   }
 };
 
 // Envío de datos de No Sociosanitario
 export const sendNoSociosanitarioData = async (data) => {
   try {
-    const response = await axios({
-        method: 'post',
-        url: 'https://felgtbi-plus.onrender.com/submit-data/',
-        data: { data },
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        withCredentials: true
-      });
-    return response;
+    const response = await axios.post(urlNoSociosanitario, data, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+
+    response ? console.log(response) : console.log("")
+    return response; 
   } catch (error) {
-    throw new Error("Error al obtener datos del administrador: " + error.message);
+    throw new Error("Error: " + error.message);
   }
 };

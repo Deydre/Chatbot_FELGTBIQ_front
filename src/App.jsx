@@ -10,11 +10,18 @@ import Footer from './components/Footer/Footer';
 function App() {
   
   const [profile, setProfile] = useState(null);
+  const [userId, setUserId] = useState("");
 
    // Para login y logout
    const updateProfile = (data) => {
     setProfile(data)
   };
+
+    // Para id de user en el formulario
+    const updateUserId = (data) => {
+      setUserId(data)
+    };
+  
 
   useEffect(() => {
 
@@ -34,7 +41,7 @@ function App() {
   return (
     <>
       <BrowserRouter >
-      <context.Provider value={{profile, updateProfile}}>
+      <context.Provider value={{profile, updateProfile, userId, updateUserId}}>
         <Header></Header>
         <Main></Main>
         <Footer>a</Footer>
