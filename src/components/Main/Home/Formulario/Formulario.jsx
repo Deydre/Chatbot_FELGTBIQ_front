@@ -15,7 +15,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
 
   const handleMedicalStaff = (event) => {
     updateUserType(event.target.id);
-    updateUserId(Date.now() + uuidv4())
+    updateUserId(Date.now() + uuidv4().replace(/-/g, ''))
   };
 
   // ATRÁS BUTTON
@@ -173,7 +173,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
             ambito_laboral: formateoString(sociosanitarioValues.ambito_laboral)
           }
           console.log("Datos sociosanitario:", socioSanitarioData);
-          // const response = await sendSociosanitarioData(socioSanitarioData);
+          const response = await sendSociosanitarioData(socioSanitarioData);
         }
       // }
       updateIsSubmitted(true)
@@ -201,7 +201,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
 
         console.log("Datos no sociosanitario:", noSociosanitarioData);
 
-        // const response = await sendNoSociosanitarioData(noSociosanitarioData);
+        const response = await sendNoSociosanitarioData(noSociosanitarioData);
         updateIsSubmitted(true)
       }
     }
