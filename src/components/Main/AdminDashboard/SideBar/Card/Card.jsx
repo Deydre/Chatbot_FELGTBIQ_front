@@ -2,8 +2,7 @@ import React from 'react';
 
 const Card = ({ iframeUrl }) => {
   return (
-    <div>
-      {/* Mostrar el iframe solo si hay una URL seleccionada */}
+    <div> 
       {iframeUrl ? (
         <iframe
           src={iframeUrl}
@@ -12,7 +11,7 @@ const Card = ({ iframeUrl }) => {
           style={{ border: 'none' }}
         ></iframe>
       ) : (
-        <p>Haz clic en una categoría para ver el gráfico.</p>
+        <p></p>
       )}
     </div>
   );
