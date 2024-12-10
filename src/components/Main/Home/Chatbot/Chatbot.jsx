@@ -22,96 +22,97 @@ const Chatbot = ({ apiEndpoint }) => {
     userFontColor: "#E2007E", // Texto del usuario
   };
 
+  let data = []
 
-  let data = [
-    { id: "1", message: "Elige un tema:", trigger: "2" },
-    {
-      id: "2",
-      options: [
-        { value: "1.1", label: "Tengo VIH", trigger: "3" },
-        { value: "1.2", label: "Creo que me he expuesto al virus", trigger: "4" },
-        { value: "2.1", label: "Personal sanitario", trigger: "5" },
-        { value: "2.2", label: "Unicornio", trigger: "6" },
-        { value: "2.5", label: "Oyente", trigger: "7" }
-      ]
-    },
+  // let data = [
+  //   { id: "1", message: "Elige un tema:", trigger: "2" },
+  //   {
+  //     id: "2",
+  //     options: [
+  //       { value: "1.1", label: "Tengo VIH", trigger: "3" },
+  //       { value: "1.2", label: "Creo que me he expuesto al virus", trigger: "4" },
+  //       { value: "2.1", label: "Personal sanitario", trigger: "5" },
+  //       { value: "2.2", label: "Unicornio", trigger: "6" },
+  //       { value: "2.5", label: "Oyente", trigger: "7" }
+  //     ]
+  //   },
   
-    // Preguntas de "Tengo VIH"
-    { id: "3", message: "¿Cuándo te diagnosticaron?", trigger: "8" },
-    {
-      id: "8",
-      options: [
-        { value: "Hace menos de 6 meses", label: "Hace menos de 6 meses", trigger: "9" },
-        { value: "Entre 6 meses y un año", label: "Entre 6 meses y un año", trigger: "9" },
-        { value: "Hace más de un año", label: "Hace más de un año", trigger: "9" }
-      ]
-    },
-    { id: "9", message: "¿Estás en tratamiento TAR?", trigger: "10" },
-    {
-      id: "10",
-      options: [
-        { value: "Sí", label: "Sí", trigger: "11" },
-        { value: "No", label: "No", trigger: "11" },
-        { value: "No estoy seguro", label: "No estoy seguro", trigger: "11" }
-      ]
-    },
-    { id: "11", message: "¿Tienes acceso a un médico?", trigger: "12" },
-    {
-      id: "12",
-      options: [
-        { value: "Sí", label: "Sí", trigger: "end_1.1" },
-        { value: "No", label: "No", trigger: "end_1.1" }
-      ]
-    },
+  //   // Preguntas de "Tengo VIH"
+  //   { id: "3", message: "¿Cuándo te diagnosticaron?", trigger: "8" },
+  //   {
+  //     id: "8",
+  //     options: [
+  //       { value: "Hace menos de 6 meses", label: "Hace menos de 6 meses", trigger: "9" },
+  //       { value: "Entre 6 meses y un año", label: "Entre 6 meses y un año", trigger: "9" },
+  //       { value: "Hace más de un año", label: "Hace más de un año", trigger: "9" }
+  //     ]
+  //   },
+  //   { id: "9", message: "¿Estás en tratamiento TAR?", trigger: "10" },
+  //   {
+  //     id: "10",
+  //     options: [
+  //       { value: "Sí", label: "Sí", trigger: "11" },
+  //       { value: "No", label: "No", trigger: "11" },
+  //       { value: "No estoy seguro", label: "No estoy seguro", trigger: "11" }
+  //     ]
+  //   },
+  //   { id: "11", message: "¿Tienes acceso a un médico?", trigger: "12" },
+  //   {
+  //     id: "12",
+  //     options: [
+  //       { value: "Sí", label: "Sí", trigger: "end_1.1" },
+  //       { value: "No", label: "No", trigger: "end_1.1" }
+  //     ]
+  //   },
   
-    // Preguntas de "Creo que me he expuesto al virus"
-    { id: "4", message: "¿Cuándo ocurrió la posible infección?", trigger: "13" },
-    {
-      id: "13",
-      options: [
-        { value: "Últimas 72h", label: "Últimas 72h", trigger: "end_1.2" },
-        { value: "Hace más de 72h", label: "Hace más de 72h", trigger: "end_1.2" }
-      ]
-    },
+  //   // Preguntas de "Creo que me he expuesto al virus"
+  //   { id: "4", message: "¿Cuándo ocurrió la posible infección?", trigger: "13" },
+  //   {
+  //     id: "13",
+  //     options: [
+  //       { value: "Últimas 72h", label: "Últimas 72h", trigger: "end_1.2" },
+  //       { value: "Hace más de 72h", label: "Hace más de 72h", trigger: "end_1.2" }
+  //     ]
+  //   },
   
-    // Preguntas de "Personal sanitario"
-    { id: "5", message: "¿Qué necesitas?", trigger: "14" },
-    {
-      id: "14",
-      options: [
-        { value: "Manejo clínico de pacientes con VIH", label: "Manejo clínico de pacientes con VIH", trigger: "end_2.1" },
-        { value: "Protocolo PEP", label: "Protocolo PEP", trigger: "end_2.1" }
-      ]
-    },
+  //   // Preguntas de "Personal sanitario"
+  //   { id: "5", message: "¿Qué necesitas?", trigger: "14" },
+  //   {
+  //     id: "14",
+  //     options: [
+  //       { value: "Manejo clínico de pacientes con VIH", label: "Manejo clínico de pacientes con VIH", trigger: "end_2.1" },
+  //       { value: "Protocolo PEP", label: "Protocolo PEP", trigger: "end_2.1" }
+  //     ]
+  //   },
   
-    // Preguntas de "Unicornio"
-    { id: "6", message: "¿Qué necesitas, juapi?", trigger: "15" },
-    {
-      id: "15",
-      options: [
-        { value: "Protoco", label: "Protoco", trigger: "end_2.2" },
-        { value: "Unicornio mazo flama loco", label: "Unicornio mazo flama loco", trigger: "end_2.2" }
-      ]
-    },
+  //   // Preguntas de "Unicornio"
+  //   { id: "6", message: "¿Qué necesitas, juapi?", trigger: "15" },
+  //   {
+  //     id: "15",
+  //     options: [
+  //       { value: "Protoco", label: "Protoco", trigger: "end_2.2" },
+  //       { value: "Unicornio mazo flama loco", label: "Unicornio mazo flama loco", trigger: "end_2.2" }
+  //     ]
+  //   },
   
-    // Preguntas de "Oyente"
-    { id: "7", message: "¿Qué necesitas?", trigger: "16" },
-    {
-      id: "16",
-      options: [
-        { value: "Conocer más del tema", label: "Conocer más del tema", trigger: "end_2.5" },
-        { value: "Pág web", label: "Pág web", trigger: "end_2.5" }
-      ]
-    },
+  //   // Preguntas de "Oyente"
+  //   { id: "7", message: "¿Qué necesitas?", trigger: "16" },
+  //   {
+  //     id: "16",
+  //     options: [
+  //       { value: "Conocer más del tema", label: "Conocer más del tema", trigger: "end_2.5" },
+  //       { value: "Pág web", label: "Pág web", trigger: "end_2.5" }
+  //     ]
+  //   },
   
-    // Finalización de la conversación
-    { id: "end_1.1", message: "Gracias por compartir. ¡Que tengas un buen día!", end: true },
-    { id: "end_1.2", message: "Gracias por compartir. ¡Que tengas un buen día!", end: true },
-    { id: "end_2.1", message: "Gracias por compartir. ¡Que tengas un buen día!", end: true },
-    { id: "end_2.2", message: "Gracias por compartir. ¡Que tengas un buen día!", end: true },
-    { id: "end_2.5", message: "Gracias por compartir. ¡Que tengas un buen día!", end: true },
-  ];
-  
+  //   // Finalización de la conversación
+  //   { id: "end_1.1", message: "Gracias por compartir. ¡Que tengas un buen día!", end: true },
+  //   { id: "end_1.2", message: "Gracias por compartir. ¡Que tengas un buen día!", end: true },
+  //   { id: "end_2.1", message: "Gracias por compartir. ¡Que tengas un buen día!", end: true },
+  //   { id: "end_2.2", message: "Gracias por compartir. ¡Que tengas un buen día!", end: true },
+  //   { id: "end_2.5", message: "Gracias por compartir. ¡Que tengas un buen día!", end: true }
+  // ];
+
 
 useEffect(() => {
   const fetchSteps = async () => {
