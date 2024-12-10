@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const urlSociosanitario = 'https://felgtbi-plus.onrender.com/submit-data-2/'
-const urlNoSociosanitario = 'https://felgtbi-plus.onrender.com/submit-data-2/'
+const urlNoSociosanitario = 'https://felgtbi-plus.onrender.com/submit-data/'
+
 
 // Envío de datos de Sociosanitario
 export const sendSociosanitarioData = async (data) => {
