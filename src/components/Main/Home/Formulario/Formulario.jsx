@@ -43,9 +43,8 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
     colectivos: [],
     nivel_estudios: "",
     situacion_sentimental: "",
+    provincia: ""
   });
-
-
 
   const [errors, setErrors] = useState({
     edad: "",
@@ -150,10 +149,13 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
   };
 
   function formateoString(string) {
-    return string
-      .split('_')
-      .map(palabra => {
-        return palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
+    let palabras = string.split('_');
+    return palabras
+      .map((palabra, index) => {
+        if (index === 0) {
+          return palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
+        }
+        return palabra.toLowerCase();
       })
       .join(' ');
   }
@@ -197,6 +199,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
           persona_intersexual: noSociosanitarioValues.colectivos.includes('intersexual'),
           nivel_estudios: noSociosanitarioValues.nivel_estudios === "tecnicos" ? "Técnicos" : formateoString(noSociosanitarioValues.nivel_estudios),
           situacion_afectiva: formateoString(noSociosanitarioValues.situacion_sentimental),
+          provincia: noSociosanitarioValues.provincia,
         };
 
         console.log("Datos no sociosanitario:", noSociosanitarioData);
@@ -367,6 +370,17 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
                 </div>
 
                 <div>
+                  <label htmlFor="provincia" className="labelTitulo">Provincia:</label>
+                  <select id="provincia" name="provincia" onChange={handleChangeNoSociosanitario}>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    {provincias.map((provincia, index) => {
+                      return <option key={index} value={provincia}>{provincia}</option>
+                    })}
+
+                  </select>
+                </div>
+
+                <div>
                   <label className="labelTitulo">¿Vives en España?:</label>
                   <div>
                     <input type="radio" id="vive_si" name="vive_espana" value="si" onChange={handleChangeNoSociosanitario} />
@@ -405,7 +419,8 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
               noSociosanitarioValues.vive_espana &&
               noSociosanitarioValues.permiso_residencia &&
               noSociosanitarioValues.nivel_estudios &&
-              noSociosanitarioValues.situacion_sentimental
+              noSociosanitarioValues.situacion_sentimental &&
+              noSociosanitarioValues.provincia
               ? (
                 <button onClick={handleSubmit}>ABRIR CHATBOT</button>
               ) : (
@@ -423,7 +438,6 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
                     {provincias.map((provincia, index) => {
                       return <option key={index} value={provincia}>{provincia}</option>
                     })}
-
                   </select>
                 </div>
 
@@ -431,7 +445,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
                   <label htmlFor="ambito_laboral" className="labelTitulo">Ámbito laboral:</label>
                   <select id="ambito_laboral" name="ambito_laboral" onChange={handleChangeSociosanitario}>
                     <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="centro_salud">Centro de Salud</option>
+                    <option value="centro_de_salud">Centro de Salud</option>
                     <option value="hospital">Hospital</option>
                     <option value="centro_comunitario">Centro Comunitario</option>
                     <option value="consulta_privada">Consulta Privada</option>
