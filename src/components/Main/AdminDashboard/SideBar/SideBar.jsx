@@ -6,14 +6,34 @@ const SideBar = () => {
 
   // Las 7 categorías y sus URLs correspondientes
   const categorias = [
-    { texto: 'Especialidad', url: 'https://felgtbi-plus.onrender.com/grafico-especialidad/' }, // URL de Especialidad
-    { texto: 'Orientación Sexual', url: 'https://url2.com' }, // URL de Orientación Sexual
-    { texto: 'Edad', url: 'https://url3.com' }, // URL de Edad
-    { texto: 'Vive en España', url: 'https://felgtbi-plus.onrender.com/pie-chart/?viven_espana=true' }, // URL de Vive en España
-    { texto: 'No vive en España', url: 'https://felgtbi-plus.onrender.com/pie-chart/?viven_espana=false' }, // URL de No vive en España
-    { texto: 'Categoría 6', url: 'https://url6.com' }, // URL de la Categoría 6
-    { texto: 'Categoría 7', url: 'https://url7.com' }, // URL de la Categoría 7
+    { texto: 'Personal sociosanitario por especialidad', url: 'https://felgtbi-plus.onrender.com/grafico-especialidad/' },
+    { texto: 'Por grupos de edad', url: 'https://felgtbi-plus.onrender.com/bar-chart/' }, 
+    { texto: 'Vive en España', url: 'https://felgtbi-plus.onrender.com/pie-chart/?viven_espana=true' },
+    { texto: 'No vive en España', url: 'https://felgtbi-plus.onrender.com/pie-chart/?viven_espana=false' }, 
+    { texto: 'Identidad de género y orientación sexual', url: 'https://felgtbi-plus.onrender.com/barras-apiladas/' }, 
+    { texto: 'Por permisos de residencia', url: 'https://felgtbi-plus.onrender.com/grafico-permiso-residencia/' }, 
+    { texto: 'Colectivos no lgtbiq+ (interseccionalidad)', url: 'https://felgtbi-plus.onrender.com/grafico-combinaciones//' }, 
+    { texto: 'Categoría 7', url: 'https://felgtbi-plus.onrender.com/top-5-ciudades/' }, 
+
   ];
+
+//   /bar-chart/ Consultas de la web por grupos de edad
+// /pie-chart/  consultas por residencia en españa
+// /barras-apiladas/ Consultas por I.Gen. y Or. Sex.
+// /grafico-permiso-residencia/ Distribución permisos de residencia
+// /grafico-combinaciones/ Consultas por colectivos no lgtbiq (interseccionalidad)
+// /top-5-ciudades/ 
+// /grafico-especialidad/ distribucion consultas sociosanitarias por especialidad
+// /grafico-especialidad/
+// /bar-chart/
+// /pie-chart/
+// vive_espana=true
+// vive_espana=false
+// /barras-apiladas/
+// /grafico-permiso-residencia/
+// /grafico-combinaciones/
+
+// /top-5-ciudades/
 
   // Función para manejar el clic en el texto y seleccionar la URL
   const handleCategoriaClick = (url) => {

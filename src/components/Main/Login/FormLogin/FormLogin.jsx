@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { context } from "../../../../context/context";
-import { fetchHandleLogin, getAdminData } from "../../../../services/formLoginAdmin"
+import { fetchHandleLogin } from "../../../../services/formLoginAdmin"
 
 const FormLogin = () => {
 
@@ -54,6 +54,7 @@ const FormLogin = () => {
       const authHeader = response.headers.authorization;
       axios.defaults.headers.common['Authorization'] = authHeader;
 
+
       try {
         const adminData = await getAdminData();
         console.log(adminData);
@@ -64,6 +65,8 @@ const FormLogin = () => {
       } catch (error) {
         console.log("Error al obtener datos de admin:", error.message);
       }
+  
+      setMessage(`Welcome ${email}`)
 
       loginRedirect();
 
