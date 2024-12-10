@@ -149,10 +149,13 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
   };
 
   function formateoString(string) {
-    return string
-      .split('_')
-      .map(palabra => {
-        return palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
+    let palabras = string.split('_');
+    return palabras
+      .map((palabra, index) => {
+        if (index === 0) {
+          return palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
+        }
+        return palabra.toLowerCase();
       })
       .join(' ');
   }
