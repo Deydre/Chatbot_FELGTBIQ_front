@@ -376,14 +376,20 @@ const Chatbot = ({ apiEndpoint, userType }) => {
     fetchSteps();
   }, [userType]);
 
+  function formatToDataObject(array) {
+    return { data: array };
+  }
+
   const handleEnd = async ({ steps, values }) => {
     const log = steps.filter((step, index) => [
       step.message !== null,
       // values[index] || null,
     ]).map(step => step.message);
-    log.unshift(userId)
-    setConversationLog(log);
-    console.log("Registro de conversación:", log);
+    log.unshift(userId);
+    const logFormated = formatToDataObject(log);
+    setConversationLog(logFormated);
+    console.log(logFormated)
+
     userType === "sociosanitario" ? await sendChatBotSociosanitarioData(log) : await sendChatBotNoSociosanitarioData(log)
     
   };
