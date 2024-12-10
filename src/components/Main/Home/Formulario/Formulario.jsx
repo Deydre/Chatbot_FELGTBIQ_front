@@ -274,11 +274,11 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
                   <label htmlFor="genero" className="labelTitulo">Identidad de Género:</label>
                   <select id="genero" name="genero" onChange={handleChangeNoSociosanitario}>
                     <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="hombre_cis">Hombre Cis</option>
-                    <option value="hombre_trans">Hombre Trans</option>
-                    <option value="mujer_cis">Mujer Cis</option>
-                    <option value="mujer_trans">Mujer Trans</option>
-                    <option value="no_binario">No Binario</option>
+                    <option value="hombre_cis">Hombre cis</option>
+                    <option value="hombre_trans">Hombre trans</option>
+                    <option value="mujer_cis">Mujer cis</option>
+                    <option value="mujer_trans">Mujer trans</option>
+                    <option value="no_binarie">No binarie</option>
                     <option value="otro">Otro</option>
                   </select>
                   {errors.genero && <span className="error">{errors.genero}</span>}
@@ -333,11 +333,11 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
                   <label htmlFor="situacion_sentimental" className="labelTitulo">Situación afectiva/sentimental:</label>
                   <select id="situacion_sentimental" name="situacion_sentimental" onChange={handleChangeNoSociosanitario}>
                     <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="soltero">Soltero</option>
+                    <option value="soltere">Soltere</option>
                     <option value="en_pareja">En pareja</option>
-                    <option value="casado">Casado</option>
-                    <option value="divorciado">Divorciado</option>
-                    <option value="viudo">Viudo</option>
+                    <option value="casade">Casade</option>
+                    <option value="divorciadeo">Divorciade</option>
+                    <option value="viude">Viude</option>
                     <option value="otro">Otro</option>
                   </select>
                   {errors.situacion_sentimental && <span className="error">{errors.situacion_sentimental}</span>}
