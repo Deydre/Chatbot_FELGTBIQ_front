@@ -160,22 +160,44 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
 
   // FORMATEAMOS LOS RESULTADOS PARA MANDAR EL JSON A DATA  
   async function handleSubmit(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (userType === "sociosanitario") { // Si es sociosanitario
-      if (validateFormSociosanitario()) { // Y si se valida el formulario
-        // if (!userId) {
-        //   <HeartSpinner />
-        // } else {
-          const socioSanitarioData = {
-            id_usuario: userId,
-            provincia: sociosanitarioValues.provincia,
-            ambito_laboral: formateoString(sociosanitarioValues.ambito_laboral)
-          }
-          console.log("Datos sociosanitario:", socioSanitarioData);
-          // const response = await sendSociosanitarioData(socioSanitarioData);
-        }
-      // }
+  if (userType === "sociosanitario") { // Si es sociosanitario
+    if (validateFormSociosanitario()) { // Y si se valida el formulario
+
+      const socioSanitarioData = {
+        provincia: sociosanitarioValues.provincia,
+        ambito_laboral: formateoString(sociosanitarioValues.ambito_laboral)
+      }
+      console.log("Datos sociosanitario:", socioSanitarioData);
+      //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! const response = await sendSociosanitarioData(socioSanitarioData);
+    }
+    updateIsSubmitted(true)
+  } else { // Si no es sociosanitario
+    if (validateFormNoSociosanitario()) { // Y si se valida el formulario
+      const noSociosanitarioData = {
+        edad: Number(noSociosanitarioValues.edad),
+        pronombre_el: noSociosanitarioValues.pronombres.includes('el'),
+        pronombre_ella: noSociosanitarioValues.pronombres.includes('ella'),
+        pronombre_elle: noSociosanitarioValues.pronombres.includes('elle'),
+        identidad_genero: formateoString(noSociosanitarioValues.genero),
+        orientacion_sexual: formateoString(noSociosanitarioValues.orientacion),
+        vives_en_espana: noSociosanitarioValues.vive_espana === 'si',
+        nacionalidad: noSociosanitarioValues.nacionalidad,
+        permiso_residencia: noSociosanitarioValues.permiso_residencia === 'si',
+        persona_racializada: noSociosanitarioValues.colectivos.includes('racializada'),
+        persona_discapacitada: noSociosanitarioValues.colectivos.includes('discapacitada'),
+        persona_sin_hogar: noSociosanitarioValues.colectivos.includes('sin_hogar'),
+        persona_migrante: noSociosanitarioValues.colectivos.includes('migrante'),
+        persona_intersexual: noSociosanitarioValues.colectivos.includes('intersexual'),
+        nivel_estudios: noSociosanitarioValues.nivel_estudios === "tecnicos" ? "Técnicos" : formateoString(noSociosanitarioValues.nivel_estudios),
+        situacion_afectiva: formateoString(noSociosanitarioValues.situacion_sentimental),
+      };
+
+      console.log("Datos no sociosanitario:", noSociosanitarioData);
+
+      // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! const response = await sendNoSociosanitarioData(noSociosanitarioData);
+
       updateIsSubmitted(true)
     } else { // Si no es sociosanitario
       if (validateFormNoSociosanitario()) { // Y si se valida el formulario

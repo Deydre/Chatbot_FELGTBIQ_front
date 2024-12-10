@@ -112,7 +112,7 @@ const Chatbot = ({ apiEndpoint }) => {
   //   { id: "end_2.2", message: "Gracias por compartir. ¡Que tengas un buen día!", end: true },
   //   { id: "end_2.5", message: "Gracias por compartir. ¡Que tengas un buen día!", end: true }
   // ];
-  
+
 
 useEffect(() => {
   const fetchSteps = async () => {
@@ -153,6 +153,7 @@ return (
     </div>
   </ThemeProvider>
 );
+
 };
 
 export default Chatbot;
