@@ -8,13 +8,18 @@ export const fetchHandleLogin = async (email, password) => {
       url: 'https://chatbot-felgtbiq-back.onrender.com/api/admin/login',
       data: { email, password },
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      withCredentials: true
+      withCredentials: true,
     });
     return response; 
   } catch (error) {
-    throw new Error("Error en la autenticación: " + error.message);
+    // Añadido manejo detallado de errores
+    if (error.response) {
+      throw new Error(`Error en la autenticación: ${error.response.data.message || error.response.statusText}`);
+    } else {
+      throw new Error(`Error en la autenticación: ${error.message}`);
+    }
   }
 };
 
