@@ -7,8 +7,8 @@ const Card = ({ iframeUrl }) => {
       {iframeUrl ? (
         <iframe
           src={iframeUrl}
-          width="600"
-          height="400"
+          width="1500"
+          height="600"
           style={{ border: 'none' }}
         ></iframe>
       ) : (
