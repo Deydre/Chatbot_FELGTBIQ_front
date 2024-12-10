@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { IoIosArrowBack } from "react-icons/io";
+import HeartSpinner from "../HeartSpinner/HeartSpinner"; // Spinner
 import { sendSociosanitarioData, sendNoSociosanitarioData } from "../../../../services/formData"
+import { context } from '../../../../context/context';
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
 
   // MANEJO DE BOTONES INICIALES
   // const [isMedicalStaff, setMedicalStaff] = useState("");
+  const { userId, updateUserId } = useContext(context);
 
   const handleMedicalStaff = (event) => {
     updateUserType(event.target.id);
+    updateUserId(Date.now() + uuidv4())
   };
 
   // ATRÁS BUTTON
@@ -142,10 +148,14 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
       setNoSociosanitarioValues({ ...noSociosanitarioValues, [name]: value });
     }
   };
-  
+
   function formateoString(string) {
-    const formattedString = string.toLowerCase().split('_').join(' ');
-    return formattedString.charAt(0).toUpperCase() + formattedString.slice(1);
+    return string
+      .split('_')
+      .map(palabra => {
+        return palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
+      })
+      .join(' ');
   }
 
   // FORMATEAMOS LOS RESULTADOS PARA MANDAR EL JSON A DATA  
@@ -154,18 +164,23 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
 
     if (userType === "sociosanitario") { // Si es sociosanitario
       if (validateFormSociosanitario()) { // Y si se valida el formulario
-
-        const socioSanitarioData = {
-          provincia: sociosanitarioValues.provincia,
-          ambito_laboral: formateoString(sociosanitarioValues.ambito_laboral)
+        // if (!userId) {
+        //   <HeartSpinner />
+        // } else {
+          const socioSanitarioData = {
+            id_usuario: userId,
+            provincia: sociosanitarioValues.provincia,
+            ambito_laboral: formateoString(sociosanitarioValues.ambito_laboral)
+          }
+          console.log("Datos sociosanitario:", socioSanitarioData);
+          // const response = await sendSociosanitarioData(socioSanitarioData);
         }
-        console.log("Datos sociosanitario:", socioSanitarioData);
-        const response = await sendSociosanitarioData(socioSanitarioData);
-      }
+      // }
       updateIsSubmitted(true)
     } else { // Si no es sociosanitario
       if (validateFormNoSociosanitario()) { // Y si se valida el formulario
         const noSociosanitarioData = {
+          id_usuario: userId,
           edad: Number(noSociosanitarioValues.edad),
           pronombre_el: noSociosanitarioValues.pronombres.includes('el'),
           pronombre_ella: noSociosanitarioValues.pronombres.includes('ella'),
@@ -187,7 +202,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
         console.log("Datos no sociosanitario:", noSociosanitarioData);
 
         // const response = await sendNoSociosanitarioData(noSociosanitarioData);
-        // updateIsSubmitted(true)
+        updateIsSubmitted(true)
       }
     }
   }
@@ -416,7 +431,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
                   <label htmlFor="ambito_laboral" className="labelTitulo">Ámbito laboral:</label>
                   <select id="ambito_laboral" name="ambito_laboral" onChange={handleChangeSociosanitario}>
                     <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="centro_de_salud">Centro de Salud</option>
+                    <option value="centro_salud">Centro de Salud</option>
                     <option value="hospital">Hospital</option>
                     <option value="centro_comunitario">Centro Comunitario</option>
                     <option value="consulta_privada">Consulta Privada</option>

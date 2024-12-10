@@ -257,7 +257,6 @@ const Chatbot = ({ apiEndpoint }) => {
             ],
           },
          
-         
 
         ];
 
@@ -267,7 +266,7 @@ const Chatbot = ({ apiEndpoint }) => {
           {
             id: "1",
             message: "Dime tu rol",
-            trigger: "2", // Trigger a la siguiente pregunta
+            trigger: "2",
           },
           {
             id: "2",
