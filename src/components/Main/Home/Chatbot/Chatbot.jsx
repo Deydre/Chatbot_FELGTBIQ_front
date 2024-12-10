@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ChatBot from "react-simple-chatbot";
 import HeartSpinner from "../HeartSpinner/HeartSpinner"; // Spinner
 import { ThemeProvider } from "styled-components";
+import { sendChatBotSociosanitarioData, sendChatBotNoSociosanitarioData } from "../../../../services/chatbotData"
 import "../../../../styles/components/_Chatbot.scss"; // Estilos del chatbot
 import avatar from "../../../../assets/avatar.png";
+import { context } from '../../../../context/context';
 
 const Chatbot = ({ apiEndpoint, userType }) => {
+  const { userId } = useContext(context);
   const [steps, setSteps] = useState([]); // Preguntas del chatbot
   const [loading, setLoading] = useState(true); // Estado de carga
   const [error, setError] = useState(null); // Manejo de errores
-  const [userResponses, setUserResponses] = useState({}); 
+  const [conversationLog, setConversationLog] = useState([]); // Registro de la conversación
 
   // Tema personalizado del chatbot
   const theme = {
@@ -371,22 +374,31 @@ const Chatbot = ({ apiEndpoint, userType }) => {
     };
 
     fetchSteps();
-  }, [apiEndpoint]);
+  }, [userType]);
 
-  const handleClickBot = (e) => {
-   console.log(e.target)
+  const handleEnd = async ({ steps, values }) => {
+    const log = steps.filter((step, index) => [
+      step.message !== null,
+      // values[index] || null,
+    ]).map(step => step.message);
+    log.unshift(userId)
+    setConversationLog(log);
+    console.log("Registro de conversación:", log);
+    userType === "sociosanitario" ? await sendChatBotSociosanitarioData(log) : await sendChatBotNoSociosanitarioData(log)
+    
   };
 
-  if (loading) return <HeartSpinner />; // Muestra el spinner mientras carga
+  if (loading) return <HeartSpinner />;
   if (error) return <div>{error}</div>;
 
   return (
     <ThemeProvider theme={theme}>
       <div className="chatbot-container">
-        <ChatBot onclick={handleClickBot}
+        <ChatBot
           steps={steps}
-          botAvatar={avatar} // Avatar del bot
-          userAvatar={avatar} // Avatar del usuario
+          handleEnd={handleEnd}
+          botAvatar={avatar}
+          userAvatar={avatar}
           style={{
             width: "400px",
             borderRadius: "10px",

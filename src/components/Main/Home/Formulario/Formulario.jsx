@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import HeartSpinner from "../HeartSpinner/HeartSpinner"; // Spinner
-import { sendSociosanitarioData, sendNoSociosanitarioData } from "../../../../services/formData"
+import { sendFormSociosanitarioData, sendFormNoSociosanitarioData } from "../../../../services/formData"
 import { context } from '../../../../context/context';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -175,7 +175,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
             ambito_laboral: formateoString(sociosanitarioValues.ambito_laboral)
           }
           console.log("Datos sociosanitario:", socioSanitarioData);
-          const response = await sendSociosanitarioData(socioSanitarioData);
+          const response = await sendFormSociosanitarioData(socioSanitarioData);
         }
       // }
       updateIsSubmitted(true)
@@ -204,7 +204,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
 
         console.log("Datos no sociosanitario:", noSociosanitarioData);
 
-        const response = await sendNoSociosanitarioData(noSociosanitarioData);
+        const response = await sendFormNoSociosanitarioData(noSociosanitarioData);
         updateIsSubmitted(true)
       }
     }
