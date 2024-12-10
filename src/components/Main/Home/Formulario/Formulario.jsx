@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { IoIosArrowBack } from "react-icons/io";
-import HeartSpinner from "../HeartSpinner/HeartSpinner"; // Spinner
 import { sendSociosanitarioData, sendNoSociosanitarioData } from "../../../../services/formData"
 import { context } from '../../../../context/context';
 import { v4 as uuidv4 } from 'uuid';

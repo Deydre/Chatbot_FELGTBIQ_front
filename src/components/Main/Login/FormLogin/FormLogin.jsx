@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import HashLoader from "react-spinners/HashLoader";
 import { context } from "../../../../context/context";
 import { fetchHandleLogin, getAdminData } from "../../../../services/formLoginAdmin"
 
@@ -60,7 +59,7 @@ const FormLogin = () => {
         console.log(adminData);
 
         updateProfile(adminData.data[0].email);
-        
+
 
       } catch (error) {
         console.log("Error al obtener datos de admin:", error.message);
@@ -75,11 +74,50 @@ const FormLogin = () => {
     setLoading(false);
   };
 
+  const SpinnerLogin = () => (
+    <div className="loader">
+      <style>
+        {`
+          .loader {
+          width: 48px;
+          height: 48px;
+          display: inline-block;
+          position: relative;
+        }
+          .loader::after,
+          .loader::before {
+          content: '';  
+          box-sizing: border-box;
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          border: 2px solid #FFF;
+          position: absolute;
+          left: 0;
+          top: 0;
+          animation: animloader 2s linear infinite;
+        }
+         .loader::after {
+          animation-delay: 1s;
+        }
 
+        @keyframes animloader {
+        0% {
+          transform: scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0;
+        }
+        `}
+      </style>
+    </div>
+  );
 
   return <div className="login">
     {loading ? (
-      <HashLoader color="#E2007E" />
+      <SpinnerLogin/>
     ) : (
       <>
         <article id="divLogin">
