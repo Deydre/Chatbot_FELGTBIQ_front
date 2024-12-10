@@ -41,7 +41,7 @@ function App() {
   return (
     <>
       <BrowserRouter >
-      <context.Provider value={{profile, updateProfile, updateUserId}}>
+      <context.Provider value={{profile, updateProfile, userId, updateUserId}}>
         <Header></Header>
         <Main></Main>
         <Footer>a</Footer>

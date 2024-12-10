@@ -15,7 +15,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
 
   const handleMedicalStaff = (event) => {
     updateUserType(event.target.id);
-    updateUserId(Date.now() + uuidv4())
+    updateUserId(Date.now() + uuidv4().replace(/-/g, ''))
   };
 
   // ATRÁS BUTTON
