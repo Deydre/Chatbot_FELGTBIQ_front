@@ -6,10 +6,10 @@ export const sendSociosanitarioData = async (data) => {
     const response = await axios({
       method: 'post',
       url: 'https://felgtbi-plus.onrender.com/submit-data-2/',
-      body:  JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      body:  data,
+      // headers: {
+      //   'Content-Type': 'application/json'
+      // },
       withCredentials: true
     });
     return response; 
