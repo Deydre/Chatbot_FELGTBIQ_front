@@ -1,17 +1,18 @@
 import axios from 'axios';
 
+const urlSociosanitario = 'https://felgtbi-plus.onrender.com/submit-data-2/'
+const urlNoSociosanitario = 'https://felgtbi-plus.onrender.com/submit-data/'
+
 // Envío de datos de Sociosanitario
 export const sendSociosanitarioData = async (data) => {
   try {
-    const response = await axios({
-      method: 'post',
-      url: 'https://felgtbi-plus.onrender.com/submit-data-2/',
-      body:  JSON.stringify(data),
+    const response = await axios.post(urlSociosanitario, data, {
       headers: {
         'Content-Type': 'application/json'
       },
-      withCredentials: true
     });
+
+    response ? console.log(response) : console.log("")
     return response; 
   } catch (error) {
     throw new Error("Error: " + error.message);
@@ -21,17 +22,15 @@ export const sendSociosanitarioData = async (data) => {
 // Envío de datos de No Sociosanitario
 export const sendNoSociosanitarioData = async (data) => {
   try {
-    const response = await axios({
-        method: 'post',
-        url: 'https://felgtbi-plus.onrender.com/submit-data/',
-        body:  JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        withCredentials: true
-      });
-    return response;
+    const response = await axios.post(urlNoSociosanitario, data, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+
+    response ? console.log(response) : console.log("")
+    return response; 
   } catch (error) {
-    throw new Error("Error al obtener datos del administrador: " + error.message);
+    throw new Error("Error: " + error.message);
   }
 };
