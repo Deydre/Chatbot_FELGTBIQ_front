@@ -3,8 +3,7 @@ import axios from 'axios';
 // Función para el login
 export const fetchHandleLogin = async (email, password) => {
   try {
-    const response = await axios({
-      method: 'post',
+    const response = await axios.post({
       url: 'https://felgtbi-plus.onrender.com/admin/login',
       data: { email, password },
       headers: {
