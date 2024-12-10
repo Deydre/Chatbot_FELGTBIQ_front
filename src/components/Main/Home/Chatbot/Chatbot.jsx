@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import ChatBot from "react-simple-chatbot";
-import HeartSpinner from "../HeartSpinner/HeartSpinner"; // Spinner
 import { ThemeProvider } from "styled-components";
 import { sendChatBotSociosanitarioData, sendChatBotNoSociosanitarioData } from "../../../../services/chatbotData"
 import "../../../../styles/components/_Chatbot.scss"; // Estilos del chatbot
@@ -13,6 +12,7 @@ const Chatbot = ({ apiEndpoint, userType }) => {
   const [loading, setLoading] = useState(true); // Estado de carga
   const [error, setError] = useState(null); // Manejo de errores
   const [conversationLog, setConversationLog] = useState([]); // Registro de la conversación
+
 
   // Tema personalizado del chatbot
   const theme = {
@@ -376,6 +376,68 @@ const Chatbot = ({ apiEndpoint, userType }) => {
     fetchSteps();
   }, [userType]);
 
+
+   // Spinner de carga
+   const Spinner = () => (
+    <div className="loader">
+      <style>
+        {`
+          .loader {
+            width: 100px;
+            height: 75px;
+            margin: 0 auto;
+            background: #fff;
+            position: relative;
+            border-radius: 100%;
+          }
+          .loader:before {
+            content: '';
+            position: absolute;
+            box-sizing: border-box;
+            border: 15px solid transparent;
+            border-top: 25px solid #fff;
+            transform: rotate(45deg);
+            top: 50px;
+            left: -15px;
+          }
+          .loader:after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background-color: #FF3D00;
+            box-shadow: 20px 0 #FF3D00, -20px 0 #FF3D00;
+            animation: flash 0.5s ease-out infinite alternate;
+          }
+          @keyframes flash {
+            0% {
+              background-color: rgba(255, 60, 0, 0.25);
+              box-shadow: 20px 0 rgba(255, 60, 0, 0.25), -20px 0 #FF3D00;
+            }
+            50% {
+              background-color: #FF3D00;
+              box-shadow: 20px 0 rgba(255, 60, 0, 0.25), -20px 0 rgba(255, 60, 0, 0.25);
+            }
+            100% {
+              background-color: rgba(255, 60, 0, 0.25);
+              box-shadow: 20px 0 #FF3D00, -20px 0 rgba(255, 60, 0, 0.25);
+            }
+          }
+        `}
+      </style>
+    </div>
+  );
+
+  const handleClickBot = (e) => {
+   console.log(e.target)
+  };
+
+  if (loading) return <Spinner />; // Muestra el spinner mientras carga
+  
   function formatToDataObject(array) {
     return { data: array };
   }
@@ -395,6 +457,7 @@ const Chatbot = ({ apiEndpoint, userType }) => {
   };
 
   if (loading) return <HeartSpinner />;
+  
   if (error) return <div>{error}</div>;
 
   return (
