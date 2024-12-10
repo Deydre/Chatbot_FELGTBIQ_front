@@ -31,10 +31,7 @@ export const getAdminData = async () => {
     });
     return response;
   } catch (error) {
-    if (error.response) {
-      throw new Error(`Error al obtener datos del administrador: ${error.response.data.message || error.response.statusText}`);
-    } else {
-      throw new Error(`Error al obtener datos del administrador: ${error.message}`);
-    }
+    throw new Error("Error al obtener datos estadísticos " + error.message);
   }
 };
+
