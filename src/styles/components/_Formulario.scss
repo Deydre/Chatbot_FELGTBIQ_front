@@ -77,6 +77,14 @@ select {
     gap: 10px;
 }
 
+#divTitle {
+    padding: 20px;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    gap: 14px
+}
+
 
 // Cambio de color en inputs de checkbox y radio
 input[type="checkbox"],
@@ -164,7 +172,7 @@ input[type="radio"]+label:hover::before {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    padding: 60px;
+    padding: 20px 60px 60px 60px;
 }
 
 #back {

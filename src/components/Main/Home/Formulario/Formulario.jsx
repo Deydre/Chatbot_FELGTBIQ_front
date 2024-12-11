@@ -211,11 +211,18 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
 
   return <>
     {userType === ""
-      ?
-      <section id="sectionXLButtons">
-        <button className="XLButton" onClick={handleMedicalStaff} id="sociosanitario">SOY PERSONAL SOCIOSANITARIO</button>
-        <button className="XLButton" onClick={handleMedicalStaff} id="noSociosanitario">NO SOY PERSONAL SOCIOSANITARIO </button>
-      </section>
+      ? <>
+        <div id="divTitle">
+          <h6>vih360</h6>
+          <p>¿Quieres saber más sobre el VIH? ¡Estamos aquí para ti! Encuentra respuestas a tus preguntas, consejos y apoyo</p>
+          <p> Rompamos el estigma.</p>
+        </div>
+
+        <section id="sectionXLButtons">
+          <button className="XLButton" onClick={handleMedicalStaff} id="sociosanitario">SOY PERSONAL SOCIOSANITARIO</button>
+          <button className="XLButton" onClick={handleMedicalStaff} id="noSociosanitario">NO SOY PERSONAL SOCIOSANITARIO </button>
+        </section>
+      </>
       :
       <section>
         <article id="back" onClick={handleAtras}>
