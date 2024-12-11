@@ -1,19 +1,16 @@
 @import '../utils/variables.scss';
 
 #SideBar {
-    padding: 32px 46px 32px 0px;
-    width: 220px;
-    height: 100vh;
-    background-color: $primary-color;
+    padding: 32px;
+    background: $primary-color;
+}
+
+#SideBar h1 {
+    color: $white;
 }
 
 #SideBar h2 {
     color: $white;
-    // background-color: $white;
-    // // background: $gradient1;
-    // -webkit-background-clip: text;
-    // background-clip: text;
-    // -webkit-text-fill-color: transparent;
 }
 
 #SideBar ul {
@@ -24,22 +21,26 @@
 }
 
 #SideBar li {
-    color: $white;
+    color: $white-soft;
+    padding: 5px 0px;
 }
 
 #SideBar li:hover {
     cursor: pointer;
-    color: $secondary-color;
+    color: $white;
 }
 
-#modebar-2e602e > div:nth-child(1) > a {
+#modebar-2e602e>div:nth-child(1)>a {
     display: none;
 }
 
-#modebar-004648 > div:nth-child(2) {
+#modebar-004648>div:nth-child(2) {
     display: none;
 }
-@media screen and (max-width: 600px) {
-   
-    
+
+// Estilo para pantallas más grandes
+@media (min-width: 768px) {
+    #SideBar {
+        width: 220px;
+    }
 }

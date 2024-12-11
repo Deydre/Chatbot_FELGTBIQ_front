@@ -1,11 +1,13 @@
-
 #adminDashboard {
     display: flex;
-    flex-direction: row;
-    height: 100vh;
+    flex-direction: column;
+    max-width: 100vh;
 }
 
-@media screen and (max-width: 600px) {
-   
-    
-}
+ // Estilo para pantallas más grandes
+ @media (min-width: 768px) {
+    #adminDashboard {
+        flex-direction: row;
+        max-width: 100vh;
+    }
+  }
