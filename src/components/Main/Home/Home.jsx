@@ -27,7 +27,7 @@
           <Formulario updateIsSubmitted = {updateIsSubmitted} updateUserType = {updateUserType} userType={userType}/>
         ) : (
           // Muestra el chatbot después de enviar el formulario
-          <Chatbot userType={userType} formData={formData} />
+          <Chatbot userType={userType} updateIsSubmitted = {updateIsSubmitted}  formData={formData} />
         )}
       </section>
     );
