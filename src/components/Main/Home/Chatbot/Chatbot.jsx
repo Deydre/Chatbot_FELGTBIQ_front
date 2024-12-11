@@ -125,11 +125,11 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "32",
             options: [
-              { value: "Opciones de tratamiento", label: "Opciones de tratamiento", "end": true },
-              { value: "Apoyo psicológico", label: "Apoyo psicológico", "end": true },
-              { value: "Derechos laborales y legales", label: "Derechos laborales y legales", "end": true },
-              { value: "Grupos de apoyo", label: "Grupos de apoyo", "end": true },
-              { value: "Prevención de transmisión", label: "Prevención de transmisión", "end": true },
+              { value: "Opciones de tratamiento", label: "Opciones de tratamiento", trigger: "dynamicResponse" },
+              { value: "Apoyo psicológico", label: "Apoyo psicológico", trigger: "dynamicResponse" },
+              { value: "Derechos laborales y legales", label: "Derechos laborales y legales", trigger: "dynamicResponse" },
+              { value: "Grupos de apoyo", label: "Grupos de apoyo", trigger: "dynamicResponse" },
+              { value: "Prevención de transmisión", label: "Prevención de transmisión", trigger: "dynamicResponse" },
             ],
           },
           {
@@ -205,14 +205,14 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "24",
             options: [
-              { value: "Une amigue", label: "Une amigue", "end": true },
-              { value: "Alguien de mi familia", label: "Alguien de mi familia", "end": true },
-              { value: "Mi pareja en ese momento", label: "Mi pareja en ese momento", "end": true },
-              { value: "Compañere de trabajo", label: "Compañere de trabajo", "end": true },
-              { value: "Con mi superior del trabajo", label: "Con mi superior del trabajo", "end": true },
-              { value: "Personal de ONG", label: "Personal de ONG", "end": true },
-              { value: "Expareja", label: "Expareja", "end": true },
-              { value: "Nadie", label: "Nadie", "end": true },
+              { value: "Une amigue", label: "Une amigue", trigger: "dynamicResponse" },
+              { value: "Alguien de mi familia", label: "Alguien de mi familia", trigger: "dynamicResponse" },
+              { value: "Mi pareja en ese momento", label: "Mi pareja en ese momento", trigger: "dynamicResponse" },
+              { value: "Compañere de trabajo", label: "Compañere de trabajo", trigger: "dynamicResponse" },
+              { value: "Con mi superior del trabajo", label: "Con mi superior del trabajo", trigger: "dynamicResponse" },
+              { value: "Personal de ONG", label: "Personal de ONG", trigger: "dynamicResponse" },
+              { value: "Expareja", label: "Expareja", trigger: "dynamicResponse" },
+              { value: "Nadie", label: "Nadie", trigger: "dynamicResponse" },
               // { value: "La persona que me preocupa", label: "La persona que me preocupa", "end": true },
             ],
           },
@@ -224,11 +224,11 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "26",
             options: [
-              { value: "¿Qué es el vih/sida?", label: "¿Qué es el vih/sida?", "end": true },
-              { value: "Formas de transmisión", label: "Formas de transmisión", "end": true },
-              { value: "Métodos de prevención", label: "Métodos de prevención", "end": true },
-              { value: "Impacto del tratamiento", label: "Impacto del tratamiento", "end": true },
-              { value: "Historia del vih", label: "Historia del vih", "end": true },
+              { value: "¿Qué es el vih/sida?", label: "¿Qué es el vih/sida?", trigger: "dynamicResponse" },
+              { value: "Formas de transmisión", label: "Formas de transmisión", trigger: "dynamicResponse" },
+              { value: "Métodos de prevención", label: "Métodos de prevención", trigger: "dynamicResponse" },
+              { value: "Impacto del tratamiento", label: "Impacto del tratamiento", trigger: "dynamicResponse" },
+              { value: "Historia del vih", label: "Historia del vih", trigger: "dynamicResponse" },
             ],
           },
           {
@@ -251,14 +251,14 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "30",
             options: [
-              { value: "Une amigue", label: "Une amigue", "end": true },
-              { value: "Algún familiar", label: "Algún familiar", "end": true },
-              { value: "Mi pareja en ese momento", label: "Mi pareja en ese momento", "end": true },
-              { value: "Compañere de trabajo", label: "Compañere de trabajo", "end": true },
-              { value: "Con mi superior del trabajo", label: "Con mi superior del trabajo", "end": true},
-              { value: "Personal de ONG", label: "Personal de ONG", "end": true },
-              { value: "Expareja", label: "Expareja", "end": true },
-              { value: "Nadie", label: "Nadie", "end": true },
+              { value: "Une amigue", label: "Une amigue", trigger: "dynamicResponse" },
+              { value: "Algún familiar", label: "Algún familiar", trigger: "dynamicResponse" },
+              { value: "Mi pareja en ese momento", label: "Mi pareja en ese momento", trigger: "dynamicResponse" },
+              { value: "Compañere de trabajo", label: "Compañere de trabajo", trigger: "dynamicResponse" },
+              { value: "Con mi superior del trabajo", label: "Con mi superior del trabajo", trigger: "dynamicResponse" },
+              { value: "Personal de ONG", label: "Personal de ONG", trigger: "dynamicResponse" },
+              { value: "Expareja", label: "Expareja", trigger: "dynamicResponse" },
+              { value: "Nadie", label: "Nadie", trigger: "dynamicResponse" },
               // { value: "La persona que me preocupa", label: "La persona que me preocupa", "end": true },
             ],
           },
@@ -290,11 +290,11 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "4",
             options: [
-              { value: "Manejo clínico de personas con vih", label: "Manejo clínico de personas con vih", "end": true },
-              { value: "Protocolo PEP", label: "Protocolo PEP", "end": true },
-              { value: "Tratamientos (PREP, TAR)", label: "Tratamientos (PREP, TAR)", "end": true },
-              { value: "Prevención de infecciones oportunistas", label: "Prevención de infecciones oportunistas", "end": true },
-              { value: "Consejos sobre adherencia al tratamiento", label: "Consejos sobre adherencia al tratamiento", "end": true },
+              { value: "Manejo clínico de personas con vih", label: "Manejo clínico de personas con vih",trigger: "dynamicResponse" },
+              { value: "Protocolo PEP", label: "Protocolo PEP", trigger: "dynamicResponse" },
+              { value: "Tratamientos (PREP, TAR)", label: "Tratamientos (PREP, TAR)", trigger: "dynamicResponse" },
+              { value: "Prevención de infecciones oportunistas", label: "Prevención de infecciones oportunistas", trigger: "dynamicResponse" },
+              { value: "Consejos sobre adherencia al tratamiento", label: "Consejos sobre adherencia al tratamiento", trigger: "dynamicResponse" },
             ],
           },
           {
@@ -305,11 +305,11 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "6",
             options: [
-              { value: "Acceso a medicamentos y servicios", label: "Acceso a medicamentos y servicios", "end": true },
-              { value: "Recursos legales y derechos", label: "Recursos legales y derechos", "end": true },
-              { value: "Apoyo a personas en situación de vulnerabilidad", label: "Apoyo a personas en situación de vulnerabilidad", "end": true },
-              { value: "Conexión con grupos de apoyo comunitario", label: "Conexión con grupos de apoyo comunitario", "end": true },
-              { value: "Información sobre redes de servicios sociales", label: "Información sobre redes de servicios sociales", "end": true },
+              { value: "Acceso a medicamentos y servicios", label: "Acceso a medicamentos y servicios", trigger: "dynamicResponse" },
+              { value: "Recursos legales y derechos", label: "Recursos legales y derechos", trigger: "dynamicResponse" },
+              { value: "Apoyo a personas en situación de vulnerabilidad", label: "Apoyo a personas en situación de vulnerabilidad", trigger: "dynamicResponse" },
+              { value: "Conexión con grupos de apoyo comunitario", label: "Conexión con grupos de apoyo comunitario", trigger: "dynamicResponse" },
+              { value: "Información sobre redes de servicios sociales", label: "Información sobre redes de servicios sociales", trigger: "dynamicResponse" },
             ],
           },
           {
@@ -320,11 +320,11 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "8",
             options: [
-              { value: "Apoyo emocional para personas recién diagnosticadas", label: "Apoyo emocional para personas recién diagnosticadas", "end": true },
-              { value: "Intervencón para adherencia al tratamiento", label: "Intervención para adherencia al tratamiento", "end": true },
-              { value: "Manejo del estigma y problemas de salud mental", label: "Manejo del estigma y problemas de salud mental", "end": true },
-              { value: "Recursos para personas con vih", label: "Recursos para personas con vih", "end": true  },
-              { value: "Consejos de prevención y autocuidado", label: "Consejos de prevención y autocuidado", "end": true  },
+              { value: "Apoyo emocional para personas recién diagnosticadas", label: "Apoyo emocional para personas recién diagnosticadas", trigger: "dynamicResponse" },
+              { value: "Intervencón para adherencia al tratamiento", label: "Intervención para adherencia al tratamiento", trigger: "dynamicResponse" },
+              { value: "Manejo del estigma y problemas de salud mental", label: "Manejo del estigma y problemas de salud mental", trigger: "dynamicResponse" },
+              { value: "Recursos para personas con vih", label: "Recursos para personas con vih", trigger: "dynamicResponse" },
+              { value: "Consejos de prevención y autocuidado", label: "Consejos de prevención y autocuidado", trigger: "dynamicResponse"  },
             ],
           },
           {
@@ -335,11 +335,11 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "10",
             options: [
-              { value: "Material educativo sobre vih", label: "Material educativo sobre vih", "end": true },
-              { value: "Capacitación en prevención", label: "Capacitación en prevención", "end": true },
-              { value: "Métodos para combatir el estigma", label: "Métodos para combatir el estigma", "end": true },
-              { value: "Recursos para sensibilización", label: "Recursos para sensibilización", "end": true },
-              { value: "Estadísticas y datos actualizados", label: "Estadísticas y datos actualizados", "end": true },
+              { value: "Material educativo sobre vih", label: "Material educativo sobre vih", trigger: "dynamicResponse" },
+              { value: "Capacitación en prevención", label: "Capacitación en prevención", trigger: "dynamicResponse" },
+              { value: "Métodos para combatir el estigma", label: "Métodos para combatir el estigma", trigger: "dynamicResponse" },
+              { value: "Recursos para sensibilización", label: "Recursos para sensibilización", trigger: "dynamicResponse" },
+              { value: "Estadísticas y datos actualizados", label: "Estadísticas y datos actualizados", trigger: "dynamicResponse" },
             ],
           },
           {
@@ -350,12 +350,17 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "12",
             options: [
-              { value: "Conexión con grupos de apoyo comunitario", label: "Conexión con grupos de apoyo comunitario", "end": true },
-              { value: "Información básica sobre vih", label: "Información básica sobre vih", "end": true },
-              { value: "Consejos para apoyar emocionalmente", label: "Consejos para apoyar emocionalmente", "end": true },
-              { value: "Recursos legales y sociales para personas seropositivas", label: "Recursos legales y sociales para personas seropositivas", "end": true },
-              { value: "Métodos de autocuidado para quien cuida", label: "Métodos de autocuidado para quien cuida", "end": true },         
+              { value: "Conexión con grupos de apoyo comunitario", label: "Conexión con grupos de apoyo comunitario", trigger: "dynamicResponse" },
+              { value: "Información básica sobre vih", label: "Información básica sobre vih", trigger: "dynamicResponse" },
+              { value: "Consejos para apoyar emocionalmente", label: "Consejos para apoyar emocionalmente", trigger: "dynamicResponse" },
+              { value: "Recursos legales y sociales para personas seropositivas", label: "Recursos legales y sociales para personas seropositivas", trigger: "dynamicResponse" },
+              { value: "Métodos de autocuidado para quien cuida", label: "Métodos de autocuidado para quien cuida", trigger: "dynamicResponse" },         
             ],
+          },
+          {
+            id: "dynamicResponse",
+            message: "Procesando...", 
+            end: true,
           },
 
         ];
@@ -452,7 +457,32 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
     setConversationLog(logFormated);
     console.log(logFormated)
 
-    userType === "sociosanitario" ? await sendChatBotSociosanitarioData(log) : await sendChatBotNoSociosanitarioData(log)
+    let response;
+    try {
+      if (userType === "sociosanitario") {
+        response = await sendChatBotSociosanitarioData(logFormated)
+        response = {
+          "respuesta_chatbot": "Entiendo que te encuentras en una situación nueva y que necesitas información sobre el vih tras tu diagnóstico reciente.  Es totalmente normal sentirte abrumado/a, y quiero ayudarte a encontrar los recursos que necesitas en Álava.  Recuerda que un diagnóstico de vih no define tu vida, y con el tratamiento adecuado, puedes llevar una vida plena y saludable. El hecho de que ya estés en tratamiento TAR es un excelente comienzo.\n\nDado que vives en Álava, vamos a centrarnos en los recursos disponibles en tu provincia.  Desafortunadamente, la información específica sobre servicios de apoyo al vih dirigidos exclusivamente a personas LGTBI+ en Álava es limitada en internet.  No encontramos centros o asociaciones específicas con una presencia online clara y detallada en la zona.  Esto no significa que no existan. Es posible que la atención se integre en servicios de salud pública o se ofrezca de forma más discreta.\n\n**Recomendaciones:**\n\n1. **Tu médico de cabecera:** Él/Ella es tu primer y más importante punto de apoyo.  Es fundamental mantener una comunicación fluida con él/ella sobre cualquier duda, inquietud o efecto secundario que puedas experimentar con el tratamiento.  Tu médico puede ofrecerte información sobre los servicios de apoyo al vih disponibles en Álava a través del sistema sanitario público vasco (Osakidetza).  Pregúntale por programas específicos de apoyo psicológico, grupos de apoyo o recursos sociales.\n\n2. **Osakidetza:**  El Servicio Vasco de Salud (Osakidetza) ofrece servicios de atención sanitaria integral a todas las personas, incluyendo a las que viven con vih. Debes contactar con tu centro de salud o consultorio para informarte sobre los servicios disponibles. Puedes buscar la información y los teléfonos de contacto en su página web: [www.osakidetza.eus](www.osakidetza.eus) (aunque te recomiendo que lo hagas directamente a través de tu médico de cabecera para que te guíe en el proceso).\n\n3. **Apoyo psicológico:**  Un diagnóstico de vih puede generar una amplia gama de emociones.  Es importante tener acceso a apoyo psicológico. Tu médico te puede derivar a un profesional, o puedes buscar psicólogos/as privados/as en Álava.  Existen plataformas online que te permiten encontrar profesionales cerca de tu ubicación.\n\n4. **Recursos de la FELGTBI+:** Aunque no disponemos de un centro físico en Álava, la FELGTBI+ puede ofrecerte apoyo a través de nuestro teléfono (91 360 46 05), correo electrónico (info@felgtbi.org) o nuestra web (https://felgtbi.org/).  Podemos brindarte información general sobre vih, recursos nacionales y orientación si necesitas ayuda para encontrar apoyo en tu zona. Aunque no sea un servicio presencial en Álava, podemos guiarte en la búsqueda de profesionales o recursos que te sean de utilidad.\n\n5. **Plataformas de apoyo online:** Existen plataformas y foros online donde personas que viven con vih comparten sus experiencias y ofrecen apoyo mutuo.  Si lo deseas, podemos facilitarte información sobre estos recursos, que pueden ser de utilidad hasta que encuentres un apoyo presencial en Álava.\n\nRecuerda que no estás solo/a.  Es importante que te cuides y que no dudes en buscar ayuda cuando la necesites.  El diagnóstico de vih es un reto, pero con el tratamiento adecuado y el apoyo correcto, puedes vivir una vida plena y feliz.  No dudes en contactarnos en la FELGTBI+ si necesitas más información o apoyo. Estamos aquí para ayudarte.\n"
+        }
+
+      } else {
+         response = {
+          "respuesta_chatbot": "Entiendo que te encuentras en una situación nueva y que necesitas información sobre el vih tras tu diagnóstico reciente.  Es totalmente normal sentirte abrumado/a, y quiero ayudarte a encontrar los recursos que necesitas en Álava.  Recuerda que un diagnóstico de vih no define tu vida, y con el tratamiento adecuado, puedes llevar una vida plena y saludable. El hecho de que ya estés en tratamiento TAR es un excelente comienzo.\n\nDado que vives en Álava, vamos a centrarnos en los recursos disponibles en tu provincia.  Desafortunadamente, la información específica sobre servicios de apoyo al vih dirigidos exclusivamente a personas LGTBI+ en Álava es limitada en internet.  No encontramos centros o asociaciones específicas con una presencia online clara y detallada en la zona.  Esto no significa que no existan. Es posible que la atención se integre en servicios de salud pública o se ofrezca de forma más discreta.\n\n**Recomendaciones:**\n\n1. **Tu médico de cabecera:** Él/Ella es tu primer y más importante punto de apoyo.  Es fundamental mantener una comunicación fluida con él/ella sobre cualquier duda, inquietud o efecto secundario que puedas experimentar con el tratamiento.  Tu médico puede ofrecerte información sobre los servicios de apoyo al vih disponibles en Álava a través del sistema sanitario público vasco (Osakidetza).  Pregúntale por programas específicos de apoyo psicológico, grupos de apoyo o recursos sociales.\n\n2. **Osakidetza:**  El Servicio Vasco de Salud (Osakidetza) ofrece servicios de atención sanitaria integral a todas las personas, incluyendo a las que viven con vih. Debes contactar con tu centro de salud o consultorio para informarte sobre los servicios disponibles. Puedes buscar la información y los teléfonos de contacto en su página web: [www.osakidetza.eus](www.osakidetza.eus) (aunque te recomiendo que lo hagas directamente a través de tu médico de cabecera para que te guíe en el proceso).\n\n3. **Apoyo psicológico:**  Un diagnóstico de vih puede generar una amplia gama de emociones.  Es importante tener acceso a apoyo psicológico. Tu médico te puede derivar a un profesional, o puedes buscar psicólogos/as privados/as en Álava.  Existen plataformas online que te permiten encontrar profesionales cerca de tu ubicación.\n\n4. **Recursos de la FELGTBI+:** Aunque no disponemos de un centro físico en Álava, la FELGTBI+ puede ofrecerte apoyo a través de nuestro teléfono (91 360 46 05), correo electrónico (info@felgtbi.org) o nuestra web (https://felgtbi.org/).  Podemos brindarte información general sobre vih, recursos nacionales y orientación si necesitas ayuda para encontrar apoyo en tu zona. Aunque no sea un servicio presencial en Álava, podemos guiarte en la búsqueda de profesionales o recursos que te sean de utilidad.\n\n5. **Plataformas de apoyo online:** Existen plataformas y foros online donde personas que viven con vih comparten sus experiencias y ofrecen apoyo mutuo.  Si lo deseas, podemos facilitarte información sobre estos recursos, que pueden ser de utilidad hasta que encuentres un apoyo presencial en Álava.\n\nRecuerda que no estás solo/a.  Es importante que te cuides y que no dudes en buscar ayuda cuando la necesites.  El diagnóstico de vih es un reto, pero con el tratamiento adecuado y el apoyo correcto, puedes vivir una vida plena y feliz.  No dudes en contactarnos en la FELGTBI+ si necesitas más información o apoyo. Estamos aquí para ayudarte.\n"
+        }
+        // response = await sendChatBotNoSociosanitarioData(log)
+      }
+
+      // const serverMessage = response.data.message;
+      
+
+
+    } catch (err) {
+      console.error("Error fetching chatbot response:", err);
+    }
+    
+
+
+
 
   };
 
