@@ -1,50 +1,42 @@
-import React, { useState } from 'react';
-import Card from './Card'; // Asegúrate de que este archivo esté en la misma carpeta o ajusta la ruta
+import React from 'react';
 
-const SideBar = () => {
-  const [iframeUrl, setIframeUrl] = useState('');
+
+const SideBar = ({ updateIframeUrl, updateLoading }) => {
 
   // Las 7 categorías y sus URLs correspondientes
   const categorias = [
-    { texto: 'Personal sociosanitario por especialidad', url: 'https://felgtbi-plus.onrender.com/grafico-especialidad/' },
     { texto: 'Por grupos de edad', url: 'https://felgtbi-plus.onrender.com/bar-chart/' }, 
-    { texto: 'Vive en España', url: 'https://felgtbi-plus.onrender.com/pie-chart/?viven_espana=true' },
-    { texto: 'No vive en España', url: 'https://felgtbi-plus.onrender.com/pie-chart/?viven_espana=false' }, 
+    { texto: 'Orientación sexual de personas que viven en España', url: 'https://felgtbi-plus.onrender.com/pie-chart/?viven_espana=true' },
+    { texto: 'Orientación sexual de personas que no viven en España', url: 'https://felgtbi-plus.onrender.com/pie-chart/?viven_espana=false' }, 
     { texto: 'Identidad de género y orientación sexual', url: 'https://felgtbi-plus.onrender.com/barras-apiladas/' }, 
     { texto: 'Por permisos de residencia', url: 'https://felgtbi-plus.onrender.com/grafico-permiso-residencia/' }, 
-    { texto: 'Colectivos no lgtbiq+ (interseccionalidad)', url: 'https://felgtbi-plus.onrender.com/grafico-combinaciones//' }, 
-    { texto: 'Categoría 7', url: 'https://felgtbi-plus.onrender.com/top-5-ciudades/' }, 
+    { texto: 'Colectivos no lgtbiq+ (interseccionalidad)', url: 'https://felgtbi-plus.onrender.com/colectivos' },
+    { texto: 'Las 5 provincias con más acceso a la web', url: 'https://felgtbi-plus.onrender.com/top-5-ciudades' },
+    { texto: 'Especialidades', url: 'https://felgtbi-plus.onrender.com/grafico-ambito-laboral' },
+
+
 
   ];
 
-//   /bar-chart/ Consultas de la web por grupos de edad
-// /pie-chart/  consultas por residencia en españa
-// /barras-apiladas/ Consultas por I.Gen. y Or. Sex.
-// /grafico-permiso-residencia/ Distribución permisos de residencia
-// /grafico-combinaciones/ Consultas por colectivos no lgtbiq (interseccionalidad)
-// /top-5-ciudades/ 
-// /grafico-especialidad/ distribucion consultas sociosanitarias por especialidad
-// /grafico-especialidad/
-// /bar-chart/
-// /pie-chart/
-// vive_espana=true
-// vive_espana=false
-// /barras-apiladas/
-// /grafico-permiso-residencia/
-// /grafico-combinaciones/
+  // (bar-chart) -Edad
+  // (pie-chart) -True(viven en españa)/False(no viven en españa)
+  // (barras-apiladas) -Orientacion sexual frente identidad de genero
+  // (grafico-permiso-residencia)
+  // (colectivos) Conteo por colectivos
+  // (top-5-ciudades) 5 provincias con más acceso a la plataforma
+  // (grafico-ambito-laboral)
 
-// /top-5-ciudades/
 
-  // Función para manejar el clic en el texto y seleccionar la URL
-  const handleCategoriaClick = (url) => {
-    setIframeUrl(url);
-  };
+const handleCategoriaClick = (url) => {
+  updateIframeUrl(url);
+};
+
 
   return (
+    
     <div>
       <h1>Estadísticas</h1>
       <ul>
-        {/* Generar una lista de enlaces con las categorías y sus URLs */}
         {categorias.map((categoria, index) => (
           <li
             key={index}
@@ -55,51 +47,9 @@ const SideBar = () => {
           </li>
         ))}
       </ul>
-
-      {/* Pasar la URL seleccionada al componente Card */}
-      <Card iframeUrl={iframeUrl} />
     </div>
   );
 };
 
 export default SideBar;
-
-// import React, { useState } from 'react';
-// import axios from 'axios';
-
-
-// const SideBar = () => {
-
-
- 
-//   return (
-//     <aside id="SideBar">
-//     <h2>Estadísticas</h2>
-//     <ul>
-//       <h3>Especialidad</h3>
-//       <li>
-//         <p>Personas que viven en España</p>
-//       </li>
-//       <li>
-//         <p>Personas que no viven en España</p>
-//       </li>
-//       {/* <li>
-//         <p>Xbox 360</p>
-//       </li>
-//       <li>
-//         <p>Nintendo Switch</p>
-//       </li> */}
-//     </ul>
-//   </aside>;
-//     <div>
-    
-//       <iframe src="https://felgtbi-plus.onrender.com/grafico-especialidad/" width="600" height="400"  style={{ border: 'none' }}></iframe>
-//       <iframe src="https://felgtbi-plus.onrender.com/pie-chart/?viven_espana=true" width="600" height="400"  style={{ border: 'none' }}></iframe>
-//       <iframe src="https://felgtbi-plus.onrender.com/pie-chart/?viven_espana=false" width="600" height="400"  style={{ border: 'none' }}></iframe>
-
-//     </div> 
-//   );
-// };
-
-// export default SideBar;
 
