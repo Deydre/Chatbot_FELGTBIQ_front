@@ -168,14 +168,14 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
         // if (!userId) {
         //   <HeartSpinner />
         // } else {
-          const socioSanitarioData = {
-            id_usuario: userId,
-            provincia: sociosanitarioValues.provincia,
-            ambito_laboral: formateoString(sociosanitarioValues.ambito_laboral)
-          }
-          console.log("Datos sociosanitario:", socioSanitarioData);
-          const response = await sendFormSociosanitarioData(socioSanitarioData);
+        const socioSanitarioData = {
+          id_usuario: userId,
+          provincia: sociosanitarioValues.provincia,
+          ambito_laboral: formateoString(sociosanitarioValues.ambito_laboral)
         }
+        console.log("Datos sociosanitario:", socioSanitarioData);
+        const response = await sendFormSociosanitarioData(socioSanitarioData);
+      }
       // }
       updateIsSubmitted(true)
     } else { // Si no es sociosanitario
@@ -224,242 +224,256 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
 
         {userType === "noSociosanitario"
           ? <>
-            <h1>Por favor, rellena los siguientes datos</h1>
-            <form onSubmit={handleSubmit} id="initialForm">
-              <article>
-                <div>
-                  <label htmlFor="edad" className="labelTitulo">Edad</label>
-                  <input type="number" name="edad" min="14" max="100" onChange={handleChangeNoSociosanitario} />
-                  {errors.edad && <span className="error">{errors.edad}</span>}
-                </div>
+            <section id="sectionForm">
+              <div className="formDivNoSocio">
+                <h1>Por favor, rellena los siguientes datos</h1>
+                <form onSubmit={handleSubmit} id="initialForm">
+                  <section id="infoNoSocio">
+                    <article>
+                      <div>
+                        <label htmlFor="edad" className="labelTitulo">Edad</label>
+                        <input type="number" name="edad" min="14" max="100" onChange={handleChangeNoSociosanitario} />
+                        {errors.edad && <span className="error">{errors.edad}</span>}
+                      </div>
 
-                <div>
-                  <label className="labelTitulo">Pronombres:</label>
-                  <div id="pronombres">
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="pronombre_el"
-                        name="pronombres"
-                        value="el"
-                        onChange={handleChangeNoSociosanitario}
-                      />
-                      <label htmlFor="pronombre_el">Él</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="pronombre_ella"
-                        name="pronombres"
-                        value="ella"
-                        onChange={handleChangeNoSociosanitario}
-                      />
-                      <label htmlFor="pronombre_ella">Ella</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="pronombre_elle"
-                        name="pronombres"
-                        value="elle"
-                        onChange={handleChangeNoSociosanitario}
-                      />
-                      <label htmlFor="pronombre_elle">Elle</label>
-                    </div>
-                  </div>
-                  {errors.pronombres && <span className="error">{errors.pronombres}</span>}
-                </div>
+                      <div>
+                        <label className="labelTitulo">Pronombres:</label>
+                        <div id="pronombres">
+                          <div>
+                            <input
+                              type="checkbox"
+                              id="pronombre_el"
+                              name="pronombres"
+                              value="el"
+                              onChange={handleChangeNoSociosanitario}
+                            />
+                            <label htmlFor="pronombre_el">Él</label>
+                          </div>
+                          <div>
+                            <input
+                              type="checkbox"
+                              id="pronombre_ella"
+                              name="pronombres"
+                              value="ella"
+                              onChange={handleChangeNoSociosanitario}
+                            />
+                            <label htmlFor="pronombre_ella">Ella</label>
+                          </div>
+                          <div>
+                            <input
+                              type="checkbox"
+                              id="pronombre_elle"
+                              name="pronombres"
+                              value="elle"
+                              onChange={handleChangeNoSociosanitario}
+                            />
+                            <label htmlFor="pronombre_elle">Elle</label>
+                          </div>
+                        </div>
+                        {errors.pronombres && <span className="error">{errors.pronombres}</span>}
+                      </div>
 
-                <div>
-                  <label htmlFor="genero" className="labelTitulo">Identidad de Género:</label>
-                  <select id="genero" name="genero" onChange={handleChangeNoSociosanitario}>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="hombre_cis">Hombre cis</option>
-                    <option value="hombre_trans">Hombre trans</option>
-                    <option value="mujer_cis">Mujer cis</option>
-                    <option value="mujer_trans">Mujer trans</option>
-                    <option value="no_binarie">No binarie</option>
-                    <option value="otro">Otro</option>
-                  </select>
-                  {errors.genero && <span className="error">{errors.genero}</span>}
-                </div>
+                      <div>
+                        <label htmlFor="genero" className="labelTitulo">Identidad de Género:</label>
+                        <select id="genero" name="genero" onChange={handleChangeNoSociosanitario}>
+                          <option value="" disabled selected>Selecciona una opción</option>
+                          <option value="hombre_cis">Hombre cis</option>
+                          <option value="hombre_trans">Hombre trans</option>
+                          <option value="mujer_cis">Mujer cis</option>
+                          <option value="mujer_trans">Mujer trans</option>
+                          <option value="no_binarie">No binarie</option>
+                          <option value="otro">Otro</option>
+                        </select>
+                        {errors.genero && <span className="error">{errors.genero}</span>}
+                      </div>
 
-                <div>
-                  <label htmlFor="orientacion" className="labelTitulo">Orientación Sexual:</label>
-                  <select id="orientacion" name="orientacion" onChange={handleChangeNoSociosanitario}>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="gay">Gay</option>
-                    <option value="lesbiana">Lesbiana</option>
-                    <option value="bisexual">Bisexual</option>
-                    <option value="pansexual">Pansexual</option>
-                    <option value="asexual">Asexual</option>
-                    <option value="otro">Otro</option>
-                  </select>
-                  {errors.orientacion && <span className="error">{errors.orientacion}</span>}
-                </div>
+                      <div>
+                        <label htmlFor="orientacion" className="labelTitulo">Orientación Sexual:</label>
+                        <select id="orientacion" name="orientacion" onChange={handleChangeNoSociosanitario}>
+                          <option value="" disabled selected>Selecciona una opción</option>
+                          <option value="gay">Gay</option>
+                          <option value="lesbiana">Lesbiana</option>
+                          <option value="bisexual">Bisexual</option>
+                          <option value="pansexual">Pansexual</option>
+                          <option value="asexual">Asexual</option>
+                          <option value="otro">Otro</option>
+                        </select>
+                        {errors.orientacion && <span className="error">{errors.orientacion}</span>}
+                      </div>
 
-                <div>
-                  <label className="labelTitulo">¿Perteneces a alguno de estos colectivos?:</label>
-                  <div>
-                    <input type="checkbox" id="racializada" name="colectivos" value="racializada" onChange={handleChangeNoSociosanitario} />
-                    <label htmlFor="racializada">Persona racializada</label>
-                  </div>
+                      <div>
+                        <label className="labelTitulo">¿Perteneces a alguno de estos colectivos?:</label>
+                        <div>
+                          <input type="checkbox" id="racializada" name="colectivos" value="racializada" onChange={handleChangeNoSociosanitario} />
+                          <label htmlFor="racializada">Persona racializada</label>
+                        </div>
 
-                  <div>
-                    <input type="checkbox" id="discapacitada" name="colectivos" value="discapacitada" onChange={handleChangeNoSociosanitario} />
-                    <label htmlFor="discapacitada">Persona discapacitada</label>
-                  </div>
+                        <div>
+                          <input type="checkbox" id="discapacitada" name="colectivos" value="discapacitada" onChange={handleChangeNoSociosanitario} />
+                          <label htmlFor="discapacitada">Persona discapacitada</label>
+                        </div>
 
-                  <div>
-                    <input type="checkbox" id="sin_hogar" name="colectivos" value="sin_hogar" onChange={handleChangeNoSociosanitario} />
-                    <label htmlFor="sin_hogar">Persona sin hogar</label>
-                  </div>
+                        <div>
+                          <input type="checkbox" id="sin_hogar" name="colectivos" value="sin_hogar" onChange={handleChangeNoSociosanitario} />
+                          <label htmlFor="sin_hogar">Persona sin hogar</label>
+                        </div>
 
-                  <div>
-                    <input type="checkbox" id="migrante" name="colectivos" value="migrante" onChange={handleChangeNoSociosanitario} />
-                    <label htmlFor="migrante">Persona migrante</label>
-                  </div>
+                        <div>
+                          <input type="checkbox" id="migrante" name="colectivos" value="migrante" onChange={handleChangeNoSociosanitario} />
+                          <label htmlFor="migrante">Persona migrante</label>
+                        </div>
 
-                  <div>
-                    <input type="checkbox" id="intersexual" name="colectivos" value="intersexual" onChange={handleChangeNoSociosanitario} />
-                    <label htmlFor="intersexual">Persona intersexual</label>
-                  </div>
-                </div>
+                        <div>
+                          <input type="checkbox" id="intersexual" name="colectivos" value="intersexual" onChange={handleChangeNoSociosanitario} />
+                          <label htmlFor="intersexual">Persona intersexual</label>
+                        </div>
+                      </div>
 
-              </article>
-              <article id="lastQuestions">
+                    </article>
+                    <article id="lastQuestions">
 
-                <div>
-                  <label htmlFor="situacion_sentimental" className="labelTitulo">Situación afectiva/sentimental:</label>
-                  <select id="situacion_sentimental" name="situacion_sentimental" onChange={handleChangeNoSociosanitario}>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="soltere">Soltere</option>
-                    <option value="en_pareja">En pareja</option>
-                    <option value="casade">Casade</option>
-                    <option value="divorciadeo">Divorciade</option>
-                    <option value="viude">Viude</option>
-                    <option value="otro">Otro</option>
-                  </select>
-                  {errors.situacion_sentimental && <span className="error">{errors.situacion_sentimental}</span>}
-                </div>
+                      <div>
+                        <label htmlFor="situacion_sentimental" className="labelTitulo">Situación afectiva/sentimental:</label>
+                        <select id="situacion_sentimental" name="situacion_sentimental" onChange={handleChangeNoSociosanitario}>
+                          <option value="" disabled selected>Selecciona una opción</option>
+                          <option value="soltere">Soltere</option>
+                          <option value="en_pareja">En pareja</option>
+                          <option value="casade">Casade</option>
+                          <option value="divorciade">Divorciade</option>
+                          <option value="viude">Viude</option>
+                          <option value="otro">Otro</option>
+                        </select>
+                        {errors.situacion_sentimental && <span className="error">{errors.situacion_sentimental}</span>}
+                      </div>
 
-                <div>
-                  <label htmlFor="nivel_estudios" className="labelTitulo">Nivel de estudios:</label>
-                  <select id="nivel_estudios" name="nivel_estudios" onChange={handleChangeNoSociosanitario}>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="primarios">Primarios</option>
-                    <option value="secundarios">Secundarios</option>
-                    <option value="tecnicos">Técnicos</option>
-                    <option value="universitarios">Universitarios</option>
-                    <option value="postgrado">Postgrado</option>
-                    <option value="otro">Otro</option>
-                  </select>
-                  {errors.nivel_estudios && <span className="error">{errors.nivel_estudios}</span>}
-                </div>
+                      <div>
+                        <label htmlFor="nivel_estudios" className="labelTitulo">Nivel de estudios:</label>
+                        <select id="nivel_estudios" name="nivel_estudios" onChange={handleChangeNoSociosanitario}>
+                          <option value="" disabled selected>Selecciona una opción</option>
+                          <option value="primarios">Primarios</option>
+                          <option value="secundarios">Secundarios</option>
+                          <option value="tecnicos">Técnicos</option>
+                          <option value="universitarios">Universitarios</option>
+                          <option value="postgrado">Postgrado</option>
+                          <option value="otro">Otro</option>
+                        </select>
+                        {errors.nivel_estudios && <span className="error">{errors.nivel_estudios}</span>}
+                      </div>
 
-                <div>
-                  <label htmlFor="nacionalidad" className="labelTitulo">Nacionalidad:</label>
-                  <select id="nacionalidad" name="nacionalidad" onChange={handleChangeNoSociosanitario}>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    {nacionalidades.map((nacionalidad, index) => {
-                      return <option key={index} value={nacionalidad}>{nacionalidad}</option>
-                    })}
+                      <div>
+                        <label htmlFor="nacionalidad" className="labelTitulo">Nacionalidad:</label>
+                        <select id="nacionalidad" name="nacionalidad" onChange={handleChangeNoSociosanitario}>
+                          <option value="" disabled selected>Selecciona una opción</option>
+                          {nacionalidades.map((nacionalidad, index) => {
+                            return <option key={index} value={nacionalidad}>{nacionalidad}</option>
+                          })}
 
-                  </select>
-                </div>
+                        </select>
+                      </div>
 
-                <div>
-                  <label htmlFor="provincia" className="labelTitulo">Provincia:</label>
-                  <select id="provincia" name="provincia" onChange={handleChangeNoSociosanitario}>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    {provincias.map((provincia, index) => {
-                      return <option key={index} value={provincia}>{provincia}</option>
-                    })}
+                      <div>
+                        <label htmlFor="provincia" className="labelTitulo">Provincia:</label>
+                        <select id="provincia" name="provincia" onChange={handleChangeNoSociosanitario}>
+                          <option value="" disabled selected>Selecciona una opción</option>
+                          {provincias.map((provincia, index) => {
+                            return <option key={index} value={provincia}>{provincia}</option>
+                          })}
 
-                  </select>
-                </div>
+                        </select>
+                      </div>
 
-                <div>
-                  <label className="labelTitulo">¿Vives en España?:</label>
-                  <div>
-                    <input type="radio" id="vive_si" name="vive_espana" value="si" onChange={handleChangeNoSociosanitario} />
-                    <label htmlFor="vive_si">Sí</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="vive_no" name="vive_espana" value="no" onChange={handleChangeNoSociosanitario} />
-                    <label htmlFor="vive_no">No</label>
-                  </div>
-                  {errors.vive_espana && <span className="error">{errors.vive_espana}</span>}
-                </div>
+                      <div>
+                        <label className="labelTitulo">¿Vives en España?:</label>
+                        <div>
+                          <input type="radio" id="vive_si" name="vive_espana" value="si" onChange={handleChangeNoSociosanitario} />
+                          <label htmlFor="vive_si">Sí</label>
+                        </div>
+                        <div>
+                          <input type="radio" id="vive_no" name="vive_espana" value="no" onChange={handleChangeNoSociosanitario} />
+                          <label htmlFor="vive_no">No</label>
+                        </div>
+                        {errors.vive_espana && <span className="error">{errors.vive_espana}</span>}
+                      </div>
 
-                <div>
-                  <label className="labelTitulo">¿Tienes permiso de residencia en España?:</label>
-                  <div>
-                    <input type="radio" id="permiso_si" name="permiso_residencia" value="si" onChange={handleChangeNoSociosanitario} />
-                    <label htmlFor="permiso_si">Sí</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="permiso_no" name="permiso_residencia" value="no" onChange={handleChangeNoSociosanitario} />
-                    <label htmlFor="permiso_no">No</label>
-                  </div>
-                  {errors.permiso_residencia && <span className="error">{errors.permiso_residencia}</span>}
-                </div>
+                      <div>
+                        <label className="labelTitulo">¿Tienes permiso de residencia en España?:</label>
+                        <div>
+                          <input type="radio" id="permiso_si" name="permiso_residencia" value="si" onChange={handleChangeNoSociosanitario} />
+                          <label htmlFor="permiso_si">Sí</label>
+                        </div>
+                        <div>
+                          <input type="radio" id="permiso_no" name="permiso_residencia" value="no" onChange={handleChangeNoSociosanitario} />
+                          <label htmlFor="permiso_no">No</label>
+                        </div>
+                        {errors.permiso_residencia && <span className="error">{errors.permiso_residencia}</span>}
+                      </div>
 
 
-              </article>
+                    </article>
+                  </section>
+                  <section id="btnNoSocio">
 
-            </form>
-            {noSociosanitarioValues.edad >= 14 &&
-              noSociosanitarioValues.edad <= 100 &&
-              noSociosanitarioValues.pronombres &&
-              noSociosanitarioValues.genero &&
-              noSociosanitarioValues.orientacion &&
-              noSociosanitarioValues.permiso_residencia &&
-              noSociosanitarioValues.vive_espana &&
-              noSociosanitarioValues.permiso_residencia &&
-              noSociosanitarioValues.nivel_estudios &&
-              noSociosanitarioValues.situacion_sentimental &&
-              noSociosanitarioValues.provincia
-              ? (
-                <button onClick={handleSubmit}>ABRIR CHATBOT</button>
-              ) : (
-                <button className="buttonDisabled">ABRIR CHATBOT</button>
-              )}
+
+                    {noSociosanitarioValues.edad >= 14 &&
+                      noSociosanitarioValues.edad <= 100 &&
+                      noSociosanitarioValues.pronombres &&
+                      noSociosanitarioValues.genero &&
+                      noSociosanitarioValues.orientacion &&
+                      noSociosanitarioValues.permiso_residencia &&
+                      noSociosanitarioValues.vive_espana &&
+                      noSociosanitarioValues.permiso_residencia &&
+                      noSociosanitarioValues.nivel_estudios &&
+                      noSociosanitarioValues.situacion_sentimental &&
+                      noSociosanitarioValues.provincia
+                      ? (
+                        <button onClick={handleSubmit}>ABRIR CHATBOT</button>
+                      ) : (
+                        <button className="buttonDisabled">ABRIR CHATBOT</button>
+                      )}
+                  </section>
+                </form>
+              </div>
+            </section>
           </>
           : <>
-            <h1>Por favor, rellena los siguientes datos</h1>
-            <form onSubmit={handleSubmit} id="initialForm">
-              <article>
-                <div>
-                  <label htmlFor="provincia" className="labelTitulo">Provincia:</label>
-                  <select id="provincia" name="provincia" onChange={handleChangeSociosanitario}>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    {provincias.map((provincia, index) => {
-                      return <option key={index} value={provincia}>{provincia}</option>
-                    })}
-                  </select>
-                </div>
+            <section id="sectionForm">
+              <div className="formDivSocio">
+                <h1>Por favor, rellena los siguientes datos</h1>
+                <form onSubmit={handleSubmit} id="initialForm">
+                  <article>
+                    <div>
+                      <label htmlFor="provincia" className="labelTitulo">Provincia:</label>
+                      <select id="provincia" name="provincia" onChange={handleChangeSociosanitario}>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        {provincias.map((provincia, index) => {
+                          return <option key={index} value={provincia}>{provincia}</option>
+                        })}
+                      </select>
+                    </div>
 
-                <div>
-                  <label htmlFor="ambito_laboral" className="labelTitulo">Ámbito laboral:</label>
-                  <select id="ambito_laboral" name="ambito_laboral" onChange={handleChangeSociosanitario}>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="centro_de_salud">Centro de Salud</option>
-                    <option value="hospital">Hospital</option>
-                    <option value="centro_comunitario">Centro Comunitario</option>
-                    <option value="consulta_privada">Consulta Privada</option>
-                    <option value="asociacion">Asociación</option>
-                  </select>
-                </div>
-              </article>
-            </form>
-            {sociosanitarioValues.provincia &&
-              sociosanitarioValues.ambito_laboral
-              ? (
-                <button onClick={handleSubmit}>ABRIR CHATBOT</button>
-              ) : (
-                <button className="buttonDisabled">ABRIR CHATBOT</button>
-              )}
+                    <div>
+                      <label htmlFor="ambito_laboral" className="labelTitulo">Ámbito laboral:</label>
+                      <select id="ambito_laboral" name="ambito_laboral" onChange={handleChangeSociosanitario}>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="centro_de_salud">Centro de Salud</option>
+                        <option value="hospital">Hospital</option>
+                        <option value="centro_comunitario">Centro Comunitario</option>
+                        <option value="consulta_privada">Consulta Privada</option>
+                        <option value="asociacion">Asociación</option>
+                      </select>
+                    </div>
+                  </article>
+
+                  {sociosanitarioValues.provincia &&
+                    sociosanitarioValues.ambito_laboral
+                    ? (
+                      <button onClick={handleSubmit}>ABRIR CHATBOT</button>
+                    ) : (
+                      <button className="buttonDisabled">ABRIR CHATBOT</button>
+                    )}
+                </form>
+              </div>
+            </section>
           </>
         }
       </section>
