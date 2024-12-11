@@ -21,7 +21,7 @@
     // };
 
     return (
-      <section>
+      <section id="FormBot">
         {!isSubmitted ? (
           // Muestra el formulario
           <Formulario updateIsSubmitted = {updateIsSubmitted} updateUserType = {updateUserType} userType={userType}/>
