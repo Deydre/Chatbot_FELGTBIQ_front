@@ -4,10 +4,12 @@ import { ThemeProvider } from "styled-components";
 import "../../../../styles/components/_Chatbot.scss"; // Estilos del chatbot
 import avatar from "../../../../assets/avatar.png";
 import { context } from '../../../../context/context';
+import { ColorRing } from 'react-loader-spinner'; 
 import { IoIosArrowBack } from "react-icons/io";
 import CustomFinalResponse from "../CustomFinalResponse/CustomFinalResponse"; // Importa el nuevo componente
 
-const Chatbot = ({ userType, updateIsSubmitted }) => {
+
+const Chatbot = ({ apiEndpoint, userType }) => {
   const { userId } = useContext(context);
   const [steps, setSteps] = useState([]); 
   const [loading, setLoading] = useState(true); 
@@ -28,7 +30,7 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
   useEffect(() => {
     const fetchSteps = async () => {
       try {
-
+        
         // Pasos No Sociosanitario
         const stepsDataNoSociosanitario = [
           {
@@ -55,13 +57,13 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
             options: [
               { value: "Hace menos de 6 meses", label: "Hace menos de 6 meses", trigger: "5" },
               { value: "Entre 6 meses y 1 año", label: "Entre 6 meses y 1 año", trigger: "5" },
-              { value: "Hace menos de 1 año", label: "Hace menos de 1 año", trigger: "5" },
+              { value: "Hace menos de 1 año", label: "Hace menos de 1 año", trigger: "5" },  
             ],
           },
           {
             id: "5",
             message: "¿Estás en tratamiento tar?",
-            trigger: "6",
+            trigger: "6", 
           },
           {
             id: "6",
@@ -74,7 +76,7 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "7",
             message: "¿Has compartido tu diagnóstico con alguien?",
-            trigger: "8",
+            trigger: "8", 
           },
           {
             id: "8",
@@ -92,46 +94,46 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "9",
             message: "¿Tienes acceso a recursos locales o grupos de apoyo?",
-            trigger: "10",
+            trigger: "10", 
           },
           {
             id: "10",
             options: [
-              { value: "Sí", label: "Sí", trigger: "11" },
-              { value: "No", label: "No", trigger: "11" },
+              { value: "Sí", label: "Sí",   trigger: "11"},
+              { value: "No", label: "No",   trigger: "11" },
             ],
           },
           {
             id: "11",
             message: "¿Tienes acceso a personal sanitario?",
-            trigger: "12",
+            trigger: "12", 
           },
           {
             id: "12",
             options: [
-              { value: "Sí", label: "Sí", trigger: "31" },
-              { value: "No", label: "No", trigger: "31" },
+              { value: "Sí", label: "Sí", trigger:"31"},
+              { value: "No", label: "No", trigger:"31"},     
             ],
           },
           {
-            id: "31",
-            message: "¿Quieres más información sobre algún tema?",
-            trigger: "32",
-          },
-          {
-            id: "32",
-            options: [
-              { value: "Opciones de tratamiento", label: "Opciones de tratamiento", trigger: "dynamicResponse" },
-              { value: "Apoyo psicológico", label: "Apoyo psicológico", trigger: "dynamicResponse" },
-              { value: "Derechos laborales y legales", label: "Derechos laborales y legales", trigger: "dynamicResponse" },
-              { value: "Grupos de apoyo", label: "Grupos de apoyo", trigger: "dynamicResponse" },
-              { value: "Prevención de transmisión", label: "Prevención de transmisión", trigger: "dynamicResponse" },
-            ],
-          },
+              id: "31",
+              message: "¿Quieres más información sobre algún tema?",
+              trigger: "32", 
+            },
+            {
+              id: "32",
+              options: [
+                { value: "Opciones de tratamiento", label: "Opciones de tratamiento", trigger: "dynamicResponse"},
+                { value: "Apoyo psicológico", label: "Apoyo psicológico", trigger: "dynamicResponse" },
+                { value: "Derechos laborales y legales", label: "Derechos laborales y legales", trigger: "dynamicResponse" },
+                { value: "Grupos de apoyo", label: "Grupos de apoyo", trigger: "dynamicResponse" },
+                { value: "Prevención de transmisión", label: "Prevención de transmisión", trigger: "dynamicResponse" },
+              ],
+            },
           {
             id: "13",
             message: "¿Cuándo ocurrió la posible infección?",
-            trigger: "14",
+            trigger: "14", 
           },
           {
             id: "14",
@@ -143,7 +145,7 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "15",
             message: "¿Tienes acceso a personal sanitario?",
-            trigger: "16",
+            trigger: "16", 
           },
           {
             id: "16",
@@ -155,21 +157,21 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "17",
             message: "¿Qué tipo de exposición fue?",
-            trigger: "18",
+            trigger: "18", 
           },
           {
             id: "18",
             options: [
-              { value: "No estoy segure", label: "No estoy segure", trigger: "19" },
-              { value: "Relación sexual", label: "Relación sexual", trigger: "19" },
-              { value: "Aguja compartida", label: "Aguja compartida", trigger: "19" },
-              { value: "Contacto con fluidos corporales (sangre, lactancia natural, ...)", label: "Contacto con fluidos corporales (sangre, lactancia natural, ...)", trigger: "19" },
+              { value: "No estoy segure", label: "No estoy segure",  trigger: "19" },
+              { value: "Relación sexual", label: "Relación sexual",  trigger: "19" },
+              { value: "Aguja compartida", label: "Aguja compartida",  trigger: "19" },
+              { value: "Contacto con fluidos corporales (sangre, lactancia natural, ...)",  trigger: "19" },
             ],
           },
           {
             id: "19",
             message: "¿Ha sido en un entorno de 'chem-sex'?",
-            trigger: "20",
+            trigger: "20", 
           },
           {
             id: "20",
@@ -181,19 +183,19 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "21",
             message: "¿Sabes qué es la PEP?",
-            trigger: "22",
+            trigger: "22", 
           },
           {
             id: "22",
             options: [
-              { value: "Sí, quiero más información", label: "Sí, quiero más información", trigger: "23" },
-              { value: "No, ¿qué es?", label: "No, qué es?", trigger: "23" },
+              { value: "Sí, quiero más información", label: "Sí, quiero más información",  trigger: "23" },
+              { value: "No, ¿qué es?", label: "No, qué es?",  trigger: "23" },
             ],
           },
-          {
+          { 
             id: "23",
             message: "¿Has compartido tu preocupación con alguien?",
-            trigger: "24",
+            trigger: "24", 
           },
           {
             id: "24",
@@ -211,40 +213,40 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "25",
             message: "¿Necesitas recursos de referencia?",
-            trigger: "26",
+            trigger: "26", 
           },
           {
             id: "26",
             options: [
-              { value: "¿Qué es el vih/sida?", label: "¿Qué es el vih/sida?", trigger: "dynamicResponse" },
-              { value: "Formas de transmisión", label: "Formas de transmisión", trigger: "dynamicResponse" },
+              { value: "¿Qué es el vih/sida?", label: "¿Qué es el vih/sida?",  trigger: "dynamicResponse" },
+              { value: "Formas de transmisión", label: "Formas de transmisión",  trigger: "dynamicResponse" },
               { value: "Métodos de prevención", label: "Métodos de prevención", trigger: "dynamicResponse" },
-              { value: "Impacto del tratamiento", label: "Impacto del tratamiento", trigger: "dynamicResponse" },
-              { value: "Historia del vih", label: "Historia del vih", trigger: "dynamicResponse" },
+              { value: "Impacto del tratamiento", label: "Impacto del tratamiento",  trigger: "dynamicResponse" },
+              { value: "Historia del vih", label: "Historia del vih",  trigger: "dynamicResponse" },
             ],
           },
           {
             id: "27",
             message: "¿Tiene acceso a recursos locales o grupos de apoyo?",
-            trigger: "28",
+            trigger: "28", 
           },
           {
             id: "28",
             options: [
-              { value: "Sí", label: "Sí", trigger: "29" },
-              { value: "No", label: "No", trigger: "29" },
+              { value: "Sí", label: "Sí",  trigger: "29" },
+              { value: "No", label: "No",  trigger: "29" },
             ],
           },
           {
             id: "29",
             message: "¿Has compartido tu preocupación sobre esta persona con alguien?",
-            trigger: "30",
+            trigger: "30", 
           },
           {
             id: "30",
             options: [
               { value: "Une amigue", label: "Une amigue", trigger: "dynamicResponse" },
-              { value: "Algún familiar", label: "Algún familiar", trigger: "dynamicResponse" },
+              { value: "Alguien de mi familia", label: "Alguien de mi familia", trigger: "dynamicResponse" },
               { value: "Mi pareja en ese momento", label: "Mi pareja en ese momento", trigger: "dynamicResponse" },
               { value: "Compañere de trabajo", label: "Compañere de trabajo", trigger: "dynamicResponse" },
               { value: "Con mi superior del trabajo", label: "Con mi superior del trabajo", trigger: "dynamicResponse" },
@@ -298,22 +300,22 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "5",
             message: "¿Qué necesitas?",
-            trigger: "6",
+            trigger: "6", 
           },
           {
             id: "6",
             options: [
               { value: "Acceso a medicamentos y servicios", label: "Acceso a medicamentos y servicios", trigger: "dynamicResponse" },
-              { value: "Recursos legales y derechos", label: "Recursos legales y derechos", trigger: "dynamicResponse" },
-              { value: "Apoyo a personas en situación de vulnerabilidad", label: "Apoyo a personas en situación de vulnerabilidad", trigger: "dynamicResponse" },
-              { value: "Conexión con grupos de apoyo comunitario", label: "Conexión con grupos de apoyo comunitario", trigger: "dynamicResponse" },
-              { value: "Información sobre redes de servicios sociales", label: "Información sobre redes de servicios sociales", trigger: "dynamicResponse" },
+              { value: "Recursos legales y derechos", label: "Recursos legales y derechos", trigger: "dynamicResponse"  },
+              { value: "Apoyo a personas en situación de vulnerabilidad", label: "Apoyo a personas en situación de vulnerabilidad", trigger: "dynamicResponse"  },
+              { value: "Conexión con grupos de apoyo comunitario", label: "Conexión con grupos de apoyo comunitario", trigger: "dynamicResponse"  },
+              { value: "Información sobre redes de servicios sociales", label: "Información sobre redes de servicios sociales", trigger: "dynamicResponse"},
             ],
           },
           {
             id: "7",
             message: "¿Qué necesitas?",
-            trigger: "8",
+            trigger: "8", 
           },
           {
             id: "8",
@@ -328,12 +330,12 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "9",
             message: "¿Qué necesitas?",
-            trigger: "10",
+            trigger: "10", 
           },
           {
             id: "10",
             options: [
-              { value: "Material educativo sobre vih", label: "Material educativo sobre vih", trigger: "dynamicResponse" },
+              { value: "Material educativo sobre vih", label: "Material educativo sobre vih", trigger: "dynamicResponse"},
               { value: "Capacitación en prevención", label: "Capacitación en prevención", trigger: "dynamicResponse" },
               { value: "Métodos para combatir el estigma", label: "Métodos para combatir el estigma", trigger: "dynamicResponse" },
               { value: "Recursos para sensibilización", label: "Recursos para sensibilización", trigger: "dynamicResponse" },
@@ -343,7 +345,7 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "11",
             message: "¿Qué necesitas?",
-            trigger: "12",
+            trigger: "12", 
           },
           {
             id: "12",
@@ -352,7 +354,7 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
               { value: "Información básica sobre vih", label: "Información básica sobre vih", trigger: "dynamicResponse" },
               { value: "Consejos para apoyar emocionalmente", label: "Consejos para apoyar emocionalmente", trigger: "dynamicResponse" },
               { value: "Recursos legales y sociales para personas seropositivas", label: "Recursos legales y sociales para personas seropositivas", trigger: "dynamicResponse" },
-              { value: "Métodos de autocuidado para quien cuida", label: "Métodos de autocuidado para quien cuida", trigger: "dynamicResponse" },
+              { value: "Métodos de autocuidado para quien cuida", label: "Métodos de autocuidado para quien cuida", trigger: "dynamicResponse" },         
             ],
           },
           {
@@ -380,60 +382,34 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
     fetchSteps();
   }, [userType, userId]);
 
-  // Spinner de carga
-  const Spinner = () => (
-    <div className="loader">
-      <style>
-        {`
-          .loader {
-            width: 100px;
-            height: 75px;
-            margin: 0 auto;
-            background: #fff;
-            position: relative;
-            border-radius: 100%;
-          }
-          .loader:before {
-            content: '';
-            position: absolute;
-            box-sizing: border-box;
-            border: 15px solid transparent;
-            border-top: 25px solid #fff;
-            transform: rotate(45deg);
-            top: 50px;
-            left: -15px;
-          }
-          .loader:after {
-            content: '';
-            width: 12px;
-            height: 12px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            background-color: #FF3D00;
-            box-shadow: 20px 0 #FF3D00, -20px 0 #FF3D00;
-            animation: flash 0.5s ease-out infinite alternate;
-          }
-          @keyframes flash {
-            0% {
-              background-color: rgba(255, 60, 0, 0.25);
-              box-shadow: 20px 0 rgba(255, 60, 0, 0.25), -20px 0 #FF3D00;
-            }
-            50% {
-              background-color: #FF3D00;
-              box-shadow: 20px 0 rgba(255, 60, 0, 0.25), -20px 0 rgba(255, 60, 0, 0.25);
-            }
-            100% {
-              background-color: rgba(255, 60, 0, 0.25);
-              box-shadow: 20px 0 #FF3D00, -20px 0 rgba(255, 60, 0, 0.25);
-            }
-          }
-        `}
-      </style>
-    </div>
-  );
+  if (loading) {
+    return <div>
+      <ColorRing
+      visible={true}
+      height="80"
+      width="80"
+      ariaLabel="color-ring-loading"
+      wrapperStyle={{}}
+      wrapperClass="color-ring-wrapper"
+      colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+      />
+    </div>;
+  }
+ 
+//   const handleEnd = async ({ steps, values }) => {
+//     const log = steps.filter((step, index) => [
+//       step.message !== null,
+//       // values[index] || null,
+//     ]).map(step => step.message);
+//     log.unshift(userId);
+//     const logFormated = formatToDataObject(log);
+//     setConversationLog(logFormated);
+//     console.log(logFormated)
+
+//     userType === "sociosanitario" ? await sendChatBotSociosanitarioData(log) : await sendChatBotNoSociosanitarioData(log)
+    
+//   };
+
 
   const handleAtras = (e) => {
     updateIsSubmitted(false);
