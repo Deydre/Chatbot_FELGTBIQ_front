@@ -450,7 +450,6 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
   const handleEnd = async ({ steps, values }) => {
     const log = steps.filter((step, index) => [
       step.message !== null,
-      // values[index] || null,
     ]).map(step => step.message);
     log.unshift(userId);
     const logFormated = formatToDataObject(log);
