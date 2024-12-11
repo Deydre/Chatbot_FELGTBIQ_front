@@ -84,10 +84,10 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
             id: "8",
             options: [
               { value: "Une amigue", label: "Une amigue", trigger: "9" },
-              { value: "Algún familiar", label: "Algún familiar", trigger: "9" },
+              { value: "Alguien de mi familia", label: "Alguien de mi familia", trigger: "9" },
               { value: "Mi pareja en ese momento", label: "Mi pareja en ese momento", trigger: "9" },
               { value: "Compañere de trabajo", label: "Compañere de trabajo", trigger: "9" },
-              { value: "Con mi jefe", label: "Con mi jefe", trigger: "9" },
+              { value: "Con mi superior del trabajo", label: "Con mi superior del trabajo", trigger: "9" },
               { value: "Personal de ONG", label: "Personal de ONG", trigger: "9" },
               { value: "Expareja", label: "Expareja", trigger: "9" },
               { value: "Nadie", label: "Nadie", trigger: "9" },
@@ -107,8 +107,8 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           },
           {
             id: "11",
-            message: "¿Tienes acceso a un médico?",
-            trigger: "12",
+            message: "¿Tienes acceso a personal sanitario?",
+            trigger: "12", 
           },
           {
             id: "12",
@@ -147,8 +147,8 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           },
           {
             id: "15",
-            message: "¿Tienes acceso a un médico?",
-            trigger: "16",
+            message: "¿Tienes acceso a personal sanitario?",
+            trigger: "16", 
           },
           {
             id: "16",
@@ -166,10 +166,10 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "18",
             options: [
-              { value: "No estoy segure", label: "No estoy segure", trigger: "19" },
-              { value: "Relación sexual", label: "Relación sexual", trigger: "19" },
-              { value: "Aguja compartida", label: "Aguja compartida", trigger: "19" },
-              { value: "Contacto con fluidos corporales (sangre, leche materna, ...)", label: "Contacto con fluidos corporales (sangre, leche materna, ...)", trigger: "19" },
+              { value: "No estoy segure", label: "No estoy segure",  trigger: "19" },
+              { value: "Relación sexual", label: "Relación sexual",  trigger: "19" },
+              { value: "Aguja compartida", label: "Aguja compartida",  trigger: "19" },
+              { value: "Contacto con fluidos corporales (sangre, lactancia natural, ...)", label: "Contacto con fluidos corporales (sangre, lactancia natural, ...)",  trigger: "19" },
             ],
           },
           {
@@ -206,14 +206,14 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
             id: "24",
             options: [
               { value: "Une amigue", label: "Une amigue", "end": true },
-              { value: "Algún familiar", label: "Algún familiar", "end": true },
+              { value: "Alguien de mi familia", label: "Alguien de mi familia", "end": true },
               { value: "Mi pareja en ese momento", label: "Mi pareja en ese momento", "end": true },
               { value: "Compañere de trabajo", label: "Compañere de trabajo", "end": true },
-              { value: "Con mi jefe", label: "Con mi jefe", "end": true },
+              { value: "Con mi superior del trabajo", label: "Con mi superior del trabajo", "end": true },
               { value: "Personal de ONG", label: "Personal de ONG", "end": true },
               { value: "Expareja", label: "Expareja", "end": true },
               { value: "Nadie", label: "Nadie", "end": true },
-              { value: "La persona que me preocupa", label: "La persona que me preocupa", "end": true },
+              // { value: "La persona que me preocupa", label: "La persona que me preocupa", "end": true },
             ],
           },
           {
@@ -255,11 +255,11 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
               { value: "Algún familiar", label: "Algún familiar", "end": true },
               { value: "Mi pareja en ese momento", label: "Mi pareja en ese momento", "end": true },
               { value: "Compañere de trabajo", label: "Compañere de trabajo", "end": true },
-              { value: "Con mi jefe", label: "Con mi jefe", "end": true },
+              { value: "Con mi superior del trabajo", label: "Con mi superior del trabajo", "end": true},
               { value: "Personal de ONG", label: "Personal de ONG", "end": true },
               { value: "Expareja", label: "Expareja", "end": true },
               { value: "Nadie", label: "Nadie", "end": true },
-              { value: "La persona que me preocupa", label: "La persona que me preocupa", "end": true },
+              // { value: "La persona que me preocupa", label: "La persona que me preocupa", "end": true },
             ],
           },
 
@@ -276,31 +276,31 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
             id: "2",
             options: [
               { value: "Personal sanitario", label: "Personal sanitario", trigger: "3" },
-              { value: "Trabajador social", label: "Trabajador social", trigger: "5" },
-              { value: "Psicólogo", label: "Psicólogo", trigger: "7" },
-              { value: "Educador", label: "Educador", trigger: "9" },
-              { value: "Voluntarios y cuidadores", label: "Voluntarios y cuidadores", trigger: "11" },
+              { value: "Trabajo social", label: "Trabajo social", trigger: "5" },
+              { value: "Psicología", label: "Psicología", trigger: "7" },
+              { value: "Educación", label: "Educación", trigger: "9" },
+              { value: "Voluntariado y cuidados", label: "Voluntariado y cuidados", trigger: "11" },
             ],
           },
           {
             id: "3",
-            message: "¿Qué necesitas como personal sanitario?",
+            message: "¿Qué necesitas?",
             trigger: "4",
           },
           {
             id: "4",
             options: [
-              { value: "Manejo clínico de pacientes con vih", label: "Manejo clínico de pacientes con vih", "end": true },
+              { value: "Manejo clínico de personas con vih", label: "Manejo clínico de personas con vih", "end": true },
               { value: "Protocolo PEP", label: "Protocolo PEP", "end": true },
               { value: "Tratamientos (PREP, TAR)", label: "Tratamientos (PREP, TAR)", "end": true },
               { value: "Prevención de infecciones oportunistas", label: "Prevención de infecciones oportunistas", "end": true },
-              { value: "Consejería para adherencia al tratamiento", label: "Consejería para adherencia al tratamiento", "end": true },
+              { value: "Consejos sobre adherencia al tratamiento", label: "Consejos sobre adherencia al tratamiento", "end": true },
             ],
           },
           {
             id: "5",
-            message: "¿Qué necesitas como trabajador social?",
-            trigger: "6",
+            message: "¿Qué necesitas?",
+            trigger: "6", 
           },
           {
             id: "6",
@@ -314,8 +314,8 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           },
           {
             id: "7",
-            message: "¿Qué necesitas como psicólogo?",
-            trigger: "8",
+            message: "¿Qué necesitas?",
+            trigger: "8", 
           },
           {
             id: "8",
@@ -323,15 +323,14 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
               { value: "Apoyo emocional para personas recién diagnosticadas", label: "Apoyo emocional para personas recién diagnosticadas", "end": true },
               { value: "Intervencón para adherencia al tratamiento", label: "Intervención para adherencia al tratamiento", "end": true },
               { value: "Manejo del estigma y problemas de salud mental", label: "Manejo del estigma y problemas de salud mental", "end": true },
-              { value: "Recursos para pacientes con vih y trastornos psicológicos", label: "Recursos para pacientes con vih y trastornos psicológicos", "end": true },
-              { value: "Consejería en prevención y autocuidado", label: "Consejería en prevención y autocuidado", "end": true },
-
+              { value: "Recursos para personas con vih", label: "Recursos para personas con vih", "end": true  },
+              { value: "Consejos de prevención y autocuidado", label: "Consejos de prevención y autocuidado", "end": true  },
             ],
           },
           {
             id: "9",
-            message: "¿Qué necesitas como educador?",
-            trigger: "10",
+            message: "¿Qué necesitas?",
+            trigger: "10", 
           },
           {
             id: "10",
@@ -345,17 +344,17 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           },
           {
             id: "11",
-            message: "¿Qué necesitas como voluntario y cuidador?",
-            trigger: "12",
+            message: "¿Qué necesitas?",
+            trigger: "12", 
           },
           {
             id: "12",
             options: [
               { value: "Conexión con grupos de apoyo comunitario", label: "Conexión con grupos de apoyo comunitario", "end": true },
-              { value: "Info básica sobre vih", label: "Info básica sobre vih", "end": true },
+              { value: "Información básica sobre vih", label: "Información básica sobre vih", "end": true },
               { value: "Consejos para apoyar emocionalmente", label: "Consejos para apoyar emocionalmente", "end": true },
-              { value: "Recursos legales y sociales para pacientes", label: "Recursos legales y sociales para pacientes", "end": true },
-              { value: "Métodos de autocuidado para cuidadores", label: "Métodos de autocuidado para cuidadores", "end": true },
+              { value: "Recursos legales y sociales para personas seropositivas", label: "Recursos legales y sociales para personas seropositivas", "end": true },
+              { value: "Métodos de autocuidado para quien cuida", label: "Métodos de autocuidado para quien cuida", "end": true },         
             ],
           },
 
