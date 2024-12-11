@@ -1,100 +1,93 @@
-@import "../utils/variables"; // Importamos las variables globales
+@import "../utils/variables";
 
 .chatbot-container {
-  max-width: 400px;
-  margin: 20px auto;
-  border-radius: 10px;
-  background: $white;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  // MOBILE FIRST:
+  // Ocupa el 90% del ancho de la pantalla en móvil, centrado.
+  width: 90%;
+  max-width: 300px; // Un ancho máximo razonable en móviles
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: none; // Sin fondo en móvil
+  box-shadow: none; // Sin sombra en móvil
+  border-radius: 0;
   font-family: "Arial, Helvetica, sans-serif";
+  font-size: 14px;
+  line-height: 1.4em;
+  box-sizing: border-box; // Asegura que padding y border se incluyan en el ancho total
 
   .rsc-header {
     background-color: $primary-color;
     color: $white;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
-    padding: 0.8px, 50px;
-    border-radius: 10px 10px 0 0;
+    padding: 0.5em;
+    border-radius: 0;
     text-align: center;
+  }
+
+  .rsc-content {
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .rsc-bot-bubble, .rsc-user-bubble {
+    border-radius: 6px;
+    font-size: 0.9rem;
+    line-height: 1.4em;
+    padding: 8px 10px;
+    margin: 8px 0;
+    max-width: 95%; 
+    width: auto;
+    white-space: normal;
+    word-break: break-word;
+    box-sizing: border-box;
   }
 
   .rsc-bot-bubble {
     background-color: $primary-color;
-    color: $white !important; // Texto blanco
-    border-radius: 5px;
-    font-size: 1rem;
-    padding: 1px;
-    margin: 10px 10px 10px 50px; // Espaciado para acomodar el avatar
-    position: relative;
+    color: $white !important;
+    margin-left: 0; 
   }
 
   .rsc-user-bubble {
     background-color: $primary-color-soft;
-    color: $secondary-color !important; // Texto oscuro
-    border-radius: 15px;
-    font-size: 0.5rem;
-    padding: 10px;
-    margin: 10px 50px 10px 10px; // Espaciado para acomodar el avatar
-    position: relative;
-  }
-
-  .rsc-avatar {
-    background: $primary-color;
-    color: $white;
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 10px;
-  }
-
-  .rsc-bot-bubble .rsc-avatar {
-    left: -50px; // Coloca el avatar del bot a la izquierda
-  }
-
-  .rsc-user-bubble .rsc-avatar {
-    right: -50px; // Coloca el avatar del usuario a la derecha
+    color: $secondary-color !important;
+    margin-left: auto; 
   }
 
   .rsc-footer {
-    display: flex;
-    align-items: center;
-    background: $input-background;
-    border-top: 1px solid $gray;
-    padding: 10px, 10px;
+    display: none !important;
+  }
 
-    input {
-      flex: 1;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-      background: $white;
-      font-size: 1rem;
-      margin-right: 10px;
+  .rsc-avatar {
+    display: none;
+  }
+
+  // TABLETS (ej: ≥768px): 
+  // Aumentamos ligeramente el ancho máximo para aprovechar pantallas medianas
+  @media (min-width: 768px) {
+    .chatbot-container {
+      max-width: 350px;
+    }
+  }
+
+  // DESKTOPS (ej: ≥1024px):
+  // Añadimos fondo blanco, sombra y bordes redondeados
+  // para un aspecto más refinado en monitores.
+  @media (min-width: 1024px) {
+    .chatbot-container {
+      max-width: 400px;     // Un ancho adecuado en escritorio
+      margin: 20px auto;    // Centrado y con margen superior
+      background: $white;    // Añadimos fondo blanco
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
     }
 
-    input:focus {
-      outline: none;
-      box-shadow: 0px 0px 5px $primary-color;
-    }
-
-    button {
-      border: none;
-      background: $primary-color;
-      color: $white;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: $primary-color-2;
+    .rsc-header {
+      border-radius: 10px 10px 0 0;
+      font-size: 1.1rem;
     }
   }
 }
