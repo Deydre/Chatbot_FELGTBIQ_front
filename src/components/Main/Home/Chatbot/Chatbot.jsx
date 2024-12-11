@@ -5,8 +5,9 @@ import { sendChatBotSociosanitarioData, sendChatBotNoSociosanitarioData } from "
 import "../../../../styles/components/_Chatbot.scss"; // Estilos del chatbot
 import avatar from "../../../../assets/avatar.png";
 import { context } from '../../../../context/context';
+import { IoIosArrowBack } from "react-icons/io";
 
-const Chatbot = ({ apiEndpoint, userType }) => {
+const Chatbot = ({ userType, updateIsSubmitted }) => {
   const { userId } = useContext(context);
   const [steps, setSteps] = useState([]); // Preguntas del chatbot
   const [loading, setLoading] = useState(true); // Estado de carga
@@ -29,7 +30,7 @@ const Chatbot = ({ apiEndpoint, userType }) => {
   useEffect(() => {
     const fetchSteps = async () => {
       try {
-        
+
         // Pasos No Sociosanitario
         const stepsDataNoSociosanitario = [
           {
@@ -44,7 +45,7 @@ const Chatbot = ({ apiEndpoint, userType }) => {
               { value: "Creo que me he expuesto al virus", label: "Creo que me he expuesto al virus", trigger: "13" },
               { value: "Quiero saber más sobre el vih/sida", label: "Quiero saber más sobre el vih/sida", trigger: "25" },
               { value: "Estoy apoyando a una persona seropositiva", label: "Estoy apoyando a una persona seropositiva", trigger: "27" },
-            
+
             ],
           },
           {
@@ -57,27 +58,27 @@ const Chatbot = ({ apiEndpoint, userType }) => {
             options: [
               { value: "Hace menos de 6 meses", label: "Hace menos de 6 meses", trigger: "5" },
               { value: "Entre 6 meses y 1 año", label: "Entre 6 meses y 1 año", trigger: "5" },
-              { value: "Hace menos de 1 año", label: "Hace menos de 1 año", trigger: "5" },  
+              { value: "Hace menos de 1 año", label: "Hace menos de 1 año", trigger: "5" },
             ],
           },
           {
             id: "5",
             message: "¿Estás en tratamiento tar?",
-            trigger: "6", 
+            trigger: "6",
           },
           {
             id: "6",
             options: [
               { value: "Sí", label: "Sí", trigger: "7" },
-              { value: "No", label: "No", trigger: "7",   },
-              { value: "No estoy segure", label: "No estoy segure", trigger: "7",  },
-              
+              { value: "No", label: "No", trigger: "7", },
+              { value: "No estoy segure", label: "No estoy segure", trigger: "7", },
+
             ],
           },
           {
             id: "7",
             message: "¿Has compartido tu diagnóstico con alguien?",
-            trigger: "8", 
+            trigger: "8",
           },
           {
             id: "8",
@@ -95,13 +96,13 @@ const Chatbot = ({ apiEndpoint, userType }) => {
           {
             id: "9",
             message: "¿Tienes acceso a recursos locales o grupos de apoyo?",
-            trigger: "10", 
+            trigger: "10",
           },
           {
             id: "10",
             options: [
-              { value: "Sí", label: "Sí",   trigger: "11"},
-              { value: "No", label: "No",   trigger: "11" },
+              { value: "Sí", label: "Sí", trigger: "11" },
+              { value: "No", label: "No", trigger: "11" },
             ],
           },
           {
@@ -112,36 +113,36 @@ const Chatbot = ({ apiEndpoint, userType }) => {
           {
             id: "12",
             options: [
-              { value: "Sí", label: "Sí", trigger:"31"},
-              { value: "No", label: "No", trigger:"31"},     
+              { value: "Sí", label: "Sí", trigger: "31" },
+              { value: "No", label: "No", trigger: "31" },
             ],
           },
           {
-              id: "31",
-              message: "¿Quieres más información sobre algún tema?",
-              trigger: "32", 
-            },
-            {
-              id: "32",
-              options: [
-                { value: "Opciones de tratamiento", label: "Opciones de tratamiento", "end": true },
-                { value: "Apoyo psicológico", label: "Apoyo psicológico", "end": true },
-                { value: "Derechos laborales y legales", label: "Derechos laborales y legales", "end": true },
-                { value: "Grupos de apoyo", label: "Grupos de apoyo", "end": true },
-                { value: "Prevención de transmisión", label: "Prevención de transmisión", "end": true },
-              ],
-            },
+            id: "31",
+            message: "¿Quieres más información sobre algún tema?",
+            trigger: "32",
+          },
+          {
+            id: "32",
+            options: [
+              { value: "Opciones de tratamiento", label: "Opciones de tratamiento", "end": true },
+              { value: "Apoyo psicológico", label: "Apoyo psicológico", "end": true },
+              { value: "Derechos laborales y legales", label: "Derechos laborales y legales", "end": true },
+              { value: "Grupos de apoyo", label: "Grupos de apoyo", "end": true },
+              { value: "Prevención de transmisión", label: "Prevención de transmisión", "end": true },
+            ],
+          },
           {
             id: "13",
             message: "¿Cuándo ocurrió la posible infección?",
-            trigger: "14", 
+            trigger: "14",
           },
           {
             id: "14",
             options: [
-              { value: "Últimas 72 horas", label: "Últimas 72 horas",  trigger: "15" },
-              { value: "Hace más de 72 horas", label: "Hace más de 72 horas",  trigger: "15" },
-                   
+              { value: "Últimas 72 horas", label: "Últimas 72 horas", trigger: "15" },
+              { value: "Hace más de 72 horas", label: "Hace más de 72 horas", trigger: "15" },
+
             ],
           },
           {
@@ -152,15 +153,15 @@ const Chatbot = ({ apiEndpoint, userType }) => {
           {
             id: "16",
             options: [
-              { value: "Sí", label: "Sí",  trigger: "17" },
-              { value: "No", label: "No",  trigger: "17" },
-                   
+              { value: "Sí", label: "Sí", trigger: "17" },
+              { value: "No", label: "No", trigger: "17" },
+
             ],
           },
           {
             id: "17",
             message: "¿Qué tipo de exposición fue?",
-            trigger: "18", 
+            trigger: "18",
           },
           {
             id: "18",
@@ -174,32 +175,32 @@ const Chatbot = ({ apiEndpoint, userType }) => {
           {
             id: "19",
             message: "¿Ha sido en un entorno de 'chem-sex'?",
-            trigger: "20", 
+            trigger: "20",
           },
           {
             id: "20",
             options: [
-              { value: "Sí", label: "Sí",  trigger: "21" },
-              { value: "No", label: "No",  trigger: "21" },
-              
+              { value: "Sí", label: "Sí", trigger: "21" },
+              { value: "No", label: "No", trigger: "21" },
+
             ],
           },
           {
             id: "21",
             message: "¿Sabes qué es la PEP?",
-            trigger: "22", 
+            trigger: "22",
           },
           {
             id: "22",
             options: [
-              { value: "Sí, quiero más información", label: "Sí, quiero más información",  trigger: "23" },
-              { value: "No, ¿qué es?", label: "No, qué es?",  trigger: "23" },
+              { value: "Sí, quiero más información", label: "Sí, quiero más información", trigger: "23" },
+              { value: "No, ¿qué es?", label: "No, qué es?", trigger: "23" },
             ],
           },
-          { 
+          {
             id: "23",
             message: "¿Has compartido tu preocupación con alguien?",
-            trigger: "24", 
+            trigger: "24",
           },
           {
             id: "24",
@@ -218,39 +219,39 @@ const Chatbot = ({ apiEndpoint, userType }) => {
           {
             id: "25",
             message: "¿Necesitas recursos de referencia?",
-            trigger: "26", 
+            trigger: "26",
           },
           {
             id: "26",
             options: [
-              { value: "¿Qué es el vih/sida?", label: "¿Qué es el vih/sida?",  "end": true },
-              { value: "Formas de transmisión", label: "Formas de transmisión",  "end": true },
-              { value: "Métodos de prevención", label: "Métodos de prevención",  "end": true },
-              { value: "Impacto del tratamiento", label: "Impacto del tratamiento",  "end": true },
-              { value: "Historia del vih", label: "Historia del vih",  "end": true },
+              { value: "¿Qué es el vih/sida?", label: "¿Qué es el vih/sida?", "end": true },
+              { value: "Formas de transmisión", label: "Formas de transmisión", "end": true },
+              { value: "Métodos de prevención", label: "Métodos de prevención", "end": true },
+              { value: "Impacto del tratamiento", label: "Impacto del tratamiento", "end": true },
+              { value: "Historia del vih", label: "Historia del vih", "end": true },
             ],
           },
           {
             id: "27",
             message: "¿Tiene acceso a recursos locales o grupos de apoyo?",
-            trigger: "28", 
+            trigger: "28",
           },
           {
             id: "28",
             options: [
-              { value: "Sí", label: "Sí",  trigger: "29" },
-              { value: "No", label: "No",  trigger: "29" },
+              { value: "Sí", label: "Sí", trigger: "29" },
+              { value: "No", label: "No", trigger: "29" },
             ],
           },
           {
             id: "29",
             message: "¿Has compartido tu preocupación sobre esta persona con alguien?",
-            trigger: "30", 
+            trigger: "30",
           },
           {
             id: "30",
             options: [
-              { value: "Une amigue", label: "Une amigue", "end": true},
+              { value: "Une amigue", label: "Une amigue", "end": true },
               { value: "Algún familiar", label: "Algún familiar", "end": true },
               { value: "Mi pareja en ese momento", label: "Mi pareja en ese momento", "end": true },
               { value: "Compañere de trabajo", label: "Compañere de trabajo", "end": true },
@@ -261,7 +262,7 @@ const Chatbot = ({ apiEndpoint, userType }) => {
               // { value: "La persona que me preocupa", label: "La persona que me preocupa", "end": true },
             ],
           },
-      
+
         ];
 
         // Pasos Sociosanitario
@@ -304,11 +305,11 @@ const Chatbot = ({ apiEndpoint, userType }) => {
           {
             id: "6",
             options: [
-              { value: "Acceso a medicamentos y servicios", label: "Acceso a medicamentos y servicios", "end": true  },
-              { value: "Recursos legales y derechos", label: "Recursos legales y derechos", "end": true  },
-              { value: "Apoyo a personas en situación de vulnerabilidad", label: "Apoyo a personas en situación de vulnerabilidad", "end": true  },
-              { value: "Conexión con grupos de apoyo comunitario", label: "Conexión con grupos de apoyo comunitario","end": true  },
-              { value: "Información sobre redes de servicios sociales", label: "Información sobre redes de servicios sociales","end": true  },
+              { value: "Acceso a medicamentos y servicios", label: "Acceso a medicamentos y servicios", "end": true },
+              { value: "Recursos legales y derechos", label: "Recursos legales y derechos", "end": true },
+              { value: "Apoyo a personas en situación de vulnerabilidad", label: "Apoyo a personas en situación de vulnerabilidad", "end": true },
+              { value: "Conexión con grupos de apoyo comunitario", label: "Conexión con grupos de apoyo comunitario", "end": true },
+              { value: "Información sobre redes de servicios sociales", label: "Información sobre redes de servicios sociales", "end": true },
             ],
           },
           {
@@ -319,12 +320,11 @@ const Chatbot = ({ apiEndpoint, userType }) => {
           {
             id: "8",
             options: [
-              { value: "Apoyo emocional para personas recién diagnosticadas", label: "Apoyo emocional para personas recién diagnosticadas", "end": true  },
+              { value: "Apoyo emocional para personas recién diagnosticadas", label: "Apoyo emocional para personas recién diagnosticadas", "end": true },
               { value: "Intervencón para adherencia al tratamiento", label: "Intervención para adherencia al tratamiento", "end": true },
               { value: "Manejo del estigma y problemas de salud mental", label: "Manejo del estigma y problemas de salud mental", "end": true },
               { value: "Recursos para personas con vih", label: "Recursos para personas con vih", "end": true  },
               { value: "Consejos de prevención y autocuidado", label: "Consejos de prevención y autocuidado", "end": true  },
-      
             ],
           },
           {
@@ -357,7 +357,7 @@ const Chatbot = ({ apiEndpoint, userType }) => {
               { value: "Métodos de autocuidado para quien cuida", label: "Métodos de autocuidado para quien cuida", "end": true },         
             ],
           },
-      
+
         ];
 
         if (userType === 'sociosanitario') {
@@ -377,8 +377,8 @@ const Chatbot = ({ apiEndpoint, userType }) => {
   }, [userType]);
 
 
-   // Spinner de carga
-   const Spinner = () => (
+  // Spinner de carga
+  const Spinner = () => (
     <div className="loader">
       <style>
         {`
@@ -433,11 +433,11 @@ const Chatbot = ({ apiEndpoint, userType }) => {
   );
 
   const handleClickBot = (e) => {
-   console.log(e.target)
+    console.log(e.target)
   };
 
   if (loading) return <Spinner />; // Muestra el spinner mientras carga
-  
+
   function formatToDataObject(array) {
     return { data: array };
   }
@@ -453,30 +453,41 @@ const Chatbot = ({ apiEndpoint, userType }) => {
     console.log(logFormated)
 
     userType === "sociosanitario" ? await sendChatBotSociosanitarioData(log) : await sendChatBotNoSociosanitarioData(log)
-    
+
   };
 
   if (loading) return <HeartSpinner />;
-  
+
   if (error) return <div>{error}</div>;
 
+  // ATRÁS BUTTON
+  const handleAtras = (e) => {
+    updateIsSubmitted(false);
+  };
+
+
   return (
-    <ThemeProvider theme={theme}>
-      <div className="chatbot-container">
-        <ChatBot
-          steps={steps}
-          handleEnd={handleEnd}
-          botAvatar={avatar}
-          userAvatar={avatar}
-          style={{
-            width: "400px",
-            borderRadius: "10px",
-            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-            backgroundColor: "#f5f8fb",
-          }}
-        />
-      </div>
-    </ThemeProvider>
+    <section>
+      <article id="back" onClick={handleAtras}>
+        <button><IoIosArrowBack className="iconBack" />Inicio</button>
+      </article>
+      <ThemeProvider theme={theme}>
+        <div className="chatbot-container">
+          <ChatBot
+            steps={steps}
+            handleEnd={handleEnd}
+            botAvatar={avatar}
+            userAvatar={avatar}
+            style={{
+              width: "400px",
+              borderRadius: "10px",
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+              backgroundColor: "#f5f8fb",
+            }}
+          />
+        </div>
+      </ThemeProvider>
+    </section>
   );
 };
 
