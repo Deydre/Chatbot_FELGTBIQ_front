@@ -11,9 +11,9 @@ import CustomFinalResponse from "../CustomFinalResponse/CustomFinalResponse"; //
 
 const Chatbot = ({ apiEndpoint, userType }) => {
   const { userId } = useContext(context);
-  const [steps, setSteps] = useState([]); 
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null); 
+  const [steps, setSteps] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // Tema personalizado del chatbot
   const theme = {
@@ -36,7 +36,7 @@ const Chatbot = ({ apiEndpoint, userType }) => {
           {
             id: "1",
             message: "¿Cuál es tu situación?",
-            trigger: "2", 
+            trigger: "2",
           },
           {
             id: "2",
@@ -371,7 +371,7 @@ const Chatbot = ({ apiEndpoint, userType }) => {
         } else {
           setSteps(stepsDataNoSociosanitario);
         }
-        setLoading(false); 
+        setLoading(false);
       } catch (err) {
         console.error("Error al cargar las preguntas del chatbot:", err);
         setError("No se pudieron cargar las preguntas del chatbot.");
@@ -429,11 +429,9 @@ const Chatbot = ({ apiEndpoint, userType }) => {
             steps={steps}
             botAvatar={avatar}
             userAvatar={avatar}
-            style={{
-              width: "400px",
-              borderRadius: "10px",
-              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-              backgroundColor: "#f5f8fb",
+            hideUserInput={true}
+            contentStyle={{
+              overflowY: "auto" // Para permitir scroll en contenido extenso
             }}
           />
         </div>
