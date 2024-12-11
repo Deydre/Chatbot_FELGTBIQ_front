@@ -56,16 +56,13 @@ const FormLogin = () => {
 
 
       try {
-        const adminData = await getAdminData();
+        const adminData = await adminData();
         console.log(adminData);
-
-        updateProfile(adminData.data[0].email);
-
 
       } catch (error) {
         console.log("Error al obtener datos de admin:", error.message);
       }
-  
+      updateProfile(adminData);
       setMessage(`Welcome ${email}`)
 
       loginRedirect();

@@ -4,14 +4,14 @@ import { FiLogOut } from "react-icons/fi";
 import BurgerMenu from './BurgerMenu/BurgerMenu'
 import logo from "../../../assets/FELGTBI+_blancosinfondo.png";
 import { useLocation } from "react-router-dom";
+import { context } from '../../../context/context';
 
 const NavBar = () => {
 
   const location = useLocation();
 
-  // const { profile, updateProfile } = useContext(context);
+  const { profile, updateProfile } = useContext(context);
 
-  let profile = true;
   const handleLogout = async () => {
     try {
       await axios({
@@ -19,7 +19,7 @@ const NavBar = () => {
         url: 'https://pixelist.onrender.com/api/user/logout',
         withCredentials: true
       });
-      updateProfile("")
+      updateProfile(null)
     } catch (error) {
       console.log(error.message);
     }
@@ -28,7 +28,7 @@ const NavBar = () => {
   return (
     <nav>
       {location.pathname === '/admin/login' ? ( // Si estamos en /admin/login
-        profile ? ( // Y si hay perfil, mostramos LOGOUT
+        profile !== null ? ( // Y si hay perfil, mostramos LOGOUT
           <ul id="ulLogged">
             <li className="nav-link active" id="liLogo">
               <Link to="/">
