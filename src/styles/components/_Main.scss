@@ -9,8 +9,7 @@
 // }
 
 main {
-    position: relative;  // Necesario para posicionar el overlay
-    height: 100vh;       // Asegura que el main ocupe toda la altura de la ventana
+    position: relative; 
     background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
     url('/src/assets/Main.png');
     background-size: cover;
