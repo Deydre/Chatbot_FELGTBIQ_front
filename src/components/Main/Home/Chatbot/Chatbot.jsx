@@ -1,30 +1,28 @@
 import React, { useEffect, useState, useContext } from "react";
 import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
-import { sendChatBotSociosanitarioData, sendChatBotNoSociosanitarioData } from "../../../../services/chatbotData"
 import "../../../../styles/components/_Chatbot.scss"; // Estilos del chatbot
 import avatar from "../../../../assets/avatar.png";
 import { context } from '../../../../context/context';
 import { IoIosArrowBack } from "react-icons/io";
+import CustomFinalResponse from "../CustomFinalResponse/CustomFinalResponse"; // Importa el nuevo componente
 
 const Chatbot = ({ userType, updateIsSubmitted }) => {
   const { userId } = useContext(context);
-  const [steps, setSteps] = useState([]); // Preguntas del chatbot
-  const [loading, setLoading] = useState(true); // Estado de carga
-  const [error, setError] = useState(null); // Manejo de errores
-  const [conversationLog, setConversationLog] = useState([]); // Registro de la conversación
-
+  const [steps, setSteps] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
 
   // Tema personalizado del chatbot
   const theme = {
     background: "#f5f8fb",
     fontFamily: "Montserrat, Helvetica, sans-serif",
-    headerBgColor: "#E2007E", // Color del header
+    headerBgColor: "#E2007E",
     headerFontColor: "#fff",
-    botBubbleColor: "#E2007E", // Burbuja del bot
-    botFontColor: "#fff", // Texto del bot
-    userBubbleColor: "#ffd2eb", // Burbuja del usuario
-    userFontColor: "#E2007E", // Texto del usuario
+    botBubbleColor: "#E2007E",
+    botFontColor: "#fff",
+    userBubbleColor: "#ffd2eb",
+    userFontColor: "#E2007E",
   };
 
   useEffect(() => {
@@ -36,7 +34,7 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "1",
             message: "¿Cuál es tu situación?",
-            trigger: "2", // Trigger a la siguiente pregunta
+            trigger: "2", 
           },
           {
             id: "2",
@@ -45,7 +43,6 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
               { value: "Creo que me he expuesto al virus", label: "Creo que me he expuesto al virus", trigger: "13" },
               { value: "Quiero saber más sobre el vih/sida", label: "Quiero saber más sobre el vih/sida", trigger: "25" },
               { value: "Estoy apoyando a una persona seropositiva", label: "Estoy apoyando a una persona seropositiva", trigger: "27" },
-
             ],
           },
           {
@@ -70,9 +67,8 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
             id: "6",
             options: [
               { value: "Sí", label: "Sí", trigger: "7" },
-              { value: "No", label: "No", trigger: "7", },
-              { value: "No estoy segure", label: "No estoy segure", trigger: "7", },
-
+              { value: "No", label: "No", trigger: "7" },
+              { value: "No estoy segure", label: "No estoy segure", trigger: "7" },
             ],
           },
           {
@@ -142,7 +138,6 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
             options: [
               { value: "Últimas 72 horas", label: "Últimas 72 horas", trigger: "15" },
               { value: "Hace más de 72 horas", label: "Hace más de 72 horas", trigger: "15" },
-
             ],
           },
           {
@@ -155,7 +150,6 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
             options: [
               { value: "Sí", label: "Sí", trigger: "17" },
               { value: "No", label: "No", trigger: "17" },
-
             ],
           },
           {
@@ -182,7 +176,6 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
             options: [
               { value: "Sí", label: "Sí", trigger: "21" },
               { value: "No", label: "No", trigger: "21" },
-
             ],
           },
           {
@@ -213,7 +206,6 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
               { value: "Personal de ONG", label: "Personal de ONG", trigger: "dynamicResponse" },
               { value: "Expareja", label: "Expareja", trigger: "dynamicResponse" },
               { value: "Nadie", label: "Nadie", trigger: "dynamicResponse" },
-              // { value: "La persona que me preocupa", label: "La persona que me preocupa", "end": true },
             ],
           },
           {
@@ -259,10 +251,16 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
               { value: "Personal de ONG", label: "Personal de ONG", trigger: "dynamicResponse" },
               { value: "Expareja", label: "Expareja", trigger: "dynamicResponse" },
               { value: "Nadie", label: "Nadie", trigger: "dynamicResponse" },
-              // { value: "La persona que me preocupa", label: "La persona que me preocupa", "end": true },
             ],
           },
-
+          // Step final
+          {
+            id: "dynamicResponse",
+            component: <CustomFinalResponse userType={userType} userId={userId} />,
+            asMessage: true,
+            waitAction: true,
+            end: true,
+          },
         ];
 
         // Pasos Sociosanitario
@@ -321,8 +319,8 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
             id: "8",
             options: [
               { value: "Apoyo emocional para personas recién diagnosticadas", label: "Apoyo emocional para personas recién diagnosticadas", trigger: "dynamicResponse" },
-              { value: "Intervencón para adherencia al tratamiento", label: "Intervención para adherencia al tratamiento", trigger: "dynamicResponse" },
-              { value: "Manejo del estigma y problemas de salud mental", label: "Manejo del estigma y problemas de salud mental", trigger: "dynamicResponse" },
+              { value: "Intervención para adherencia al tratamiento", label: "Intervención para adherencia al tratamiento", trigger: "dynamicResponse" },
+              { value: "Manejo del estigma y salud mental", label: "Manejo del estigma y salud mental", trigger: "dynamicResponse" },
               { value: "Recursos para personas con vih", label: "Recursos para personas con vih", trigger: "dynamicResponse" },
               { value: "Consejos de prevención y autocuidado", label: "Consejos de prevención y autocuidado", trigger: "dynamicResponse" },
             ],
@@ -359,10 +357,11 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           },
           {
             id: "dynamicResponse",
-            message: "Procesando...",
-            end: true,
+            component: <CustomFinalResponse userType={userType} userId={userId} />,
+            asMessage: true,
+            waitAction: true,
+            end: true
           },
-
         ];
 
         if (userType === 'sociosanitario') {
@@ -370,17 +369,16 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
         } else {
           setSteps(stepsDataNoSociosanitario);
         }
-        setLoading(false); // Detiene el estado de carga
+        setLoading(false); 
       } catch (err) {
         console.error("Error al cargar las preguntas del chatbot:", err);
         setError("No se pudieron cargar las preguntas del chatbot.");
-        setLoading(false); // Detiene el estado de carga incluso si hay error
+        setLoading(false);
       }
     };
 
     fetchSteps();
-  }, [userType]);
-
+  }, [userType, userId]);
 
   // Spinner de carga
   const Spinner = () => (
@@ -437,48 +435,12 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
     </div>
   );
 
-  const handleClickBot = (e) => {
-    console.log(e.target)
-  };
-
-  if (loading) return <Spinner />; // Muestra el spinner mientras carga
-
-  function formatToDataObject(array) {
-    return { data: array };
-  }
-
-  const handleEnd = async ({ steps, values }) => {
-    const log = steps.filter((step, index) => [
-      step.message !== null,
-    ]).map(step => step.message);
-    log.unshift(userId);
-    const logFormated = formatToDataObject(log);
-    setConversationLog(logFormated);
-    console.log(logFormated)
-
-    let response;
-    try {
-      if (userType === "sociosanitario") {
-        response = await sendChatBotSociosanitarioData(logFormated)
-      } else {
-        response = await sendChatBotNoSociosanitarioData(logFormated)
-      }
-
-    } catch (err) {
-      console.error("Error fetching chatbot response:", err);
-    }
-  }
-
-
-  if (loading) return <HeartSpinner />;
-
-  if (error) return <div>{error}</div>;
-
-  // ATRÁS BUTTON
   const handleAtras = (e) => {
     updateIsSubmitted(false);
   };
 
+  if (loading) return <Spinner />;
+  if (error) return <div>{error}</div>;
 
   return (
     <section>
@@ -489,7 +451,6 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
         <div className="chatbot-container">
           <ChatBot
             steps={steps}
-            handleEnd={handleEnd}
             botAvatar={avatar}
             userAvatar={avatar}
             style={{

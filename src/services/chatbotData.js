@@ -13,7 +13,6 @@ export const sendChatBotSociosanitarioData = async (data) => {
       },
     });
 
-    response ? console.log(response) : console.log("dgdfhfgh")
     return response; 
   } catch (error) {
     throw new Error("Error: " + error.message);
