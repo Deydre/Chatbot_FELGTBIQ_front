@@ -34,14 +34,13 @@ const handleCategoriaClick = (url) => {
 
   return (
     
-    <div>
+    <div id="SideBar">
       <h1>Estadísticas</h1>
       <ul>
         {categorias.map((categoria, index) => (
           <li
             key={index}
             onClick={() => handleCategoriaClick(categoria.url)}
-            style={{ cursor: 'pointer', margin: '5px 0', color: 'blue' }}
           >
             {categoria.texto}
           </li>

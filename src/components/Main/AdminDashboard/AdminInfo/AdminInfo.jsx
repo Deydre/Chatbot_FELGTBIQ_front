@@ -27,8 +27,7 @@ const AdminInfo = ({ iframeUrl }) => {
   }
 
   return (
-    <div>
-      <h2>Panel de administración</h2>
+    <div id="cardDiv">
          <Card iframeUrl={iframeUrl} />
     </div>
   );

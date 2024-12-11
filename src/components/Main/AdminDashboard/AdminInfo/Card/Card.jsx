@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ColorRing } from 'react-loader-spinner';
 
 const Card = ({ iframeUrl}) => {
 
@@ -7,7 +6,6 @@ const Card = ({ iframeUrl}) => {
     <div>
       <iframe
         src={iframeUrl}
-        width="1500"
         height="600"
         style={{ border: 'none' }}
       />
