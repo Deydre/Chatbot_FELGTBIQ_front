@@ -9,7 +9,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import CustomFinalResponse from "../CustomFinalResponse/CustomFinalResponse"; // Importa el nuevo componente
 
 
-const Chatbot = ({ apiEndpoint, userType }) => {
+const Chatbot = ({ userType, updateIsSubmitted }) => {
   const { userId } = useContext(context);
   const [steps, setSteps] = useState([]); 
   const [loading, setLoading] = useState(true); 
