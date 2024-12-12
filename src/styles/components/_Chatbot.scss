@@ -14,7 +14,8 @@
   font-family: "Arial, Helvetica, sans-serif";
   font-size: 14px;
   line-height: 1.4em;
-  box-sizing: border-box; // Asegura que padding y border se incluyan en el ancho total
+  box-sizing: border-box;
+  margin-bottom: 30px; // Asegura que padding y border se incluyan en el ancho total
 
   .rsc-header {
     background-color: $primary-color;

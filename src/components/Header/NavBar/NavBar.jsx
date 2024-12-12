@@ -35,7 +35,6 @@ const NavBar = () => {
                 <img src={logo} alt="Logotipo de FELGTBI+" />
               </Link>
             </li>
-
             <li onClick={handleLogout} className="nav-link active">
               <FiLogOut className="logout" />
             </li>
@@ -56,7 +55,10 @@ const NavBar = () => {
             </a>
           </li>
           <li>
-            <BurgerMenu/>
+              <h6 id="titleNavBar">vih360</h6>
+            </li>
+          <li>
+            <BurgerMenu />
           </li>
         </ul>
       }
