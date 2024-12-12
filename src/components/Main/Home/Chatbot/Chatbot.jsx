@@ -62,7 +62,7 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           },
           {
             id: "5",
-            message: "¿Estás en tratamiento tar?",
+            message: "¿Estás en tratamiento TAR?",
             trigger: "6", 
           },
           {
