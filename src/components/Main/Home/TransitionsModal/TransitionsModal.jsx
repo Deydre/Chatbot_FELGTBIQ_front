@@ -16,9 +16,9 @@ export default function TransitionsModal({ open, onClose }) {
     >
       <Fade in={open}>
         <ModalContent sx={style}>
-          <h2 id="transition-modal-title" className="modal-title">
+          <h4 id="transition-modal-title" className="modal-title">
             Transparencia sobre el manejo de la información en nuestra plataforma.
-          </h2>
+          </h4>
           <p id="transition-modal-description" className="modal-description">
             Nos tomamos muy en serio la privacidad y la sensibilidad de la información que recopilamos. Aunque los datos que ingresas no son personales según las definiciones del GDPR (es decir, no pueden ser utilizados para identificarte), entendemos que se trata de información delicada relacionada con personas en riesgo o diagnosticadas con vih.
 
