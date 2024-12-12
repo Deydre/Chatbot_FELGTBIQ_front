@@ -8,14 +8,14 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  background: none; // Sin fondo en móvil
-  box-shadow: none; // Sin sombra en móvil
+  background: none; 
+  box-shadow: none; 
   border-radius: 0;
   font-family: "Arial, Helvetica, sans-serif";
   font-size: 14px;
   line-height: 1.4em;
   box-sizing: border-box;
-  margin-bottom: 30px; // Asegura que padding y border se incluyan en el ancho total
+  margin-bottom: 30px; 
 
   .rsc-header {
     background-color: $primary-color;
@@ -33,12 +33,17 @@
     box-sizing: border-box;
   }
 
+  .rsc-ts-bubble {
+    width: 310px;
+    max-width: 400px;
+  }
+
   .rsc-bot-bubble, .rsc-user-bubble {
-    border-radius: 6px;
-    font-size: 0.9rem;
-    line-height: 1.4em;
-    padding: 8px 10px;
-    margin: 8px 0;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    line-height: 1.6em;
+    padding: 12px 16px;
+    margin: 12px 0;
     max-width: 95%; 
     width: auto;
     white-space: normal;
@@ -66,8 +71,7 @@
     display: none;
   }
 
-  // TABLETS (ej: ≥768px): 
-  // Aumentamos ligeramente el ancho máximo para aprovechar pantallas medianas
+  
   @media (min-width: 768px) {
     .chatbot-container {
       max-width: 350px;
@@ -79,9 +83,9 @@
   // para un aspecto más refinado en monitores.
   @media (min-width: 1024px) {
     .chatbot-container {
-      max-width: 400px;     // Un ancho adecuado en escritorio
-      margin: 20px auto;    // Centrado y con margen superior
-      background: $white;    // Añadimos fondo blanco
+      max-width: 400px;     
+      margin: 20px auto;   
+      background: $white;  
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
     }
