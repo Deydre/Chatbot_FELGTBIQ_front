@@ -1,0 +1,13 @@
+iframe {
+    width: 100%;
+}
+
+@media screen and (min-width: 1000px) {
+   #cardDiv, #cardDiv div {
+    width: 1000px
+   }
+
+    iframe {
+        width: 900px;
+    }
+}

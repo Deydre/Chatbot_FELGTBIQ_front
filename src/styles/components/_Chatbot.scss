@@ -1,0 +1,98 @@
+@import "../utils/variables";
+
+.chatbot-container {
+  // MOBILE FIRST:
+  // Ocupa el 90% del ancho de la pantalla en móvil, centrado.
+  width: 90%;
+  max-width: 300px; // Un ancho máximo razonable en móviles
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: none; 
+  box-shadow: none; 
+  border-radius: 0;
+  font-family: "Arial, Helvetica, sans-serif";
+  font-size: 14px;
+  line-height: 1.4em;
+  box-sizing: border-box;
+  margin-bottom: 30px; 
+
+  .rsc-header {
+    background-color: $primary-color;
+    color: $white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5em;
+    border-radius: 0;
+    text-align: center;
+  }
+
+  .rsc-content {
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .rsc-ts-bubble {
+    width: 310px;
+    max-width: 400px;
+  }
+
+  .rsc-bot-bubble, .rsc-user-bubble {
+    border-radius: 10px;
+    font-size: 1.1rem;
+    line-height: 1.6em;
+    padding: 12px 16px;
+    margin: 12px 0;
+    max-width: 95%; 
+    width: auto;
+    white-space: normal;
+    word-break: break-word;
+    box-sizing: border-box;
+  }
+
+  .rsc-bot-bubble {
+    background-color: $primary-color;
+    color: $white !important;
+    margin-left: 0; 
+  }
+
+  .rsc-user-bubble {
+    background-color: $primary-color-soft;
+    color: $secondary-color !important;
+    margin-left: auto; 
+  }
+
+  .rsc-footer {
+    display: none !important;
+  }
+
+  .rsc-avatar {
+    display: none;
+  }
+
+  
+  @media (min-width: 768px) {
+    .chatbot-container {
+      max-width: 350px;
+    }
+  }
+
+  // DESKTOPS (ej: ≥1024px):
+  // Añadimos fondo blanco, sombra y bordes redondeados
+  // para un aspecto más refinado en monitores.
+  @media (min-width: 1024px) {
+    .chatbot-container {
+      max-width: 400px;     
+      margin: 20px auto;   
+      background: $white;  
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .rsc-header {
+      border-radius: 10px 10px 0 0;
+      font-size: 1.1rem;
+    }
+  }
+}

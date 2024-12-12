@@ -1,0 +1,46 @@
+@import '../utils/variables.scss';
+
+#SideBar {
+    padding: 32px;
+    background: $primary-color;
+}
+
+#SideBar h1 {
+    color: $white;
+}
+
+#SideBar h2 {
+    color: $white;
+}
+
+#SideBar ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 0px;
+}
+
+#SideBar li {
+    color: $white-soft;
+    padding: 5px 0px;
+}
+
+#SideBar li:hover {
+    cursor: pointer;
+    color: $white;
+}
+
+#modebar-2e602e>div:nth-child(1)>a {
+    display: none;
+}
+
+#modebar-004648>div:nth-child(2) {
+    display: none;
+}
+
+// Estilo para pantallas más grandes
+@media (min-width: 768px) {
+    #SideBar {
+        width: 220px;
+    }
+}

@@ -1,0 +1,19 @@
+@import "../utils/variables";
+// main {
+    
+//     background-image: url('/src/assets/Main.png');
+//     background-size: cover;       // Para cubrir toda el área
+//     background-position: center;  // Para centrar la imagen
+//     background-repeat: no-repeat; // Para evitar que se repita la imagen
+//     height: 100vh;                // Asegura que el main ocupe todo el alto de la ventana
+// }
+
+main {
+    position: relative; 
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+    url('/src/assets/Main.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    }
+
