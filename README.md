@@ -153,7 +153,7 @@ usuarias.
 Este proyecto ha sido desarrollado por un equipo de personas profesionales comprometidas con la inclusión y la innovación:
 
 - **Rubén Castro** ([https://github.com/RubenC2](https://github.com/RubenC2))
-- **Alvaro Hans Orellana** ([https://github.com/AlvaroHansOrellana](https://github.com/AlvaroHansOrellana))
+- **A. Hans Orellana** ([https://github.com/AlvaroHansOrellana](https://github.com/AlvaroHansOrellana))
 - **Deydre Alonso** ([https://github.com/Deydre](https://github.com/Deydre))
 
 🌟 Nota: Este chatbot es solo un paso hacia la creación de un ecosistema digital más inclusivo y accesible. Somos personas comprometidas con la mejora continua y abiertas a colaboraciones que amplifiquen su impacto.
