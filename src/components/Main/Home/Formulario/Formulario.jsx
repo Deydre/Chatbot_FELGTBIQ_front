@@ -303,6 +303,7 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
                           <option value="bisexual">Bisexual</option>
                           <option value="pansexual">Pansexual</option>
                           <option value="asexual">Asexual</option>
+                          <option value="heterosexual">Heterosexual</option>
                           <option value="otro">Otro</option>
                         </select>
                         {errors.orientacion && <span className="error">{errors.orientacion}</span>}
