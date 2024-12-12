@@ -57,7 +57,7 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
             options: [
               { value: "Hace menos de 6 meses", label: "Hace menos de 6 meses", trigger: "5" },
               { value: "Entre 6 meses y 1 año", label: "Entre 6 meses y 1 año", trigger: "5" },
-              { value: "Hace menos de 1 año", label: "Hace menos de 1 año", trigger: "5" },  
+              { value: "Hace más de 1 año", label: "Hace más de 1 año", trigger: "5" },  
             ],
           },
           {
@@ -165,7 +165,7 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
               { value: "No estoy segure", label: "No estoy segure",  trigger: "19" },
               { value: "Relación sexual", label: "Relación sexual",  trigger: "19" },
               { value: "Aguja compartida", label: "Aguja compartida",  trigger: "19" },
-              { value: "Contacto con fluidos corporales (sangre, lactancia natural, ...)",  trigger: "19" },
+              { value: "Contacto con fluidos corporales (sangre/lactancia natural/etc)", label:"Contacto con fluidos corporales sangre/lactancia natural/etc", trigger: "19" },
             ],
           },
           {
@@ -245,14 +245,28 @@ const Chatbot = ({ userType, updateIsSubmitted }) => {
           {
             id: "30",
             options: [
-              { value: "Une amigue", label: "Une amigue", trigger: "dynamicResponse" },
-              { value: "Alguien de mi familia", label: "Alguien de mi familia", trigger: "dynamicResponse" },
-              { value: "Mi pareja en ese momento", label: "Mi pareja en ese momento", trigger: "dynamicResponse" },
-              { value: "Compañere de trabajo", label: "Compañere de trabajo", trigger: "dynamicResponse" },
-              { value: "Con mi superior del trabajo", label: "Con mi superior del trabajo", trigger: "dynamicResponse" },
-              { value: "Personal de ONG", label: "Personal de ONG", trigger: "dynamicResponse" },
-              { value: "Expareja", label: "Expareja", trigger: "dynamicResponse" },
-              { value: "Nadie", label: "Nadie", trigger: "dynamicResponse" },
+              { value: "Une amigue", label: "Une amigue", trigger: "50" },
+              { value: "Alguien de mi familia", label: "Alguien de mi familia", trigger: "50" },
+              { value: "Mi pareja en ese momento", label: "Mi pareja en ese momento", trigger: "50" },
+              { value: "Compañere de trabajo", label: "Compañere de trabajo", trigger: "50" },
+              { value: "Con mi superior del trabajo", label: "Con mi superior del trabajo", trigger: "50" },
+              { value: "Personal de ONG", label: "Personal de ONG", trigger: "50" },
+              { value: "Expareja", label: "Expareja", trigger: "50" },
+              { value: "Nadie", label: "Nadie", trigger: "50" },
+            ],
+          },
+          {
+            id: "50",
+            message: "¿Qué apoyo necesitas?",
+            trigger: "51", 
+          },
+          {
+            id: "51",
+            options: [
+              { value: "Ayuda emocional", label: "Ayuda emocional", trigger: "dynamicResponse" },
+              { value: "Información sobre tratamientos", label: "Información sobre tratamientos", trigger: "dynamicResponse" },
+              { value: "Recursos para personas que cuidan", label: "Recursos para personas que cuidan", trigger: "dynamicResponse" },
+              { value: "Información sobre derechos y apoyo social", label: "Información sobre derechos y apoyo social", trigger: "dynamicResponse" },
             ],
           },
           // Step final

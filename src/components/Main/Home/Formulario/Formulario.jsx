@@ -3,6 +3,9 @@ import { IoIosArrowBack } from "react-icons/io";
 import { sendFormSociosanitarioData, sendFormNoSociosanitarioData } from "../../../../services/formData"
 import { context } from '../../../../context/context';
 import { v4 as uuidv4 } from 'uuid';
+import '@fontsource/roboto';
+
+import TransitionsModal from "../TransitionsModal"; // Importa el modal
 
 
 
@@ -11,11 +14,21 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
   // MANEJO DE BOTONES INICIALES
   // const [isMedicalStaff, setMedicalStaff] = useState("");
   const { userId, updateUserId } = useContext(context);
+  const [showModal, setShowModal] = useState(false); // Estado para mostrar el modal
 
   const handleMedicalStaff = (event) => {
     updateUserType(event.target.id);
     updateUserId(Date.now() + uuidv4().replace(/-/g, ''))
   };
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
 
   // ATRÁS BUTTON
   const handleAtras = (e) => {
@@ -209,13 +222,45 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
     }
   }
 
+  {/* Botón flotante */ }
+
+
   return <>
     {userType === ""
       ? <>
         <div id="divTitle">
-          <h6>vih360</h6>
-          <p>¿Quieres saber más sobre el VIH? ¡Estamos aquí para ti! Encuentra respuestas a tus preguntas, consejos y apoyo</p>
+          <p>¿Quieres saber más sobre el vih? ¡Estamos aquí para ti! Encuentra respuestas a tus preguntas, consejos y apoyo</p>
           <p> Rompamos el estigma.</p>
+          <TransitionsModal open={showModal} onClose={handleCloseModal} />
+          <div style={{ position: "fixed", bottom: "550px", right: "20px", zIndex: "1000" }}>
+            <button
+              onClick={handleOpenModal}
+              style={{
+                background: "#007BFF",
+                color: "#fff",
+                border: "none",
+                borderRadius: "50%",
+                width: "50px",
+                height: "50px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "20px",
+                fontWeight: "bold",
+                cursor: "pointer",
+                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                transition: "all 0.3s ease",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.background = "#0056b3";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.background = "#007BFF";
+              }}
+            >
+              ?
+            </button>
+          </div>
         </div>
 
         <section id="sectionXLButtons">

@@ -46,10 +46,8 @@ h4 {
     font-weight: 600;
 }
 
-h6 {
-    font-size: 26px;
-    font-weight: 800;
-    color: $primary-color;
+#titleNavBar {
+    display: none;
 }
 
 ul {
@@ -70,6 +68,14 @@ button {
 button:hover {
     background: $primary-color-2;
     // font-size: 16px;
+}
+
+#anchorEmail {
+    color: $primary-color
+}
+
+.css-1f3yu7j {
+max-width: 300px;
 }
 
 
@@ -114,4 +120,17 @@ footer {
     align-items: flex-start;
     flex-wrap: wrap; 
     height: auto; 
+}
+
+@media (min-width: 1024px) {
+    .css-1f3yu7j {
+        max-width: 800px;
+    }
+
+    #titleNavBar {
+        display: inherit;
+        font-size: 26px;
+        font-weight: 800;
+        color: $white;
+    }
 }
