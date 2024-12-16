@@ -6,6 +6,7 @@ const urlNoSociosanitario = 'https://felgtbi-plus.onrender.com/submit-data/'
 
 // Envío de datos de Sociosanitario
 export const sendFormSociosanitarioData = async (data) => {
+  setLoading(true);
   try {
     const response = await axios.post(urlSociosanitario, data, {
       headers: {
@@ -17,11 +18,14 @@ export const sendFormSociosanitarioData = async (data) => {
     return response; 
   } catch (error) {
     throw new Error("Error: " + error.message);
+  } finally {
+    setLoading(false);
   }
 };
 
 // Envío de datos de No Sociosanitario
 export const sendFormNoSociosanitarioData = async (data) => {
+  setLoading(true);
   try {
     const response = await axios.post(urlNoSociosanitario, data, {
       headers: {
@@ -33,5 +37,7 @@ export const sendFormNoSociosanitarioData = async (data) => {
     return response; 
   } catch (error) {
     throw new Error("Error: " + error.message);
+  } finally {
+    setLoading(false);
   }
 };

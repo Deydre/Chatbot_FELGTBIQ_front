@@ -4,10 +4,11 @@ import { sendFormSociosanitarioData, sendFormNoSociosanitarioData } from "../../
 import { context } from '../../../../context/context';
 import { v4 as uuidv4 } from 'uuid';
 import '@fontsource/roboto';
+import HashLoader from "react-spinners/HashLoader";
 
 import TransitionsModal from "../TransitionsModal"; // Importa el modal
 
-
+const [loading, setLoading] = useState(true);
 
 const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
 
@@ -187,7 +188,9 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
           ambito_laboral: formateoString(sociosanitarioValues.ambito_laboral)
         }
         console.log("Datos sociosanitario:", socioSanitarioData);
+        setLoading(true);
         const response = await sendFormSociosanitarioData(socioSanitarioData);
+        response ? setLoading(false) : ""
       }
       // }
       updateIsSubmitted(true)
@@ -215,9 +218,10 @@ const Formulario = ({ updateUserType, userType, updateIsSubmitted }) => {
         };
 
         console.log("Datos no sociosanitario:", noSociosanitarioData);
-
+        setLoading(true);
         const response = await sendFormNoSociosanitarioData(noSociosanitarioData);
         updateIsSubmitted(true)
+        response ? setLoading(false) : ""
       }
     }
   }
